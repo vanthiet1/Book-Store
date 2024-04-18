@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "~/layouts/Header";
 import BookNewUi from "~/layouts/Contents/BookNewUi";
 import Card from "@components/cardBook/card";
-import { GetInforBook, BookNewApi } from "@services/books/Book";
+import { GetInforBook, BookNewApi } from "../../services/books/Book";
 import Footer from "~/layouts/Footer";
 import TitleSetter from '@components/titlePage/TitleSetter';
 
