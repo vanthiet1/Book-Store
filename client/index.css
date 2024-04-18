@@ -1,0 +1,69 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poopins", sans-serif;
+}
+.filter {
+  width: 100%;
+  height: 100dvh;
+  background-color: black;
+  opacity: 0.6;
+  position: fixed;
+  z-index: 9;
+  transition: ease 0.5s;
+  top: 0;
+}
+.filterAdmin {
+  width: 100%;
+  height: 100dvh;
+  background-color: black;
+  opacity: 0.6;
+  position: fixed;
+  z-index: 9;
+  transition: ease 0.5s;
+  top: 0;
+}
+.gradient {
+  background: linear-gradient(to top, rgba(0, 0, 0, 2), rgba(91, 91, 91, 0.2));
+  opacity: 0.9;
+}
+.scroll-content-detail::-webkit-scrollbar {
+  display: none;
+}
+
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 1px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #232E33;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #6BAF8D;
+  border-radius: 3px;
+}
+
+.scrollbar-thumb-custom-scrollbar-thumb {
+  background: #6BAF8D;
+}
+
+.scrollbar-track-custom-scrollbar-track {
+  background: #232E33;
+}
+.card{
+  background: lightblue;
+  cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,
+    auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
