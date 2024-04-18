@@ -1,4 +1,4 @@
-const URL_API = 'http://localhost:8080/api/v1';
+const URL_API = 'https://book-store-cnpg.onrender.com/api/v1';
 // Api BOOK
 const API_BOOK = "book";
 const API_BOOK_CATEGORY = 'category/book';
