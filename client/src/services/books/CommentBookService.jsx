@@ -1,5 +1,5 @@
 import axios from "axios"
-import { URL_API,API_BOOK_COMMENT } from "../../util/url-api";
+import { URL_API,API_BOOK_COMMENT } from "~/util/url-api";
 
 const postCommentBook = async (bookId, data) => {
     try {

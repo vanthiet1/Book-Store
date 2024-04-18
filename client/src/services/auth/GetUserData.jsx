@@ -1,5 +1,5 @@
 
-import { URL_API } from "../../util/url-api";
+import { URL_API } from "~/util/url-api";
 import axios from "axios";
 const GetUserData = async (token) => {
     try {

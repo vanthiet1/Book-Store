@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL_API, URL_AUTH_REGISTER } from "../../util/url-api";
+import { URL_API, URL_AUTH_REGISTER } from "~/util/url-api";
 const RegisterAuth = {
     register: async (userData) => {
         try {

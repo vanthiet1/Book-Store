@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { URL_API,API_BOOK ,API_BOOK_CATEGORY} from "../../util/url-api";
+import { URL_API,API_BOOK ,API_BOOK_CATEGORY} from "~/util/url-api";
 
 
 const GetInforBook= async (bookId) => {

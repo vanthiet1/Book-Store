@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL_API ,URL_VERTIFY,URL_RESENDVERIFI } from "../../util/url-api";
+import { URL_API ,URL_VERTIFY,URL_RESENDVERIFI } from "~/util/url-api";
 import { toast } from 'react-toastify';
 
 

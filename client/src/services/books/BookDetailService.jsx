@@ -1,4 +1,4 @@
-import { URL_API, API_BOOK } from "../../util/url-api";
+import { URL_API, API_BOOK } from "~/util/url-api";
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";

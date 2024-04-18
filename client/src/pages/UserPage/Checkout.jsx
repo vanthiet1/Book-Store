@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import Header from "../../layouts/Header";
-import Footer from "../../layouts/Footer";
+import Header from "~/layouts/Header";
+import Footer from "~/layouts/Footer";
 import { UseCart } from "../../contexts/CartContext";
 import { DataUser } from "../../contexts/authContext/DataUserLogin";
 import NotFoundPage from "../../components/404-error/NotFoundPage";
-import MethodPayment from "../../layouts/Contents/MainCheckout/MethodPayment";
+import MethodPayment from "~/layouts/Contents/MainCheckout/MethodPayment";
 import TitleSetter from "../../components/titlePage/TitleSetter";
 import { GetDetailUser } from "../../services/checkout/detailUserService";
 import { PostCheckoutUser } from "../../services/checkout/checkoutUserService";

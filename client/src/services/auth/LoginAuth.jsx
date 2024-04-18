@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL_API } from "../../util/url-api";
+import { URL_API } from "~/util/url-api";
 
 export const LoginAuth = {
    
