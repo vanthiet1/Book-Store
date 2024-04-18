@@ -1,10 +1,10 @@
 import { useEffect, useState ,useContext} from "react";
-import CheckButton from "../components/button/CheckButton.jsx";
-import DeleteButton_square from "../components/button/DeleteButton_square.jsx";
-import { GetDataUserCheckout, GetAnDataUserCheckout } from "../service/checkoutService.jsx";
+import CheckButton from "../components/button/CheckButton";
+import DeleteButton_square from "../components/button/DeleteButton_square";
+import { GetDataUserCheckout, GetAnDataUserCheckout } from "../service/checkoutService";
 import { GetNameUser } from "../service/userService.jsx";
-import DetailProduct from "../components/DetailProductCheckout/DetailProduct.jsx";
-import { DisplayPopup } from "../contexts/UiContextAdmin.jsx";
+import DetailProduct from "../components/DetailProductCheckout/DetailProduct";
+import { DisplayPopup } from "../contexts/UiContextAdmin";
 const Checkout = () => {
     const {showDetailProductCheckout , handleDisplayProductCheckout,
         handleHideProductCheckout  } = useContext(DisplayPopup)
