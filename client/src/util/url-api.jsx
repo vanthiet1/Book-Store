@@ -1,6 +1,6 @@
-// const URL_API = 'https://book-store-9po5.onrender.com
-// /api/v1';
-const URL_API = 'http://localhost:8080/api/v1';
+const URL_API = 'https://book-store-9po5.onrender.com
+/api/v1';
+// const URL_API = 'http://localhost:8080/api/v1';
 
 // Api BOOK
 const API_BOOK = "book";
