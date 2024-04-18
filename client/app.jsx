@@ -46,8 +46,6 @@ const App = () => {
           {displayVertify && (<VetifyAccount />)}
         </div>
         <div className={`${filter} ${filterAdmin}`} />
-        <h1>test</h1>
-     
       </div>
       <div className={`fixed z-10 top-0 right-0 ${displayCart} ease-in duration-300 `}>
                     <Cart />

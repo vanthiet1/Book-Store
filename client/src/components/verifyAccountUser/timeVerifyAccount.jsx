@@ -5,7 +5,7 @@
             if (prevCountdown === 0) {
                 clearInterval(intervalId);
                 setResendEnabled(true);
-                return 10;
+                return 100;
             }
             return prevCountdown - 1;
         });
