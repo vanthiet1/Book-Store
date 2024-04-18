@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 const URL_API = 'http://localhost:8080/api/v1';
+=======
+const URL_API = 'https://book-store-9po5.onrender.com
+/api/v1';
+// const URL_API = 'http://localhost:8080/api/v1';
+>>>>>>> b2281e0a35487db1fd0b50a7a0d7988f7fbea02a
 
 // Api BOOK
 const API_BOOK = "book";
