@@ -10,7 +10,7 @@ import publicRouterUser from "./src/routes/RouterUser";
 import PublicRouterAdmin from "./src/routes/RouterAdmin";
 import Cart from "./src/layouts/Contents/MainCart/Cart";
 const App = () => {
-  const { displayRegister, displayLogin, filter , displayVertify ,displayCart} = useContext(Uicontext);
+  const { displayRegister, displayLogin, filter, displayVertify, displayCart } = useContext(Uicontext);
   const { filterAdmin } = useContext(DisplayPopup);
 
 
@@ -48,7 +48,7 @@ const App = () => {
         <div className={`${filter} ${filterAdmin}`} />
       </div>
       <div className={`fixed z-10 top-0 right-0 ${displayCart} ease-in duration-300 `}>
-                    <Cart />
+        <Cart />
       </div>
     </>
   );

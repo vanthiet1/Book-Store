@@ -1,18 +1,18 @@
 import { useEffect, useState, useContext } from "react";
 import AddButton from "../components/button/AddButton";
-import CheckButton from "../components/button/CheckButton.jsx";
-import DeleteButton_square from "../components/button/DeleteButton_square.jsx";
+import CheckButton from "../components/button/CheckButton";
+import DeleteButton_square from "../components/button/DeleteButton_square";
 import UpdateButton from "../components/button/UpdateButton";
 import { GetDataBook, GetNameCategory, DeleteAbook, GetDescription } from "../service/productService";
 import Success from "../../../components/notification/Success";
-import DecriptionBook from "../components/product/DecriptionBook.jsx";
-import { DisplayPopup } from "../contexts/UiContextAdmin.jsx";
-import AddProductForm from "../components/product/AddProductForm.jsx";
-import { GetDataCategory } from '../service/categoryService.jsx';
-import { GetDataGenres } from "../service/genresService.jsx";
-import { GetDataAuthor } from "../service/authorService.jsx";
-import { FormatCurrency } from "../Utils/formatCurrency.js";
-import EditProductForm from "../components/product/EditProductForm.jsx";
+import DecriptionBook from "../components/product/DecriptionBook";
+import { DisplayPopup } from "../contexts/UiContextAdmin";
+import AddProductForm from "../components/product/AddProductForm";
+import { GetDataCategory } from '../service/categoryService';
+import { GetDataGenres } from "../service/genresService";
+import { GetDataAuthor } from "../service/authorService";
+import { FormatCurrency } from "../Utils/formatCurrency";
+import EditProductForm from "../components/product/EditProductForm";
 const Product = () => {
   const [dataBook, setDataBook] = useState([]);
   const [categoryNames, setCategoryNames] = useState([]);

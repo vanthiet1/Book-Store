@@ -1,17 +1,17 @@
 import { useEffect, useState, useContext } from "react";
 import { TiDelete } from "react-icons/ti";
 import AddButton from "../components/button/AddButton";
-import UpdateButton from "../components/button/UpdateButton.jsx";
-import DeleteButton_square from "../components/button/DeleteButton_square.jsx";
-import { GetDataGenres } from "../service/genresService.jsx";
-import { DisplayPopup } from "../contexts/UiContextAdmin.jsx";
-import { AddGenres, DeleteGenres } from "../service/genresService.jsx";
-import Success from "../../../components/notification/Success.jsx";
-import Error from "../../../components/notification/Error.jsx";
-import AddForm from "../components/form/AddForm.jsx";
-import EditForm from "../components/form/EditForm.jsx";
-import { UpdateGenres } from "../service/genresService.jsx";
-import { getNameBookInGenres } from "../service/getInforBook.jsx";
+import UpdateButton from "../components/button/UpdateButton";
+import DeleteButton_square from "../components/button/DeleteButton_square";
+import { GetDataGenres } from "../service/genresService";
+import { DisplayPopup } from "../contexts/UiContextAdmin";
+import { AddGenres, DeleteGenres } from "../service/genresService";
+import Success from "../../../components/notification/Success";
+import Error from "../../../components/notification/Error";
+import AddForm from "../components/form/AddForm";
+import EditForm from "../components/form/EditForm";
+import { UpdateGenres } from "../service/genresService";
+import { getNameBookInGenres } from "../service/getInforBook";
 const Genres = () => {
     const {
         showFormGenresBookAdmin,

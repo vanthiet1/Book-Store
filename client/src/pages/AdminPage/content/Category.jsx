@@ -1,15 +1,15 @@
 import { TiDelete } from "react-icons/ti";
 import { useContext, useEffect, useState } from "react";
 import { GetDataCategory, DeleteCategory, AddCategory, UpdateCategory } from "../service/categoryService";
-import { getNameBookInCategory } from "../service/getInforBook.jsx";
-import { DisplayPopup } from "../contexts/UiContextAdmin.jsx";
+import { getNameBookInCategory } from "../service/getInforBook";
+import { DisplayPopup } from "../contexts/UiContextAdmin";
 import Success from "../../../components/notification/Success";
 import Error from "../../../components/notification/Error";
 import AddButton from "../components/button/AddButton";
-import UpdateButton from "../components/button/UpdateButton.jsx";
-import DeleteButton_square from "../components/button/DeleteButton_square.jsx";
-import AddForm from "../components/form/AddForm.jsx";
-import EditForm from "../components/form/EditForm.jsx";
+import UpdateButton from "../components/button/UpdateButton";
+import DeleteButton_square from "../components/button/DeleteButton_square";
+import AddForm from "../components/form/AddForm";
+import EditForm from "../components/form/EditForm";
 const Category = () => {
     const [category, setCategory] = useState([]);
     const [booksInCategories, setBooksInCategories] = useState({});
@@ -17,9 +17,12 @@ const Category = () => {
     const [showSuccessDelete, setShowSuccessDelete] = useState(false);
     const [showSuccessUpdate, setShowSuccessUpdate] = useState(false);
     const [showSuccessAdd, setShowSuccessAdd] = useState(false);
+    const [successCategory, setSuccessCategory] = useState([]);
 
 
     const [showError, setShowError] = useState(false);
+    const [showErrorValidateFrom, setShowErrorValidateFrom] = useState(false);
+    
     const [editingCategoryId, setEditingCategoryId] = useState(null);
     const [nameCategory, setNameCategory] = useState("");
     const {
@@ -34,18 +37,17 @@ const Category = () => {
         handleDisplayAddCategory,
         handleHideDisplayAddCategory,
     } = useContext(DisplayPopup);
-
-    useEffect(() => {
-        const getCategory = async () => {
-            try {
-                const response = await GetDataCategory();
-                setCategory(response);
-                const data = await getNameBookInCategory(response);
-                setBooksInCategories(data);
-            } catch (error) {
-                console.log(error);
-            }
+    const getCategory = async () => {
+        try {
+            const response = await GetDataCategory();
+            setCategory(response);
+            const data = await getNameBookInCategory(response);
+            setBooksInCategories(data);
+        } catch (error) {
+            console.log(error);
         }
+    }
+    useEffect(() => {
         getCategory();
     }, []);
 
@@ -69,12 +71,16 @@ const Category = () => {
             const data = {
                 name: nameCategory
             }
+           
+            if(data.name.length ===  0){
+                return  setShowErrorValidateFrom(true)
+            }
             await AddCategory(data);
-            const updatedCategoryList = await GetDataCategory();
-            setCategory(updatedCategoryList);
             setNameCategory("")
-            handleHideDisplayAddCategory()
+            setSuccessCategory([...successCategory, nameCategory]);           
+            getCategory()
             setShowSuccessAdd(true)
+            setTimeout(() => {setShowSuccessAdd(false) , handleHideDisplayAddCategory() }, 500)
         } catch (error) {
             console.log(error);
         }
@@ -147,6 +153,7 @@ const Category = () => {
                 </div>
             )}
 
+            {showErrorValidateFrom && <Error message="Vui lòng nhập Danh Mục" />}
             {showError && <Error message="Không Thể Xóa Danh Mục Đang Chứa Sản Phẩm" />}
             {showSuccessDelete && <Success message="Xóa Danh Mục Thành Công" />}
             {showSuccessUpdate && <Success message="Cập Nhật Danh Mục Thành Công" />}

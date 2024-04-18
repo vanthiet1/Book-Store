@@ -1,44 +1,102 @@
 import { useEffect , useState } from "react";
-import DeleteButton_square from "../components/button/DeleteButton_square.jsx";
-import UpdateButton from "../components/button/UpdateButton.jsx";
-import AddButton from "../components/button/AddButton.jsx";
-import { GetDataAuthor , GetNameBookInAuthor ,DeleteAuthor } from "../service/authorService.jsx";
+import DeleteButton_square from "../components/button/DeleteButton_square";
+import UpdateButton from "../components/button/UpdateButton";
+import AddButton from "../components/button/AddButton";
+import AddForm from "../components/form/AddForm";
+import { GetDataAuthor , GetNameBookInAuthor ,DeleteAuthor ,AddAuthor } from "../service/authorService";
+import Success from "~/components/notification/Success";
+import Error from "~/components/notification/Error";
 const Author = () => {
     const [author, setAuthor] = useState([]);
     const [bookInAuthor,setBookInAuthor] = useState([]);
+    const [showFormAddAuthor,setShowFormAddAuthor] = useState(false);
+   const [nameAuthor , setNameAuthor] = useState("");
+  const [showSucessAdd,setShowSuccessAdd] = useState(false);
+  const [showSucessDelete,setShowSuccessDelete] = useState(false);
+  const [showErrorDelete, setShowErrorDelete] = useState(false);
 
-    useEffect(() => {
-        const getCategory = async () => {
-            try {
-                const response = await GetDataAuthor();
-                setAuthor(response);
-                const data = await GetNameBookInAuthor(response);
-                setBookInAuthor(data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
+  const [showErrorValidateForm,setShowErrorValidateForm] = useState(false);
+  const [successAuthors, setSuccessAuthors] = useState([]);
+
+
+  const getCategory = async () => {
+    try {
+        const response = await GetDataAuthor();
+        setAuthor(response);
+        const data = await GetNameBookInAuthor(response);
+        setBookInAuthor(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+    useEffect(() => {   
         getCategory();
     }, []);
 
-    // const handleAddAuthor = async () => {
-    //     try {
-    //         const data = {
-    //             name: nameCategory
-    //         }
-    //         await AddCategory(data);
-    //         const updatedCategoryList = await GetDataCategory();
-    //         setCategory(updatedCategoryList);
-    //         setNameCategory("")
-    //         handleHideDisplayAddCategory()
-    //         setShowSuccessAdd(true)
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const handleAddAuthor = async () => {
+        try {
+            const data = {
+                name: nameAuthor
+            }
+            if(data.name.length === 0){
+                return setShowErrorValidateForm(true)
+            }
+            await AddAuthor(data);
+            setNameAuthor("");
+            setSuccessAuthors([...successAuthors, nameAuthor]);
+            getCategory();
+            setShowSuccessAdd(true);
+            setTimeout(() => {setShowSuccessAdd(false) , setShowFormAddAuthor(false) }, 500)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleDeleteAuthor = async (id) => {
+        try {
+            const authorContainsProducts = bookInAuthor[id] && bookInAuthor[id].length > 0;
+            if (!authorContainsProducts) {
+                await DeleteAuthor(id);
+                setAuthor(author.filter(author => author._id !== id));
+                setShowSuccessDelete(true)
+            } else {
+                setShowErrorDelete(true)
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    useEffect(() => {
+        if (showSucessDelete) {
+            setTimeout(() => {
+                setShowSuccessDelete(false);
+            }, 3000);
+        } else if (showErrorDelete) {
+            setTimeout(() => {
+                setShowErrorDelete(false);
+            }, 3000);
+        }
+    }, [showSucessDelete, showErrorDelete]);
 
     return (
         <>
+         { showSucessAdd && <Success message={'Thêm thành công'}/>}
+         { showErrorValidateForm && <Error message={"Vui lòng nhập Tác Giả"}/>}
+         {showSucessDelete &&  <Success message={'Xóa Thành Công '}/>}
+         { showErrorDelete && <Error message={"Không thể xóa vì tác giả có chứa sản phẩm"}/>}
+              {showFormAddAuthor && (
+                <div className="w-[300px] h-auto fixed shadow left-[45%] p-5 z-[10] bg-white rounded-md">
+                    <AddForm
+                        placeholder="Nhập Tên Tác Giả"
+                        titleForm="Thêm Tác Giả"
+                        onClick={()=>setShowFormAddAuthor(false)}
+                        onSubmit={handleAddAuthor}
+                        value={nameAuthor}
+                        onChange={(e) => setNameAuthor(e.target.value)}
+                        nameClick="Thêm Tác Giả"
+                    />
+                </div>
+            )}
           <div className="overflow-y-auto h-[640px] scrollbar-thin">
           <table className="w-full">
                 <thead className="bg-gray-100 h-16">
@@ -48,7 +106,7 @@ const Author = () => {
                         <th className="px-4 py-2" colSpan="4">
                             <AddButton
                                 nameButton="Thêm Danh Tác giả"
-                                click={""}
+                                click={()=>{setShowFormAddAuthor(true)}}
                             />
                         </th>
                     </tr>
@@ -68,7 +126,7 @@ const Author = () => {
                                     <UpdateButton
                                         clickUpdate={''}
                                     />
-                                    <DeleteButton_square titleDelete="Xóa tác giả" clickDelete={() => DeleteAuthor(author._id)}/>
+                                    <DeleteButton_square titleDelete="Xóa tác giả" clickDelete={() => handleDeleteAuthor(author._id)}/>
                                 </div>
                             </td>
                         </tr>

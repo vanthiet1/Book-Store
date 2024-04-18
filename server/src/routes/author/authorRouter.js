@@ -4,6 +4,8 @@ const authorController = require('../../controllers/bookController/authorControl
 
 router.get("/",authorController.getAllAuthor);
 router.delete("/:id",authorController.deleteAuthor);
+router.post("/",authorController.addAuthor);
+
 
 
 

@@ -9,7 +9,7 @@ const GetDataAuthor = async () => {
         console.log(error);
     }
 }
-const getNameBook= async (bookId) => {
+const GetNameBook= async (bookId) => {
     try {
         const response = await axios.get(`${URL_API}/${API_BOOK}/${bookId}`);
         return response.data.nameBook;
@@ -25,7 +25,7 @@ const GetNameBookInAuthor = async () => {
 
         await Promise.all(categories.map(async (category) => {
             const bookNames = await Promise.all(category.books.map(async (id) => {
-                return await getNameBook(id);
+                return await GetNameBook(id);
             })); 
             booksData[category._id] = bookNames;
         }));
@@ -42,8 +42,18 @@ const DeleteAuthor = async (idCategory)=>{
         console.log(error);
     }
 }
+const AddAuthor = async (nameAuthor)=>{
+    try {
+        const response = await axios.post(`${URL_API}/${API_BOOK_AUTHOR}`,nameAuthor);
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export{
     GetDataAuthor,
     GetNameBookInAuthor,
-    DeleteAuthor
+    DeleteAuthor,
+    AddAuthor
 }

@@ -1,5 +1,5 @@
 const Book = require('../../models/book/BookModel');
-const AuthorBook = require('../../models/book/AuthorModel')
+const Author = require('../../models/book/AuthorModel')
 const BookGenre = require('../../models/book/GenresModel');
 const Category = require('../../models/book/CategoryBookModel')
 
@@ -10,12 +10,12 @@ const bookController = {
             const newBookFree = new Book(req.body);
             const savedBook = await newBookFree.save();
             if (req.body.author) {
-                let authorObject = await AuthorBook.findOne({ name: author.name });
+                let authorObject = await Author.findOne({ name: author.name });
                 if (authorObject) {
                     authorObject.books.push(savedBook._id);
                     await authorObject.save();
                 } else {
-                    authorObject = await AuthorBook.create({
+                    authorObject = await Author.create({
                         name: author.name,
                         books: [savedBook._id]
                     });
@@ -79,7 +79,7 @@ const bookController = {
                 return res.status(404).json({ error: 'Book not found' });
             }
 
-            await AuthorBook.updateMany(
+            await Author.updateMany(
                 { books: req.params.id },
                 { $pull: { books: req.params.id } }
             );
@@ -120,7 +120,7 @@ const bookController = {
                 categoryProduct,
                 { $addToSet: { books: updatedBook._id } } 
             );
-                 await AuthorBook.updateMany(
+                 await Author.updateMany(
                 { books: req.params.id },
                 { $pull: { books: req.params.id } }
             );

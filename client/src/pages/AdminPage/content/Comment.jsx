@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
-import CheckButton from "../components/button/CheckButton.jsx";
-import DeleteButton_square from "../components/button/DeleteButton_square.jsx";
+import CheckButton from "../components/button/CheckButton";
+import DeleteButton_square from "../components/button/DeleteButton_square";
 import { GetDataComment, GetNameBookInComment, GetNameUserInComment, DeleteComment } from "../service/commentService";
 
 const Comment = () => {
