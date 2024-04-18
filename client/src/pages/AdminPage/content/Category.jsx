@@ -12,7 +12,7 @@ import AddForm from "../components/form/AddForm";
 import EditForm from "../components/form/EditForm";
 
 import Success from "@components/notification/Success";
-import Error from "@components/components/notification/Error";
+import Error from "@components/notification/Error";
 const Category = () => {
     const [category, setCategory] = useState([]);
     const [booksInCategories, setBooksInCategories] = useState({});
