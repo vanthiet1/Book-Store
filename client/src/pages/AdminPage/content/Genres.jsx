@@ -1,17 +1,19 @@
 import { useEffect, useState, useContext } from "react";
 import { TiDelete } from "react-icons/ti";
+import { getNameBookInGenres } from "../service/getInforBook";
+import { GetDataGenres } from "../service/genresService";
+import { AddGenres, DeleteGenres } from "../service/genresService";
+import { UpdateGenres } from "../service/genresService";
+
 import AddButton from "../components/button/AddButton";
 import UpdateButton from "../components/button/UpdateButton";
 import DeleteButton_square from "../components/button/DeleteButton_square";
-import { GetDataGenres } from "../service/genresService";
 import { DisplayPopup } from "../contexts/UiContextAdmin";
-import { AddGenres, DeleteGenres } from "../service/genresService";
-import Success from "../../../components/notification/Success";
-import Error from "../../../components/notification/Error";
 import AddForm from "../components/form/AddForm";
 import EditForm from "../components/form/EditForm";
-import { UpdateGenres } from "../service/genresService";
-import { getNameBookInGenres } from "../service/getInforBook";
+
+import Error from "@components/notification/Error";
+import Success from "@components/notification/Success";
 const Genres = () => {
     const {
         showFormGenresBookAdmin,

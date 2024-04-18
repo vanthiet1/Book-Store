@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Header from "~/layouts/Header";
 import BookFreeUi from "~/layouts/Contents/BookFreeUi";
+import Footer from "~/layouts/Footer";
+
+import TitleSetter from "~/components/titlePage/TitleSetter";
 import Card from "~/components/cardBook/card";
 import { GetInforBook, BookFreeApi } from "../../services/books/Book";
-import Footer from "~/layouts/Footer";
-import TitleSetter from "~/components/titlePage/TitleSetter";
 const BookFreePage = () => {
   const [cards, setCards] = useState([]);
   useEffect(() => {

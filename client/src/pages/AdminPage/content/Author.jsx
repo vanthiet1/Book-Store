@@ -4,8 +4,8 @@ import UpdateButton from "../components/button/UpdateButton";
 import AddButton from "../components/button/AddButton";
 import AddForm from "../components/form/AddForm";
 import { GetDataAuthor , GetNameBookInAuthor ,DeleteAuthor ,AddAuthor } from "../service/authorService";
-import Success from "~/components/notification/Success";
-import Error from "~/components/notification/Error";
+import Success from "@components/notification/Success";
+import Error from "@components/notification/Error";
 const Author = () => {
     const [author, setAuthor] = useState([]);
     const [bookInAuthor,setBookInAuthor] = useState([]);

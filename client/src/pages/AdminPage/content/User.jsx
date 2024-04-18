@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { format } from 'date-fns';
+import Success from "@components/notification/Success";
 import CheckButton from "../components/button/CheckButton";
 import DeleteButton_square from "../components/button/DeleteButton_square";
 import { GetAllUser, DeleteUser } from "../service/userService";
-import Success from "../../../components/notification/Success";
 
 
 const User = () => {

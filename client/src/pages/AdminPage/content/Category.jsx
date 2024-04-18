@@ -1,15 +1,18 @@
 import { TiDelete } from "react-icons/ti";
 import { useContext, useEffect, useState } from "react";
+
+
 import { GetDataCategory, DeleteCategory, AddCategory, UpdateCategory } from "../service/categoryService";
 import { getNameBookInCategory } from "../service/getInforBook";
 import { DisplayPopup } from "../contexts/UiContextAdmin";
-import Success from "../../../components/notification/Success";
-import Error from "../../../components/notification/Error";
 import AddButton from "../components/button/AddButton";
 import UpdateButton from "../components/button/UpdateButton";
 import DeleteButton_square from "../components/button/DeleteButton_square";
 import AddForm from "../components/form/AddForm";
 import EditForm from "../components/form/EditForm";
+
+import Success from "@components/notification/Success";
+import Error from "@components/components/notification/Error";
 const Category = () => {
     const [category, setCategory] = useState([]);
     const [booksInCategories, setBooksInCategories] = useState({});

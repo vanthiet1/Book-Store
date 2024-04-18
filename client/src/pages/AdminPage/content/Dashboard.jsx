@@ -1,6 +1,6 @@
-import CardOverview from "../components/cards/CardOverview";
-import { IoMdSettings } from "react-icons/io";
 import { FaUserGroup } from "react-icons/fa6";
+import { IoMdSettings } from "react-icons/io";
+import CardOverview from "../components/cards/CardOverview";
 import IconOverview from '../components/icon/IconOverview';
 const Dashboard = () => {
     return (

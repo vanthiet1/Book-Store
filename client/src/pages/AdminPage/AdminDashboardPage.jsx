@@ -10,8 +10,10 @@ import Category from "./content/Category.jsx";
 import Genres from "./content/Genres.jsx";
 import Comment from "./content/Comment.jsx";
 import Checkout from './content/Checkout.jsx';
-import PathAdmin from "../../config/PathAdmin";
 import Author from "./content/Author.jsx";
+
+import PathAdmin from "../../config/PathAdmin";
+
 const AdminDashboardPage = () => {
     const location = useLocation();
     useEffect(() => {
