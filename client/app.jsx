@@ -12,11 +12,11 @@ import Cart from "~/layouts/Contents/MainCart/Cart";
 const App = () => {
   const { displayRegister, displayLogin, filter, displayVertify, displayCart } = useContext(Uicontext);
   const { filterAdmin } = useContext(DisplayPopup);
-
-
   const adminRoutes = PublicRouterAdmin();
+  
   return (
     <>
+        <ToastContainer />
       <div className=" w-full h-dvh ">
         <Routes>
           {publicRouterUser.map((route, index) => (
@@ -39,7 +39,6 @@ const App = () => {
             />
           ))}
         </Routes>
-        <ToastContainer />
         <div>
           {displayLogin && (<Login />)}
           {displayRegister && (<Register />)}

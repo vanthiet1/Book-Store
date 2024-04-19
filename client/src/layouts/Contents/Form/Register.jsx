@@ -1,13 +1,13 @@
 import { useFormik } from "formik";
 import { HashLoader } from "react-spinners";
 import { LuEye, LuEyeOff } from "react-icons/lu";
+import { useContext, useState, useEffect } from "react"; 
+import Success from "@components/notification/Success";
+import Error from "@components/notification/Error";
+import Close from "@components/icons/Close";
 import { Uicontext } from "../../../contexts/UiContext";
-import { useContext, useState, useEffect } from "react";
 import { validateFormRegister } from "../../../components/validateForm/Form";
 import { RegisterAuth } from '../../../services/auth/RegisterAuth';
-import Success from "../../../components/notification/Success";
-import Error from "../../../components/notification/Error";
-import Close from "../../../components/icons/Close";
 import { UserRegisterAcc } from "../../../contexts/authContext/DataUserRegister";
 const Register = () => {
     const { handleDisplayLogin, handleHideRegister, handleDisplayVertify } = useContext(Uicontext);
@@ -37,6 +37,7 @@ const Register = () => {
             }
         }
     });
+
     useEffect(() => {
         if (showSuccess) {
             setTimeout(() => {
@@ -83,7 +84,7 @@ const Register = () => {
                             </label>
                             <div className="mt-2 ">
                                 <input
-                                    placeholder="Email"
+                                    placeholder="Email@gmail.com"
                                     id="email"
                                     name="email"
                                     type="email"
@@ -91,6 +92,7 @@ const Register = () => {
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-4"
                                     value={formik.values.email}
                                     onChange={formik.handleChange}
+                                    
                                 />
 
                                 {formik.errors.email && (

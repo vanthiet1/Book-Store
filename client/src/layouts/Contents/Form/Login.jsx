@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import { Uicontext } from "../../../contexts/UiContext";
 import { useFormik } from "formik";
-import { validateFormLogin } from "../../../components/validateForm/Form";
+import { validateFormLogin } from "@components/validateForm/Form";
+import Error from "@components/notification/Error";
+import Close from "@components/icons/Close";
+import { Uicontext } from "../../../contexts/UiContext";
 import { LoginAuth } from "../../../services/auth/LoginAuth";
 import { UserRegisterAcc } from "../../../contexts/authContext/DataUserRegister";
 import { GetUserData } from "../../../services/auth/GetUserData";
-import Error from "../../../components/notification/Error";
-import Close from "../../../components/icons/Close";
 const Login = () => {
   const { userData } = useContext(UserRegisterAcc);
   const { handleDisplayRegister, handleHideLogin, handleDisplayVertifyInlogin } = useContext(Uicontext);
@@ -23,7 +23,6 @@ const Login = () => {
         localStorage.setItem('token', JSON.stringify(token))
         await GetUserData(token);
         window.location.assign('/')
-
       } catch (error) {
         console.log(error);
       }
@@ -56,6 +55,7 @@ const Login = () => {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  placeholder="Example@gmail.com"
                 />
                 {formik.errors.email && (
                   <p className="text-red-500">{formik.errors.email}</p>
@@ -80,6 +80,7 @@ const Login = () => {
                   value={formik.values.password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  placeholder="@123********"
                 />
                 {formik.errors.password && (
                   <p className="text-red-500">{formik.errors.password}</p>
@@ -122,14 +123,12 @@ const Login = () => {
             </a>
           </div>
           {userData !== null && (
-          <div className="flex justify-center py-1">
-            <a onClick={handleDisplayVertifyInlogin} href="#" className="font-semibold text-red-600 hover:text-red-500">
-              Xác nhận lại tài khoản
-            </a>
-          </div>
+            <div className="flex justify-center py-1">
+              <a onClick={handleDisplayVertifyInlogin} href="#" className="font-semibold text-red-600 hover:text-red-500">
+                Xác nhận lại tài khoản
+              </a>
+            </div>
           )}
-
-
         </div>
       </div>
     </>
