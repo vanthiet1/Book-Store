@@ -34,23 +34,7 @@ const bannerContrller = {
             res.status(500).json({ message: "lỗi server" })
         }
     },
-    updateCategory: async (req, res) => {
-        try {
-            const { id } = req.params;
-            const { image } = req.body;
-            const updatedBanner = await Banner.findByIdAndUpdate(
-                id,
-                { image },
-                { new: true }
-            );
-            if (!updatedBanner) {
-                return { success: false, message: 'Không tìm thấy banner' };
-            }
-            res.status(200).json(updatedBanner)
-        } catch (error) {
-            res.status(500).json({ message: "Lỗi server" })
-        }
-    },
+
 
 }
 module.exports = bannerContrller;
