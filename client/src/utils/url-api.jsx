@@ -9,6 +9,7 @@ const API_BOOK_COMMENT = 'comment/book';
 const API_BOOK_GENRES = 'bookGenre';
 const API_BOOK_SEARCH = "search/book";
 const API_BOOK_AUTHOR = "author/book";
+const API_BOOK_BANNER = "banner/book";
 
 
 // VERTIFY
