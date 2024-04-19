@@ -6,7 +6,7 @@ import Footer from "~/layouts/Footer";
 import Card from "@components/cardBook/card";
 import TitleSetter from '@components/titlePage/TitleSetter';
 
-import { GetInforBook, BookNewApi } from "../../services/books/Book";
+import { GetInforBook, BookNewApi } from "../../services/books/BookService";
 
 const BookNewPage = () => {
   const [cards, setCards] = useState([]);

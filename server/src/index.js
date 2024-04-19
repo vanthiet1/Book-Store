@@ -46,21 +46,21 @@ const allUserRouter = require('./routes/admin/userManagerRouter')
 
 
 app.get('/', (req, res) => {
-    res.send("hello word")
+    res.send("Wellcome To Api ")
 });
 
 // API BOOK
 app.use('/api/v1/book', bookRouter);
 app.use('/api/v1/search/book', searchRouter
 );
-app.use('/api/v1/bookGenre', bookGenreRouter)
+app.use('/api/v1/genre/book', bookGenreRouter)
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/comment/book', commentRouter);
 app.use('/api/v1/category/book', categoryRouter);
 
 // API BANNER
 
-app.use('/api/v1/banner', bannerRouter);
+app.use('/api/v1/banner/book', bannerRouter);
 
 // AUTHOR
 app.use('/api/v1/author/book', authorRouter)

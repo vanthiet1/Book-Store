@@ -5,7 +5,7 @@ import Footer from "~/layouts/Footer";
 
 import TitleSetter from "~/components/titlePage/TitleSetter";
 import Card from "~/components/cardBook/card";
-import { GetInforBook, BookFreeApi } from "../../services/books/Book";
+import { GetInforBook, BookFreeApi } from "../../services/books/BookService";
 const BookFreePage = () => {
   const [cards, setCards] = useState([]);
   useEffect(() => {

@@ -3,7 +3,7 @@ import { PropagateLoader } from "react-spinners";
 import InforBookUi from '../../components/Ui-Books/InforBookUi';
 import Sliders from "../../components/slider-books/Slider";
 import BookUi from "../../components/Ui-Books/BookUi";
-import { GetInforBook , BookNewApi } from '../../services/books/Book';
+import { GetInforBook, BookNewApi } from '../../services/books/BookService';
 import { FormatCurrency } from '../../pages/AdminPage/Utils/formatCurrency';
 const BookNewUi = () => {
     const [dataBookFree, setDataBookFree] = useState([]);
@@ -22,7 +22,7 @@ const BookNewUi = () => {
         };
 
         fetchData();
-    }, []); 
+    }, []);
 
 
     return (
@@ -35,9 +35,9 @@ const BookNewUi = () => {
                     {dataBookFree.length > 0 ? (dataBookFree.map((bookFree) => (
                         <div className="relative group" key={bookFree._id}>
                             <BookUi
-                               bgLabel={bookFree.isFree === true ? "    bg-[#26D99A]":'bg-[#f645B3]'}
+                                bgLabel={bookFree.isFree === true ? "    bg-[#26D99A]" : 'bg-[#f645B3]'}
                                 imgBook={bookFree.imgBook}
-                                labelBook={ FormatCurrency(bookFree.labelBook)  + " VND"}
+                                labelBook={FormatCurrency(bookFree.labelBook) + " VND"}
                                 nameBook={bookFree.nameBook}
                             />
                             <div className="absolute ease-in duration-300 top-[-1px] left-[-6px] opacity-0 z-[-1] group-hover:opacity-100 group-hover:z-[10]">
@@ -46,16 +46,16 @@ const BookNewUi = () => {
                                     imgBook={bookFree.imgBook}
                                     nameBook={bookFree.nameBook}
                                     author={bookFree.author[0].name}
-                                    labelBook={ FormatCurrency(bookFree.labelBook)  + " VND" }
+                                    labelBook={FormatCurrency(bookFree.labelBook) + " VND"}
                                     descriptionBook={bookFree.descriptionBook}
                                 />
                             </div>
                         </div>
-                    ))):(
+                    ))) : (
                         <div className="text-center mb-3">
-                        <PropagateLoader color="#36d7b7" />
+                            <PropagateLoader color="#36d7b7" />
                         </div>
-                    ) }
+                    )}
                 </Sliders>
             </div>
         </>

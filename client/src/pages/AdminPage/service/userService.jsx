@@ -4,7 +4,6 @@ import { URL_API, URL_ALL_USER } from "../../../utils/url-api";
 const GetAllUser = async () => {
     try {
         const response = await axios.get(`${URL_API}/${URL_ALL_USER}`);
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.log(error);

@@ -38,7 +38,7 @@ const Author = () => {
             const data = {
                 name: nameAuthor
             }
-            if(data.name.length === 0){
+            if(nameAuthor === ""){
                 return setShowErrorValidateForm(true)
             }
             await AddAuthor(data);

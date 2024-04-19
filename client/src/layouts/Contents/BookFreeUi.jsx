@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import InforBookUi from '../../components/Ui-Books/InforBookUi';
 import Sliders from "../../components/slider-books/Slider";
 import BookUi from "../../components/Ui-Books/BookUi";
-import { GetInforBook ,BookFreeApi} from "../../services/books/Book";
+import { GetInforBook, BookFreeApi } from "../../services/books/BookService";
 
 const BookFreeUi = () => {
     const [dataBookFree, setDataBookFree] = useState([]);
@@ -23,7 +23,7 @@ const BookFreeUi = () => {
         };
 
         fetchData();
-    }, []); 
+    }, []);
 
     return (
         <>
@@ -34,29 +34,29 @@ const BookFreeUi = () => {
                 >
                     {dataBookFree.length > 0 ? (
                         dataBookFree.map((bookFree) => (
-                        <div className="relative group flex" key={bookFree._id}>
-                            <BookUi
-                              bgLabel={bookFree.isFree === true ? "    bg-[#26D99A]":'bg-[#f645B3]'}
-                                imgBook={bookFree.imgBook ? bookFree.imgBook : <h1 className='text-white'>Đang tải...</h1>}
-                                labelBook={bookFree.labelBook}
-                                nameBook={bookFree.nameBook}
-                            />
-                            <div className="absolute ease-in duration-300 top-[-1px] left-[-6px] opacity-0 z-[-1] group-hover:opacity-100 group-hover:z-[10]">
-                                <InforBookUi
-                                    bookId={bookFree._id}
-                                    imgBook={bookFree.imgBook}
-                                    nameBook={bookFree.nameBook}
-                                    author={bookFree.author[0].name}
+                            <div className="relative group flex" key={bookFree._id}>
+                                <BookUi
+                                    bgLabel={bookFree.isFree === true ? "    bg-[#26D99A]" : 'bg-[#f645B3]'}
+                                    imgBook={bookFree.imgBook ? bookFree.imgBook : <h1 className='text-white'>Đang tải...</h1>}
                                     labelBook={bookFree.labelBook}
-                                    descriptionBook={bookFree.descriptionBook}
+                                    nameBook={bookFree.nameBook}
                                 />
+                                <div className="absolute ease-in duration-300 top-[-1px] left-[-6px] opacity-0 z-[-1] group-hover:opacity-100 group-hover:z-[10]">
+                                    <InforBookUi
+                                        bookId={bookFree._id}
+                                        imgBook={bookFree.imgBook}
+                                        nameBook={bookFree.nameBook}
+                                        author={bookFree.author[0].name}
+                                        labelBook={bookFree.labelBook}
+                                        descriptionBook={bookFree.descriptionBook}
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                    ))
-                    ):(
+                        ))
+                    ) : (
                         <div className="text-center mb-3">
-                        <PropagateLoader color="#36d7b7" />
+                            <PropagateLoader color="#36d7b7" />
                         </div>
                     )}
                 </Sliders>
