@@ -1,14 +1,16 @@
 
-const URL_API = 'https://book-store-9po5.onrender.com/api/v1';
+const URL_API = 'http://localhost:8080/api/v1';
 
 
 // Api BOOK
 const API_BOOK = "book";
 const API_BOOK_CATEGORY = 'category/book';
 const API_BOOK_COMMENT = 'comment/book';
-const API_BOOK_GENRES = 'bookGenre';
+const API_BOOK_GENRES = 'genre/book';
 const API_BOOK_SEARCH = "search/book";
 const API_BOOK_AUTHOR = "author/book";
+const API_BOOK_BANNER = "banner/book";
+
 
 
 // VERTIFY
@@ -36,5 +38,6 @@ export {
     URL_ALL_USER,
     URL_API_DETAIL_USER,
     URL_API_CHECKOUT,
-    API_BOOK_AUTHOR
+    API_BOOK_AUTHOR,
+    API_BOOK_BANNER
 }
