@@ -6,6 +6,8 @@ import { IoChatboxEllipsesSharp } from "react-icons/io5";
 import { AiFillBook } from "react-icons/ai";
 import { FaClipboardCheck } from "react-icons/fa6";
 import { FaChalkboardUser } from "react-icons/fa6";
+import { FaImages } from "react-icons/fa";
+
 const ListNavigation = [
     {
         name: "Dashboarh",
@@ -13,10 +15,14 @@ const ListNavigation = [
         path: '/Dashboard'
     },
     {
+        name: "Banner",
+        icon: <FaImages />,
+        path: '/Dashboard/Banner'
+    },
+    {
         name: "Products",
         icon: <RiBook3Fill />,
         path: '/Dashboard/Product'
-
     },
     {
         name: "Categories",

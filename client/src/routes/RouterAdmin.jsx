@@ -31,6 +31,11 @@ const PublicRouterAdmin = () => {
             title: 'ProductDashboardPage',
         },
         {
+            path: PathAdmin.Banner,
+            component: isAdminFromLocalStorage ? AdminDashboardPage : NotFoundPage,
+            title: 'BannerDashboardPage',
+        },
+        {
             path: PathAdmin.User,
             component: isAdminFromLocalStorage ? AdminDashboardPage : NotFoundPage,
             title: 'UserDashboardPage',

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useContext, useState, useEffect } from "react";
-import Search from "../components/search/Search";
+import Search from "@components/search/Search";
+import ListMenuUser from "@components/menuUser/ListMenuUser";
 import { Uicontext } from "../contexts/UiContext";
 import { DataUser } from "../contexts/authContext/DataUserLogin";
-import ListMenuUser from "../components/menuUser/ListMenuUser";
 import { UseCart } from "../contexts/CartContext";
 
 

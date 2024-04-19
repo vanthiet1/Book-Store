@@ -26,6 +26,9 @@ const searchRouter = require('./routes/book/searchRouter');
 const bookGenreRouter = require('./routes/book/bookGenreRouter');
 const commentRouter = require('./routes/book/commentRouter')
 const categoryRouter = require('./routes/book/categoryRouter');
+// API BANNER
+const bannerRouter = require('./routes/book/bannerRouter');
+
 // API AUTHOR
 const authorRouter = require('./routes/author/authorRouter')
 // AUTH
@@ -50,11 +53,14 @@ app.get('/', (req, res) => {
 app.use('/api/v1/book', bookRouter);
 app.use('/api/v1/search/book', searchRouter
 );
-
 app.use('/api/v1/bookGenre', bookGenreRouter)
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/comment/book', commentRouter);
 app.use('/api/v1/category/book', categoryRouter);
+
+// API BANNER
+
+app.use('/api/v1/banner', bannerRouter);
 
 // AUTHOR
 app.use('/api/v1/author/book', authorRouter)

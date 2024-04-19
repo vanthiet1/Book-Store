@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ButtonLeftArrow, ButtonRightArrow } from "../components/button-ui/ButonSilder";
+import { ButtonLeftArrow, ButtonRightArrow } from "@components/button-ui/ButonSilder";
 
 const Section = () => {
     const settings = {
@@ -20,21 +20,21 @@ const Section = () => {
         <div className="relative top-0 z-[1]">
             <Slider {...settings}>
                 <div>
-                    <img src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3238.jpg" alt="" />
+                    <img loading="lazy" src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3238.jpg" alt="" />
                 </div>
                 <div>
-                    <img src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3256.jpg?v=1&w=1920&h=600" alt="" />
-                </div>
-
-                <div>
-                    <img src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3241.jpg" alt="" />
+                    <img loading="lazy"  src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3256.jpg?v=1&w=1920&h=600" alt="" />
                 </div>
 
                 <div>
-                    <img src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3247.jpg" alt="" />
+                    <img loading="lazy"  src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3241.jpg" alt="" />
+                </div>
+
+                <div>
+                    <img loading="lazy"  src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3247.jpg" alt="" />
                 </div>
                 <div>
-                    <img src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3118.jpg" alt="" />
+                    <img loading="lazy"  src="https://307a0e78.vws.vegacdn.vn/view/v2/image/img.banner_web_v2/0/0/0/3118.jpg" alt="" />
                 </div>
 
             </Slider>

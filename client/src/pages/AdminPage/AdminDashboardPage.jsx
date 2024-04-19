@@ -11,7 +11,7 @@ import Genres from "./content/Genres.jsx";
 import Comment from "./content/Comment.jsx";
 import Checkout from './content/Checkout.jsx';
 import Author from "./content/Author.jsx";
-
+import Banner from "./content/Banner";
 import PathAdmin from "../../config/PathAdmin";
 
 const AdminDashboardPage = () => {
@@ -30,12 +30,14 @@ const AdminDashboardPage = () => {
                     <div className="pt-4">
                         {location.pathname === PathAdmin.Dashboard && (<Dashboard />)}
                         {location.pathname === PathAdmin.Product && (<Product />)}
+                        {location.pathname === PathAdmin.Banner && (<Banner />)}
                         {location.pathname === PathAdmin.User && (<User />)}
                         {location.pathname === PathAdmin.Category && (<Category />)}
                         {location.pathname === PathAdmin.Genres && (<Genres />)}
                         {location.pathname === PathAdmin.Comment && (<Comment />)}
                         {location.pathname === PathAdmin.Checkout && (<Checkout />)}
                         {location.pathname === PathAdmin.Author && (<Author />)}
+                        
 
                     </div>
                 </div>

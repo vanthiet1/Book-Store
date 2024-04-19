@@ -7,6 +7,8 @@ const PathAdmin = {
     Genres:'/Dashboard/Genres',
     Checkout:'/Dashboard/Checkout',
     Author:'/Dashboard/Author',
+    Banner:'/Dashboard/Banner',
+
 
 }
 export default PathAdmin 

@@ -15,10 +15,10 @@ const categoryController = {
     },
     updateCategory: async (req, res) => {
         try {
-            const categoryId = req.params.id;
+            const {id} = req.params;
             const { name } = req.body;
             const updatedCategory = await Category.findByIdAndUpdate(
-                categoryId,
+                  id,
                 { name },
                 { new: true }
             );
