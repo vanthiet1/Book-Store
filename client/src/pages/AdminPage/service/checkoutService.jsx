@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL_API  , URL_API_CHECKOUT } from "../../../util/url-api";
+import { URL_API, URL_API_CHECKOUT } from "../../../utils/url-api";
 
 const GetDataUserCheckout = async () => {
     try {

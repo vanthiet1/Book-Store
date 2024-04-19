@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { Routes, Route } from 'react-router-dom'
-import { Uicontext } from "./src/contexts/UiContext";
-import { DisplayPopup } from "./src/pages/AdminPage/contexts/UiContextAdmin";
-import Login from './src/layouts/Contents/Form/Login'
-import Register from "./src/layouts/Contents/Form/Register";
-import VetifyAccount from "./src/layouts/Contents/Form/VetifyAccount";
-import ToastContainer from "./src/components/notification/ToastContainers";
-import publicRouterUser from "./src/routes/RouterUser";
-import PublicRouterAdmin from "./src/routes/RouterAdmin";
-import Cart from "./src/layouts/Contents/MainCart/Cart";
+import { Uicontext } from "~/contexts/UiContext";
+import { DisplayPopup } from "~/pages/AdminPage/contexts/UiContextAdmin";
+import Login from '~/layouts/Contents/Form/Login'
+import Register from "~/layouts/Contents/Form/Register";
+import VetifyAccount from "~/layouts/Contents/Form/VetifyAccount";
+import ToastContainer from "~/components/notification/ToastContainers";
+import publicRouterUser from "~/routes/RouterUser";
+import PublicRouterAdmin from "~/routes/RouterAdmin";
+import Cart from "~/layouts/Contents/MainCart/Cart";
 const App = () => {
   const { displayRegister, displayLogin, filter, displayVertify, displayCart } = useContext(Uicontext);
   const { filterAdmin } = useContext(DisplayPopup);

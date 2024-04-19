@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL_API , API_BOOK_AUTHOR , API_BOOK} from "../../../util/url-api";
+import { URL_API, API_BOOK_AUTHOR, API_BOOK } from "../../../utils/url-api";
 
 const GetDataAuthor = async () => {
     try {
@@ -9,13 +9,13 @@ const GetDataAuthor = async () => {
         console.log(error);
     }
 }
-const GetNameBook= async (bookId) => {
+const GetNameBook = async (bookId) => {
     try {
         const response = await axios.get(`${URL_API}/${API_BOOK}/${bookId}`);
         return response.data.nameBook;
     } catch (error) {
         console.log(error);
-        throw error; 
+        throw error;
     }
 };
 const GetNameBookInAuthor = async () => {
@@ -26,7 +26,7 @@ const GetNameBookInAuthor = async () => {
         await Promise.all(categories.map(async (category) => {
             const bookNames = await Promise.all(category.books.map(async (id) => {
                 return await GetNameBook(id);
-            })); 
+            }));
             booksData[category._id] = bookNames;
         }));
         return booksData;
@@ -34,7 +34,7 @@ const GetNameBookInAuthor = async () => {
         console.log(error);
     }
 };
-const DeleteAuthor = async (idCategory)=>{
+const DeleteAuthor = async (idCategory) => {
     try {
         const response = await axios.delete(`${URL_API}/${API_BOOK_AUTHOR}/${idCategory}`);
         return response.data;
@@ -42,16 +42,16 @@ const DeleteAuthor = async (idCategory)=>{
         console.log(error);
     }
 }
-const AddAuthor = async (nameAuthor)=>{
+const AddAuthor = async (nameAuthor) => {
     try {
-        const response = await axios.post(`${URL_API}/${API_BOOK_AUTHOR}`,nameAuthor);
+        const response = await axios.post(`${URL_API}/${API_BOOK_AUTHOR}`, nameAuthor);
         return response.data
     } catch (error) {
         console.log(error);
     }
 }
 
-export{
+export {
     GetDataAuthor,
     GetNameBookInAuthor,
     DeleteAuthor,

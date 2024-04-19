@@ -1,7 +1,7 @@
 
 import axios from "axios";
-import { URL_API,API_BOOK_COMMENT } from "../../../util/url-api";
-import { getNameBook,getNameUser } from "./getInforBook";
+import { URL_API, API_BOOK_COMMENT } from "../../../utils/url-api";
+import { getNameBook, getNameUser } from "./getInforBook";
 
 
 const GetDataComment = async () => {
@@ -46,13 +46,13 @@ const GetNameUserInComment = async () => {
         throw error;
     }
 };
-const DeleteComment = async (idComment)=>{
- try {
-    const response = await axios.delete(`${URL_API}/${API_BOOK_COMMENT}/${idComment}`);
-    return response.data;
- } catch (error) {
-     console.log(error);
- }
+const DeleteComment = async (idComment) => {
+    try {
+        const response = await axios.delete(`${URL_API}/${API_BOOK_COMMENT}/${idComment}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
 }
 export {
     DeleteComment,

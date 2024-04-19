@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL_API , API_BOOK_CATEGORY , API_BOOK } from "../../../util/url-api";
+import { URL_API, API_BOOK_CATEGORY, API_BOOK } from "../../../utils/url-api";
 
 const GetDataBook = async () => {
     try {
@@ -54,9 +54,9 @@ const AddBook = async (data) => {
         console.error('Error adding book:', error);
     }
 }
-const UpdateBook = async (bookId,dataUpdated) => {
+const UpdateBook = async (bookId, dataUpdated) => {
     try {
-        const response = await axios.put(` ${URL_API}/${API_BOOK}/${bookId}`,dataUpdated);
+        const response = await axios.put(` ${URL_API}/${API_BOOK}/${bookId}`, dataUpdated);
         return response.data;
     } catch (error) {
         console.log(error);

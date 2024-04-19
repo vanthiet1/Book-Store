@@ -1,9 +1,9 @@
 import axios from "axios";
-import { URL_API ,URL_VERTIFY,URL_RESENDVERIFI } from "~/util/url-api";
+import { URL_API, URL_VERTIFY, URL_RESENDVERIFI } from "~/utils/url-api";
 import { toast } from 'react-toastify';
 
 
- const VertifyAuth = {
+const VertifyAuth = {
 
 
     VertifyAuth: async (userData) => {
@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
             console.log(response.data);
             toast.success(response.data.message)
             return response.data;
-            
+
         } catch (error) {
             toast.error(error.response.data.message)
         }
@@ -29,7 +29,7 @@ import { toast } from 'react-toastify';
         }
     },
 };
-export  default VertifyAuth
+export default VertifyAuth
 
 
 

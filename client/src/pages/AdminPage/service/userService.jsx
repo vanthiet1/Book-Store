@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL_API,URL_ALL_USER } from "../../../util/url-api";
+import { URL_API, URL_ALL_USER } from "../../../utils/url-api";
 
 const GetAllUser = async () => {
     try {
@@ -10,7 +10,7 @@ const GetAllUser = async () => {
         console.log(error);
     }
 }
-const DeleteUser = async (idUser)=>{
+const DeleteUser = async (idUser) => {
     try {
         const response = await axios.delete(`${URL_API}/${URL_ALL_USER}/${idUser}`);
         return response.data;
@@ -18,13 +18,13 @@ const DeleteUser = async (idUser)=>{
         console.log(error);
     }
 }
-const GetNameUser= async (userId) => {
+const GetNameUser = async (userId) => {
     try {
         const response = await axios.get(`${URL_API}/user/${userId}`);
         return response.data.email;
     } catch (error) {
         console.log(error);
-        throw error; 
+        throw error;
     }
 };
 export {

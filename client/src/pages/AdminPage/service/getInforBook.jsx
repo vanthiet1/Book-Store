@@ -1,34 +1,34 @@
 import axios from "axios";
-import { URL_API ,API_BOOK} from "../../../util/url-api";
+import { URL_API, API_BOOK } from "../../../utils/url-api";
 import { GetDataCategory } from "./categoryService";
 import { GetDataGenres } from "./genresService";
 
 
-const getAllInforBook= async (bookId) => {
+const getAllInforBook = async (bookId) => {
     try {
         const response = await axios.get(`${URL_API}/${API_BOOK}/${bookId}`);
         return response.data;
     } catch (error) {
         console.log(error);
-        throw error; 
+        throw error;
     }
 };
-const getNameBook= async (bookId) => {
+const getNameBook = async (bookId) => {
     try {
         const response = await axios.get(`${URL_API}/${API_BOOK}/${bookId}`);
         return response.data.nameBook;
     } catch (error) {
         console.log(error);
-        throw error; 
+        throw error;
     }
 };
-const getNameUser= async (userId) => {
+const getNameUser = async (userId) => {
     try {
         const response = await axios.get(`${URL_API}/user/${userId}`);
         return response.data.email;
     } catch (error) {
         console.log(error);
-        throw error; 
+        throw error;
     }
 };
 const getNameBookInCategory = async () => {
@@ -39,7 +39,7 @@ const getNameBookInCategory = async () => {
         await Promise.all(categories.map(async (category) => {
             const bookNames = await Promise.all(category.books.map(async (id) => {
                 return await getNameBook(id);
-            })); 
+            }));
             booksData[category._id] = bookNames;
         }));
         return booksData;

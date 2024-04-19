@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { URL_API,API_BOOK ,API_BOOK_CATEGORY} from "~/util/url-api";
+import { URL_API, API_BOOK, API_BOOK_CATEGORY } from "~/utils/url-api";
 
 
-const GetInforBook= async (bookId) => {
+const GetInforBook = async (bookId) => {
     try {
         const response = await axios.get(`${URL_API}/${API_BOOK}/${bookId}`);
         return response.data;
     } catch (error) {
         console.log(error);
-        throw error; 
+        throw error;
     }
 };
 

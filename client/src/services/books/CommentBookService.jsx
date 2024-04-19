@@ -1,5 +1,5 @@
 import axios from "axios"
-import { URL_API,API_BOOK_COMMENT } from "~/util/url-api";
+import { URL_API, API_BOOK_COMMENT } from "~/utils/url-api";
 
 const postCommentBook = async (bookId, data) => {
     try {
@@ -21,7 +21,7 @@ const getCommentUser = async (bookId) => {
 
 const getInforUserComment = async (userId) => {
     try {
-       const response = await axios.get(`${URL_API}/user/${userId}`);
+        const response = await axios.get(`${URL_API}/user/${userId}`);
         return response.data;
     } catch (error) {
         console.log(error);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { URL_API ,URL_API_DETAIL_USER} from '../../util/url-api';
+import { URL_API, URL_API_DETAIL_USER } from '../../utils/url-api';
 
 const GetDetailUser = async (id) => {
     try {
@@ -12,15 +12,15 @@ const GetDetailUser = async (id) => {
 
 const PostDetailUser = async (dataDetailUser) => {
     try {
-        const response = await axios.post(`${URL_API}/${URL_API_DETAIL_USER}`,dataDetailUser);
+        const response = await axios.post(`${URL_API}/${URL_API_DETAIL_USER}`, dataDetailUser);
         return response.data;
     } catch (error) {
         console.log(error.response.data.message);
     }
 };
-const UpdateDetailUser = async (userId , dataDetailUserUpdate) => {
+const UpdateDetailUser = async (userId, dataDetailUserUpdate) => {
     try {
-        const response = await axios.put(`${URL_API}/${URL_API_DETAIL_USER}/${userId}`,dataDetailUserUpdate);
+        const response = await axios.put(`${URL_API}/${URL_API_DETAIL_USER}/${userId}`, dataDetailUserUpdate);
         return response.data;
     } catch (error) {
         console.log(error.response.data.message);

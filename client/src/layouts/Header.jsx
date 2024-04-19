@@ -10,17 +10,16 @@ import { UseCart } from "../contexts/CartContext";
 
 const Header = () => {
     const { handleDisplayLogin, handleDisplayRegister } = useContext(Uicontext);
-    const [isUserLogin, setIsUserLogin] = useState(true);
-    const { isAdmin } = useContext(DataUser);
     const { handleDisplayCart } = useContext(Uicontext);
+    const { isAdmin } = useContext(DataUser);
+    const [isUserLogin, setIsUserLogin] = useState(true);
+    const [showResultSearch, setShowResultSearch] = useState(false)
     const [stateBgHeader, setStateBgHeader] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
-    const [showResultSearch, setShowResultSearch] = useState(false)
     const { cart } = UseCart();
   
     useEffect(()=>{
-        const getToken =  localStorage.getItem('token');
-     
+        const getToken =  localStorage.getItem('token');   
          setIsUserLogin(getToken)
     },[])
 
@@ -45,15 +44,15 @@ const Header = () => {
         const handleScroll = () => {
             const scrolledHeight = window.pageYOffset;
             if (scrolledHeight === 0) {
-                setStateBgHeader('bg-transparent')
+                setStateBgHeader('bg-transparent  duration-500 ease-in')
             } else {
-                setStateBgHeader('bg-[#1f1f1f]')
+                setStateBgHeader('bg-[#1f1f1f] duration-500 ease-in')
             }
         };
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+         window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 

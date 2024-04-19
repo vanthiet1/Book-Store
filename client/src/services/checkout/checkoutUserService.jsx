@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { URL_API ,URL_API_CHECKOUT} from '../../util/url-api';
+import { URL_API, URL_API_CHECKOUT } from '../../utils/url-api';
 
 const PostCheckoutUser = async (dataDetailUser) => {
     try {
-        const response = await axios.post(`${URL_API}/${URL_API_CHECKOUT}`,dataDetailUser);
+        const response = await axios.post(`${URL_API}/${URL_API_CHECKOUT}`, dataDetailUser);
         return response.data;
     } catch (error) {
         console.log(error);

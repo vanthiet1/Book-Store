@@ -60,7 +60,6 @@ const InForDetail = () => {
             setSuccess(false);
         }, 500);
     };
- /* {showError && (<Error message="Thêm không thành công" />)} */
     return (
         <>
             {showSuccess && (<Success message="Đã thêm vào giỏ hàng" />)}
