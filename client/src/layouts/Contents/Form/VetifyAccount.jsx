@@ -1,20 +1,28 @@
-import { useContext } from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { ResendClick } from "../../../components/verifyAccountUser/timeVerifyAccount";
 import VertifyAuth from "../../../services/auth/VertifyAuth";
 import { UserRegisterAcc } from "../../../contexts/authContext/DataUserRegister";
 import { Uicontext } from "../../../contexts/UiContext";
+import { DataUser } from "~/contexts/authContext/DataUserLogin";
 
 const VerifyAccount = () => {
+    const { userData } = useContext(UserRegisterAcc);
+    const { inforUser } = useContext(DataUser);
     const inputsRef = useRef([]);
+    const [allInfor, setAllInfor] = useState(null);
     const [verificationCode, setVerificationCode] = useState(Array(6).fill(""));
     const [errorIndices, setErrorIndices] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [resendEnabled, setResendEnabled] = useState(true);
-    const [timeOtp, setTimeOtp] = useState(100);
-    const { userData } = useContext(UserRegisterAcc);
-    const { handleHideVertify } = useContext(Uicontext)
+    const [timeOtp, setTimeOtp] = useState(500);
 
+    const { handleHideVertify } = useContext(Uicontext);
+
+
+    useEffect(() => {
+        const newInfor = userData && userData.email ? userData.email : inforUser.email;
+        setAllInfor(newInfor);
+    }, [userData, inforUser]);
 
     const handleInputChange = (index, event) => {
         const { value } = event.target;
@@ -27,6 +35,7 @@ const VerifyAccount = () => {
             nextInput.focus();
         }
     };
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -42,16 +51,17 @@ const VerifyAccount = () => {
                 setErrorMessage("Nhập đầy đủ")
                 return;
             }
-            if (!userData || !userData.email) {
+            if (!allInfor) {
                 console.error("UserData null");
                 return;
             }
+
             const code = verificationCode.join("");
             const dataVertifyAurth = {
-                email: userData.email,
+                email: allInfor,
                 code: Number(code)
             }
-           await VertifyAuth.VertifyAuth(dataVertifyAurth);
+            await VertifyAuth.VertifyAuth(dataVertifyAurth);
             handleHideVertify();
             setErrorMessage("");
             setResendEnabled(false);
@@ -59,10 +69,13 @@ const VerifyAccount = () => {
             console.log(error);
         }
     };
-
     const handleResendClick = async () => {
+        if (!allInfor) {
+            console.error("UserData null");
+            return;
+        }
         const data = {
-            email: userData.email
+            email: allInfor
         }
         try {
             ResendClick(setTimeOtp, setResendEnabled)
@@ -98,7 +111,7 @@ const VerifyAccount = () => {
                                         autoComplete={`otp-${index}`}
                                         ref={(input) => (inputsRef.current[index] = input)}
                                         onChange={(event) => handleInputChange(index, event)}
-                                        value={verificationCode[index]}
+                                        value={verificationCode[index] || ""}
                                         className={`block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-6 outline-none ${errorIndices.includes(index) ? "ring-red-500" : ""
                                             }`}
                                     />

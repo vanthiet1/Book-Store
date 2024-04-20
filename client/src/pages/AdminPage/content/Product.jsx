@@ -162,7 +162,7 @@ const Product = () => {
             {dataBook.map((book, index) => (
               <tr className="border-b border-gray-200" key={index}>
                 <td className="text-left px-4 py-2">{book.nameBook}</td>
-                <td className="text-left px-4 py-2">{FormatCurrency(book.labelBook) + " VND"}</td>
+                <td className="text-left px-4 py-2">{FormatCurrency(book.labelBook && book.labelBook)}</td>
                 <td className="text-left px-4 py-2">
                   <img
                     className="w-[60px] rounded-[10px]"

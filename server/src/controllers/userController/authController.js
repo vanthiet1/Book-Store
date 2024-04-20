@@ -87,7 +87,7 @@ const authControllers = {
                 return res.status(401).json({ message: 'Mật khẩu không đúng' });
             }
             // tạo jwt
-            const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET)
+            const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET )
             console.log(token);
             res.status(200).json({ token });
         } catch (error) {

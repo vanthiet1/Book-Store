@@ -1,7 +1,8 @@
-import { createContext, useState } from "react";
-
+import { createContext, useState ,useContext} from "react"; 
+import { DataUser } from "./authContext/DataUserLogin";
 export const Uicontext = createContext();
 const DisplayContext = ({ children }) => {
+    const {inforUser} = useContext(DataUser)
     const [displayLogin, setDisplayLogin] = useState(false);
     const [displayRegister, setDisplayRegister] = useState(false);
     const [displayComment, setDisplayComment] = useState(false);
@@ -60,6 +61,9 @@ const DisplayContext = ({ children }) => {
     const handleHideVertify = () => {
         setDisplayVertify(false)
         setFilter('')
+        if(inforUser){
+            return;
+        }
         setTimeout(() => {
             setDisplayLogin(true)
             setFilter('filter')

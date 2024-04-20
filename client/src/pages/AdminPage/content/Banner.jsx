@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import AddButton from "../components/button/AddButton";
-import UpdateButton from "../components/button/UpdateButton";
 import DeleteButton_square from "../components/button/DeleteButton_square";
 import AddForm from "../components/form/AddForm";
 import Success from "~/components/notification/Success";
@@ -65,7 +64,8 @@ const Banner = () => {
                         onSubmit={handleAddBanner}
                         value={imageBanner}
                         onChange={(e) => setImageBanner(e.target.value)}
-                        nameClick="Thêm "
+                        nameClick="Thêm"
+                        onClick={()=>setShowFormAddAdmin(false)}
                     />
                 </div>
             )}
@@ -91,12 +91,6 @@ const Banner = () => {
                             </td>
                             <td className="px-4 py-2">
                                 <div className="flex items-center justify-center">
-                                    <UpdateButton
-                                        clickUpdate={() => {
-                                            // setEditingCategoryId("");
-                                            // handleDisplayUpdateCategory()
-                                        }}
-                                    />
                                     <DeleteButton_square titleDelete="Xóa banner" clickDelete={() => handleDeleteBanner(banner._id)} />
                                 </div>
                             </td>

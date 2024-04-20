@@ -31,7 +31,7 @@ const authorController = {
             }
             const newAuthor = new Author({ name });
             await newAuthor.save();
-            res.status(200).json(newAuthor);
+            res.status(201).json(newAuthor);
         } catch (error) {
             console.error('Lỗi khi thêm tác giả:', error);
             res.status(500).json({ error: 'Đã xảy ra lỗi trong quá trình thêm tác giả' });

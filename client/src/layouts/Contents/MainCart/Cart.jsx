@@ -27,6 +27,7 @@ const Cart = () => {
             navigate('/book/checkout');
         } else {
             setErrorStatus(true);
+            handleHideCart()
             navigate('/account/profile');
             return '';
         }

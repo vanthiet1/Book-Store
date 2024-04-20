@@ -17,7 +17,7 @@ const bannerContrller = {
             const { image } = req.body
             const newImage = new Banner({ image });
             await newImage.save();
-            res.status(200).json(newImage)
+            res.status(201).json(newImage)
         } catch (error) {
             res.status(500).json({ message: "lỗi server" })
         }

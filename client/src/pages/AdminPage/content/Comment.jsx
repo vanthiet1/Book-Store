@@ -59,8 +59,7 @@ const Comment = () => {
                                         <DeleteButton_square
                                             clickDelete={
                                                 () => {
-                                                     DeleteComment(comment._id)
-                                                    
+                                                     DeleteComment(comment._id)                                                  
                                                 }
                                             } />
                                     </div>
@@ -68,27 +67,7 @@ const Comment = () => {
                             </tr>
                         ))}
                     </tbody>
-
                 </table>
-                <div className="p-3 lg:px-6 border-t border-gray-100 dark:border-slate-800">
-                    <div className="flex flex-col md:flex-row items-center justify-between py-3 md:py-0">
-                        <div className="flex items-center justify-start undefined -mb-3 flex-wrap">
-                            <button className="inline-flex justify-center items-center whitespace-nowrap focus:outline-none transition-colors focus:ring duration-150 border cursor-pointer rounded border-gray-100 dark:border-slate-800 ring-gray-200 dark:ring-gray-500 bg-gray-200 dark:bg-slate-700 hover:bg-gray-200 hover:dark:bg-slate-700 mr-3 last:mr-0 mb-3 undefined text-sm p-1" type="button">
-                                <span className="px-2">1</span>
-                            </button>
-                            <button className="inline-flex justify-center items-center whitespace-nowrap focus:outline-none transition-colors focus:ring duration-150 border cursor-pointer rounded border-white dark:border-slate-900 ring-gray-200 dark:ring-gray-500 bg-white text-black dark:bg-slate-900 dark:text-white hover:bg-gray-100 hover:dark:bg-slate-800 mr-3 last:mr-0 mb-3 undefined text-sm p-1" type="button">
-                                <span className="px-2">2</span>
-                            </button>
-                            <button className="inline-flex justify-center items-center whitespace-nowrap focus:outline-none transition-colors focus:ring duration-150 border cursor-pointer rounded border-white dark:border-slate-900 ring-gray-200 dark:ring-gray-500 bg-white text-black dark:bg-slate-900 dark:text-white hover:bg-gray-100 hover:dark:bg-slate-800 mr-3 last:mr-0 mb-3 undefined text-sm p-1" type="button">
-                                <span className="px-2">3</span>
-                            </button>
-                            <button className="inline-flex justify-center items-center whitespace-nowrap focus:outline-nonetransition-colors focus:ring duration-150 border cursor-pointer rounded border-white dark:border-slate-900 ring-gray-200 dark:ring-gray-500 bg-white text-black dark:bg-slate-900 dark:text-white hover:bg-gray-100 hover:dark:bg-slate-800 mr-3 last:mr-0 mb-3 undefined text-sm p-1" type="button">
-                                <span className="px-2">4</span>
-                            </button>
-                        </div>
-                        <small className="mt-6 md:mt-0">Page 1 of 4</small>
-                    </div>
-                </div>
             </div>
         </>
     );

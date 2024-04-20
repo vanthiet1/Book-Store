@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdAdminPanelSettings } from "react-icons/md";
-import { avatarDefault } from "../../../components/image/avatarDefault";
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
-import { FaRegUser } from "react-icons/fa";
+import AvatarDefault from '../../../components/image/avatar.png' 
+import IconSoi from '../../../../public/img/icon-soi.png';
+import IconLa from '../../../../public/img/icon-la.png';
+
 const UserSidebar = () => {
     const { userEmail, isAdmin } = useContext(DataUser);
     return (
@@ -12,15 +15,15 @@ const UserSidebar = () => {
             <div className="w-[25%] border-r border-[#1E1E20] pr-5 ">
                 <div className="flex items-center justify-between gap-5">
                     <span className="text-white">{userEmail ? userEmail : "Đang tải..."}</span>
-                    <img className="w-[50px] rounded-full cursor-pointer" src={avatarDefault} alt="" />
+                    <img className="w-[50px] rounded-full cursor-pointer" src={AvatarDefault} alt="" />
                 </div>
                 <div className="flex gap-3 items-center">
                     <div className="flex items-center gap-1">
-                        <img src="https://waka.vn/svgs/icon-soi.svg" alt="" />
+                        <img src={IconSoi} alt="Sồi" />
                         <span className="text-yellow-500">0</span>
                     </div>
                     <div className="flex items-center gap-1">
-                        <img src="https://waka.vn/svgs/icon-la.svg" alt="" />
+                        <img src={IconLa} alt="Lá" />
                         <span className="text-[#61b42d]">0</span>
                     </div>
                 </div>

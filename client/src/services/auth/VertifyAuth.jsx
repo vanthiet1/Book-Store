@@ -9,7 +9,6 @@ const VertifyAuth = {
     VertifyAuth: async (userData) => {
         try {
             const response = await axios.post(`${URL_API}/${URL_VERTIFY}`, userData);
-            console.log(response.data);
             toast.success(response.data.message)
             return response.data;
 
