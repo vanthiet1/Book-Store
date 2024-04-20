@@ -39,13 +39,18 @@ const SettingSecurity = () => {
     return (
         <>
             {vertifySuccess && <Success message={"Tài khoản của bạn đã được xác nhận rồi"} />}
-            <div className="w-1/2">
-                {deleteAccount ? (
-                    <>
-                        <PolicyDelete />
-                    </>
-                ) : (
-                    <>
+
+            {deleteAccount ? (
+                <>
+                    <PolicyDelete />
+                    <div className="pt-3 flex gap-2">
+                    <ButtonDefault bgBtn={"bg-[#414143]"} content={"Hủy bỏ"} onClick={()=>{setDeleteAccount(false)}}/>
+                    <ButtonDefault bgBtn={"bg-[#15B088]"} content={"Xác nhận xóa"} />
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className="w-1/2">
                         <div className="bg-[#2A2A2C] rounded-[15px] border border-[#515151] pl-3 py-2 mb-1 mt-3">
                             <span className="text-[#B3B3B3] block">Email</span>
                             <span className="text-[#fff] block">{inforUser ? inforUser.email : "Chưa đăng nhập"}</span>
@@ -65,11 +70,12 @@ const SettingSecurity = () => {
                         </div>
                         <div className="flex gap-1 mt-3">
                             <h3 className="text-[#fff]">Bạn không có nhu cầu sử dụng tài khoản này nữa ?</h3>
-                            <span className="text-[#14B088] cursor-pointer" onClick={() => { setDeleteAccount(true)}}>Xóa tài khoản</span>
+                            <span className="text-[#14B088] cursor-pointer" onClick={() => { setDeleteAccount(true) }}>Xóa tài khoản</span>
                         </div>
-                    </>
-                    )}
-            </div>
+                    </div>
+                </>
+            )}
+
         </>
     );
 };
