@@ -3,9 +3,6 @@ import TextSkeletion from "../../../components/skeletion-ui/DetailBoook/TextSkel
 import { GetDetailBookFree } from "../../../services/books/BookDetailService";
 const DescriptionBook = () => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const handleToggleExpand = () => {
-        setIsExpanded(!isExpanded);
-    };
     const BookData = GetDetailBookFree();
     return (
         <>
@@ -19,18 +16,16 @@ const DescriptionBook = () => {
                                             {BookData.descriptionBook.slice(0, 500)}
                                             <span
                                                 className="cursor-pointer text-blue-500"
-                                                onClick={handleToggleExpand}
+                                                onClick={()=>{setIsExpanded(!isExpanded)}}
                                             >
-                                                {isExpanded ? 'Thu gọn' : 'Xem thêm'}
+                                                {isExpanded ? ' Thu gọn ' : ' Xem thêm'}
                                             </span>
-
                                         </>
-
                                     )}
                                     {isExpanded && (
                                         <span
                                             className="cursor-pointer text-blue-500"
-                                            onClick={handleToggleExpand}
+                                            onClick={()=>{setIsExpanded(!isExpanded)}}
                                         >
                                             Thu gọn
                                         </span>

@@ -2,7 +2,6 @@ import axios from "axios";
 import { URL_API } from "~/utils/url-api";
 
 export const LoginAuth = {
-
     login: async (userDataLogin, notificationError) => {
         try {
             const response = await axios.post(`${URL_API}/auth/login`, userDataLogin);
@@ -11,6 +10,5 @@ export const LoginAuth = {
             notificationError(error.response.data.message);
         }
     }
-
 }
 

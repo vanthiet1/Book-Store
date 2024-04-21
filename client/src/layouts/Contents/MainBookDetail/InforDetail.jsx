@@ -25,7 +25,7 @@ import BookFreeUi from "../BookFreeUi";
 import { UseCart } from "../../../contexts/CartContext";
 import BookNewUi from "../BookNewUi";
 
-const InForDetail = () => {
+const InforDetail = () => {
     const { id } = useParams();
     const { handleDisplayComment } = useContext(Uicontext);
     const { addToCart } = UseCart();
@@ -84,6 +84,7 @@ const InForDetail = () => {
                         <>
                             {dataBookDetailFree && (
                                 <BookUi
+                                   bgLabel={"bg-[#F645B3]"}
                                     imgBook={dataBookDetailFree.imgBook}
                                     labelBook={dataBookDetailFree.isFree ? dataBookDetailFree.labelBook : dataBookDetailFree.price.toLocaleString() + " VND"}
                                     width="w-[100%]"
@@ -104,23 +105,23 @@ const InForDetail = () => {
                         <span className="text-white">5 đánh giá</span>
                     </div>
 
-                    {/* Tác giả và Thể Loại */}
-                    <div className="flex justify-between w-[30%]">
-                        <div>
+                    <div className="flex justify-between w-[40%]">
+                        <div >
                             <span className="block text-[#959695] font-semibold">Tác giả</span>
                             <span className="text-white block">
                                 {dataBookDetailFree && dataBookDetailFree.author ? dataBookDetailFree.author[0].name : <TextSkeletion height="h-5" width="w-[100px]" />}
                             </span>
                         </div>
-                        <div>
+
+                        <div >
                             <span className="block text-[#959695] font-semibold">Thể Loại</span>
                             <span className="text-white block">
                                 {dataBookDetailFree && dataBookDetailFree.genres ? dataBookDetailFree.genres[0].name : <TextSkeletion height="h-5" width="w-[100px]" />}
                             </span>
                         </div>
+
                     </div>
 
-                    {/* Nhà xuất bản và Gói cước */}
                     <div className="flex justify-between w-[30%]  pt-2">
                         <div>
                             <span className="block text-[#959695] font-semibold">Nhà xuất bản</span>
@@ -147,21 +148,17 @@ const InForDetail = () => {
                     <div className="w-[60%] h-[1px] bg-[#2A443F] mt-2"></div>
                     <div className="flex py-5 gap-5">
                         <ReadBookUi content={"Đọc Sách"} icon={<IoBookOutline />} bgStatus={' bg-[#139F7B]'} />
-
                         {dataBookDetailFree && dataBookDetailFree.isFree === false ? (
                             <ReadBookUi addToCart={() => handleAddToCart()} content={"Thêm giò hàng"} icon={<FaShoppingCart />} bgStatus={' bg-[#F94D17]'} />
                         ) : (
                             <ReadBookUi content={dataBookDetailFree && dataBookDetailFree.labelBook ? dataBookDetailFree.labelBook : <TextSkeletion height="h-5" width="w-[100px]" />} icon={<IoBookOutline />} bgStatus={' bg-[#139F7B]'} />
-
                         )}
-
                         <ButtonHeart />
                         <ButtonShare />
                     </div>
                     <div className="max-w-[500px]">
                         <DescriptionBook />
                     </div>
-
                     <div className="pt-[40px]">
                         <h1 className="text-white text-[25px]">
                             Độc giả nói gì về  {dataBookDetailFree ? `" ${dataBookDetailFree.nameBook} "` : <TextSkeletion height="h-6" width="w-[650px]" />}
@@ -176,7 +173,7 @@ const InForDetail = () => {
                         />
                     </div>
                     <div className="pt-2">
-                        <CommnentUser></CommnentUser>
+                        <CommnentUser/>
                     </div>
 
                 </div>
@@ -195,5 +192,5 @@ const InForDetail = () => {
     );
 };
 
-export default InForDetail;
+export default InforDetail;
 

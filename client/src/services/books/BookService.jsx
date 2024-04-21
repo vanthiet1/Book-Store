@@ -39,8 +39,22 @@ const BookFreeApi = async () => {
         throw error;
     }
 };
+const BookSuggestApi = async () => {
+    try {
+        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
+        const freeCategory = response.data.find(category => category.name === 'Waka đề xuất');
+        if (freeCategory) {
+            const productsResponse = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${freeCategory._id}`);
+            return productsResponse.data.books;
+        }
+    } catch (error) {
+        console.error('Error fetching free books data:', error);
+        throw error;
+    }
+};
 export {
     GetInforBook,
     BookNewApi,
-    BookFreeApi
+    BookFreeApi,
+    BookSuggestApi
 }

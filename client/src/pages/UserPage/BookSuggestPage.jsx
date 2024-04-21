@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "~/layouts/Header";
-import BookNewUi from "~/layouts/Contents/BookNewUi";
+import BookSuggestUi from "~/layouts/Contents/BookSuggestUi";
 import Footer from "~/layouts/Footer";
 
 import Card from "@components/cardBook/card";
@@ -8,7 +8,7 @@ import TitleSetter from '@components/titlePage/TitleSetter';
 
 import { GetInforBook, BookNewApi } from "../../services/books/BookService";
 
-const BookNewPage = () => {
+const BookSuggestPage = () => {
   const [cards, setCards] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +37,7 @@ const BookNewPage = () => {
           </div>
           <div className="pt-[500px]">
             <h1 className="font-bold text-[#fff] text-[25px] p-5">Kho sách mới nhất</h1>
-            <BookNewUi />
+            <BookSuggestUi />
           </div>
         </div>
         <Footer />
@@ -46,4 +46,4 @@ const BookNewPage = () => {
   );
 };
 
-export default BookNewPage;
+export default BookSuggestPage;

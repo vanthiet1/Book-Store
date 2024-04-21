@@ -135,7 +135,8 @@ const Genres = () => {
             {showSuccessDelete && <Success message="Xóa Thể Loại Thành Công" />}
             {showSuccessUpdate && <Success message="Cập Nhật Thể Loại Thành Công" />}
 
-            <table className="w-full">
+           <div className="overflow-y-auto h-[640px] scrollbar-thin">
+           <table className="w-full">
                 <thead className="bg-gray-100 h-16">
                     <tr>
                         <th className="text-left px-4">Thể Loại Sách</th>
@@ -171,6 +172,7 @@ const Genres = () => {
                     ))}
                 </tbody>
             </table>
+           </div>
         </>
     );
 };

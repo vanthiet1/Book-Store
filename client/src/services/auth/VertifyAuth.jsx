@@ -1,11 +1,9 @@
 import axios from "axios";
-import { URL_API, URL_VERTIFY, URL_RESENDVERIFI } from "~/utils/url-api";
 import { toast } from 'react-toastify';
+import { URL_API, URL_VERTIFY, URL_RESENDVERIFI } from "~/utils/url-api";
 
 
 const VertifyAuth = {
-
-
     VertifyAuth: async (userData) => {
         try {
             const response = await axios.post(`${URL_API}/${URL_VERTIFY}`, userData);

@@ -3,15 +3,15 @@ import { PropagateLoader } from "react-spinners";
 import InforBookUi from '../../components/Ui-Books/InforBookUi';
 import Sliders from "../../components/slider-books/Slider";
 import BookUi from "../../components/Ui-Books/BookUi";
-import { GetInforBook, BookNewApi } from '../../services/books/BookService';
+import { GetInforBook, BookSuggestApi } from '../../services/books/BookService';
 import { FormatCurrency } from '../../pages/AdminPage/Utils/formatCurrency';
-const BookNewUi = () => {
+const BookSuggestUi = () => {
     const [dataBookFree, setDataBookFree] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const bookFreeData = await BookNewApi();
-                const bookDetails = await Promise.all(bookFreeData.map(async (idBook) => {
+                const bookSuggestData = await BookSuggestApi();
+                const bookDetails = await Promise.all(bookSuggestData.map(async (idBook) => {
                     const data = await GetInforBook(idBook);
                     return data;
                 }));
@@ -61,4 +61,4 @@ const BookNewUi = () => {
     );
 };
 
-export default BookNewUi;
+export default BookSuggestUi;

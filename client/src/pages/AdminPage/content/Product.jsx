@@ -114,10 +114,9 @@ const Product = () => {
              book={book} //
              onClick={book._id}
              clickClose={handleHideEditBook} 
-             bookId={book._id} 
-             
-             categories={listCategory} //
-             genres={listGenres} //
+             bookId={book._id}   
+             categories={listCategory} 
+             genres={listGenres} 
              key={book._id}
           />
           </div>
@@ -177,7 +176,7 @@ const Product = () => {
                   {book.genres[0].name}
                 </td>
                 <td className="text-left px-4 py-2">  {categoryNames[book._id] ? categoryNames[book._id] : <span>Đang tải...</span>}</td>
-                <td className="text-left px-4 py-2">{book.price.toLocaleString()} VND</td>
+                <td className="text-left px-4 py-2">{book.price} VND</td>
 
                 <td className="px-4 py-2"></td>
                 <td className="text-left py-2"></td>
