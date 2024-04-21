@@ -12,7 +12,7 @@ import Cart from "~/layouts/Contents/MainCart/Cart";
 const App = () => {
   const { displayRegister, displayLogin, filter, displayVertify, displayCart } = useContext(Uicontext);
   const { filterAdmin } = useContext(DisplayPopup);
-  const adminRoutes = PublicRouterAdmin();
+  const privateRouterAdmin = PublicRouterAdmin();
   
   return (
     <>
@@ -28,7 +28,7 @@ const App = () => {
               }
             />
           ))}
-          {adminRoutes.map((route, index) => (
+          {privateRouterAdmin.map((route, index) => (
             <Route
               key={index}
               path={route.path}
