@@ -6,8 +6,7 @@ import ListMenuUser from "@components/menuUser/ListMenuUser";
 import { Uicontext } from "../contexts/UiContext";
 import { DataUser } from "../contexts/authContext/DataUserLogin";
 import { UseCart } from "../contexts/CartContext";
-
-
+import { handleScrollToTop } from "~/components/animations/scroll/ScrollTop";
 const Header = () => {
     const { handleDisplayLogin, handleDisplayRegister } = useContext(Uicontext);
     const { handleDisplayCart } = useContext(Uicontext);
@@ -63,7 +62,7 @@ const Header = () => {
              items-center justify-between p-3 opacity-[0.9] flex fixed w-full z-[2] 
             `}>
                 <div className="flex items-center gap-4 ">
-                    <div className="px-5">
+                    <div className="px-5" onClick={handleScrollToTop}>
                         <Link to={'/'}>
                             <h1 className="text-green-200 text-[35px] font-bold">Sách</h1>
                         </Link>
@@ -77,7 +76,7 @@ const Header = () => {
                             <Link to={`/book/new`}>Sách mới nhất</Link>
                         </li>
                         <li className="text-white font-bold px-2 cursor-pointer" >
-                            <Link to={`/book/trending`}>Waka đề xuất</Link>
+                            <Link to={`/book/suggest`}>Waka đề xuất</Link>
                         </li>
                         <li className="text-white font-bold px-2 cursor-pointer" >
                             <Link to={`/book/`}>Sách hay</Link>
@@ -94,7 +93,7 @@ const Header = () => {
                             <div className="absolute w-[470px] h-dvh bg-black top-[45px] right-[-165px] rounded-md  overflow-auto scrollbar-thin">
                                 {searchResults && searchResults.map((productSeach, index) => (
                                     <Link key={index} to={{ pathname: `/ebook/${productSeach._id}`, state: { fromSearch: true } }}>
-                                        <div className="flex gap-4 hover:bg-[#1d5353] p-5 rounded-md duration-300 ease-in">
+                                        <div onClick={handleScrollToTop} className="flex gap-4 hover:bg-[#1d5353] p-5 rounded-md duration-300 ease-in">
                                             <div className="relative">
                                                 <img className="w-[120px] rounded-md" src={productSeach.imgBook} alt="" />
                                                 <div className="absolute bottom-0 left-0 bg-[#26D99A] w-full rounded-t-md">

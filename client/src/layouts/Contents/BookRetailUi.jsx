@@ -3,16 +3,16 @@ import { PropagateLoader } from "react-spinners";
 import InforBookUi from '@components/Ui-Books/InforBookUi';
 import Sliders from "@components/slider-books/Slider";
 import BookUi from "@components/Ui-Books/BookUi";
-import { GetInforBook, BookSuggestApi } from '../../services/books/BookService';
+import { GetInforBook, BookRetailApi } from '../../services/books/BookService';
 import { FormatCurrency } from '../../pages/AdminPage/Utils/formatCurrency';
 import { handleScrollToTop } from '~/components/animations/scroll/ScrollTop';
-const BookSuggestUi = () => {
+const BookRetailUi = () => {
     const [dataBookFree, setDataBookFree] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const bookSuggestData = await BookSuggestApi();
-                const bookDetails = await Promise.all(bookSuggestData.map(async (idBook) => {
+                const bookRetailData = await BookRetailApi();
+                const bookDetails = await Promise.all(bookRetailData.map(async (idBook) => {
                     const data = await GetInforBook(idBook);
                     return data;
                 }));
@@ -63,4 +63,4 @@ const BookSuggestUi = () => {
     );
 };
 
-export default BookSuggestUi;
+export default BookRetailUi;

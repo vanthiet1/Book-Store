@@ -3,6 +3,7 @@ import Section from "~/layouts/Section";
 import ListBookFree from "~/layouts/Contents/MainHome/ListBookFree";
 import ListBookNew from "~/layouts/Contents/MainHome/ListBookNew";
 import ListBookSuggest from "~/layouts/Contents/MainHome/ListBookSuggest";
+import ListBookRetail from "~/layouts/Contents/MainHome/ListBookRetail";
 import Footer from "~/layouts/Footer";
 import TitleSetter from "~/components/titlePage/TitleSetter";
 
@@ -19,6 +20,7 @@ const Home = () => {
                 <ListBookFree />
                 <ListBookNew />
                 <ListBookSuggest/>
+                <ListBookRetail/>
                 <Footer/>
             </div>
         </>

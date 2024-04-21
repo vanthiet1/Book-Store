@@ -7,9 +7,12 @@ const DisplayContext = ({ children }) => {
     const [displayRegister, setDisplayRegister] = useState(false);
     const [displayComment, setDisplayComment] = useState(false);
     const [displayVertify, setDisplayVertify] = useState(false);
-
-
     const [displayCart, setDisplayCart] = useState("translate-x-[500px]");
+
+ 
+
+   
+
     const [filter, setFilter] = useState(null);
     // Ui login 
     const handleDisplayLogin = () => {
@@ -82,12 +85,14 @@ const DisplayContext = ({ children }) => {
         setDisplayVertify(true);
         setDisplayLogin(false)
     }
+ 
     const dataDisplay = {
         displayCart,
         displayRegister,
         displayLogin,
         displayComment,
         displayVertify,
+        scroll,
         filter,
         setFilter,
 
@@ -105,7 +110,8 @@ const DisplayContext = ({ children }) => {
 
         handleHideVertify,
         handleDisplayVertify,
-        handleDisplayVertifyInlogin
+        handleDisplayVertifyInlogin,
+
     }
     return (
         <div>

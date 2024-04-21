@@ -12,20 +12,6 @@ const GetInforBook = async (bookId) => {
     }
 };
 
-const BookNewApi = async () => {
-    try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
-        const buyCategory = response.data.find(category => category.name === 'Mua lẻ');
-        if (buyCategory) {
-            const productsResponse = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${buyCategory._id}`);
-            return productsResponse.data.books;
-        }
-    } catch (error) {
-        console.error('Error fetching free books data:', error);
-        throw error;
-    }
-};
-
 const BookFreeApi = async () => {
     try {
         const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
@@ -39,6 +25,22 @@ const BookFreeApi = async () => {
         throw error;
     }
 };
+
+const BookNewApi = async () => {
+    try {
+        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
+        const buyCategory = response.data.find(category => category.name === 'Sách mới nhất');
+        if (buyCategory) {
+            const productsResponse = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${buyCategory._id}`);
+            return productsResponse.data.books;
+        }
+    } catch (error) {
+        console.error('Error fetching free books data:', error);
+        throw error;
+    }
+};
+
+
 const BookSuggestApi = async () => {
     try {
         const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
@@ -52,9 +54,23 @@ const BookSuggestApi = async () => {
         throw error;
     }
 };
+const BookRetailApi = async () => {
+    try {
+        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
+        const freeCategory = response.data.find(category => category.name === 'Mua lẻ');
+        if (freeCategory) {
+            const productsResponse = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${freeCategory._id}`);
+            return productsResponse.data.books;
+        }
+    } catch (error) {
+        console.error('Error fetching free books data:', error);
+        throw error;
+    }
+};
 export {
     GetInforBook,
     BookNewApi,
     BookFreeApi,
-    BookSuggestApi
+    BookSuggestApi,
+    BookRetailApi
 }

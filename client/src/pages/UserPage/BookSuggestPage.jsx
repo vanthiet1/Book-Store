@@ -6,14 +6,14 @@ import Footer from "~/layouts/Footer";
 import Card from "@components/cardBook/card";
 import TitleSetter from '@components/titlePage/TitleSetter';
 
-import { GetInforBook, BookNewApi } from "../../services/books/BookService";
+import { GetInforBook, BookSuggestApi } from "../../services/books/BookService";
 
 const BookSuggestPage = () => {
   const [cards, setCards] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const bookNewData = await BookNewApi();
+        const bookNewData = await BookSuggestApi();
         const bookDetails = await Promise.all(bookNewData.map(async (idBook) => {
           const data = await GetInforBook(idBook);
           return data;

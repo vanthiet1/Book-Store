@@ -1,11 +1,13 @@
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import ReadBookUi from "../button-ui/ReadBookUi";
+
+
 const Infor = (props) => {
-    const { imgBook, nameBook, author, labelBook, descriptionBook, bookId } = props;
+    const {onClick,  imgBook, nameBook, author, labelBook, descriptionBook, bookId } = props;
     return (
         <>
-            <div className={` bg-[#1a1a1c] w-[104%] h-[auto]  rounded-[10px] opacity-[0.9] blur-[0.5px] overflow-hidden p-4 px-4 backdrop-filter backdrop-blur-xl backdrop-saturate-150 backdrop-grayscale-50  `}>
+            <div onClick={onClick} className={` bg-[#1a1a1c] w-[104%] h-[auto]  rounded-[10px] opacity-[0.9] blur-[0.5px] overflow-hidden p-4 px-4 backdrop-filter backdrop-blur-xl backdrop-saturate-150 backdrop-grayscale-50  `}>
                 <Link to={`/ebook/${bookId}`}>
                     <div className="w-[700px] flex items-center gap-4 ">
                         <img loading="lazy" className="rounded-[10px] w-[250px] h-[350px] object-cover" src={imgBook} alt="" />

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { PropagateLoader } from "react-spinners";
-import InforBookUi from '../../components/Ui-Books/InforBookUi';
-import Sliders from "../../components/slider-books/Slider";
-import BookUi from "../../components/Ui-Books/BookUi";
+import InforBookUi from '@components/Ui-Books/InforBookUi';
+import Sliders from "@components/slider-books/Slider";
+import BookUi from "@components/Ui-Books/BookUi";
 import { GetInforBook, BookNewApi } from '../../services/books/BookService';
 import { FormatCurrency } from '../../pages/AdminPage/Utils/formatCurrency';
+import { handleScrollToTop } from '~/components/animations/scroll/ScrollTop';
 const BookNewUi = () => {
     const [dataBookFree, setDataBookFree] = useState([]);
     useEffect(() => {
@@ -34,6 +35,7 @@ const BookNewUi = () => {
                     {dataBookFree.length > 0 ? (dataBookFree.map((bookFree) => (
                         <div className="relative group" key={bookFree._id}>
                             <BookUi
+                                      bookId={bookFree._id}
                                 bgLabel={bookFree.isFree === true ? "    bg-[#26D99A]" : 'bg-[#f645B3]'}
                                 imgBook={bookFree.imgBook}
                                 labelBook={FormatCurrency(bookFree.isFree === false ? (bookFree.labelBook) + " VND" : (bookFree.labelBook)) }
@@ -41,6 +43,7 @@ const BookNewUi = () => {
                             />
                             <div className="absolute ease-in duration-300 top-[-1px] left-[-6px] opacity-0 z-[-1] group-hover:opacity-100 group-hover:z-[10]">
                                 <InforBookUi
+                                      onClick={handleScrollToTop}
                                     bookId={bookFree._id}
                                     imgBook={bookFree.imgBook}
                                     nameBook={bookFree.nameBook}

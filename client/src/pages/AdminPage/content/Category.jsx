@@ -25,7 +25,7 @@ const Category = () => {
 
     const [showError, setShowError] = useState(false);
     const [showErrorValidateFrom, setShowErrorValidateFrom] = useState(false);
-    
+
     const [editingCategoryId, setEditingCategoryId] = useState(null);
     const [nameCategory, setNameCategory] = useState("");
     const {
@@ -74,21 +74,21 @@ const Category = () => {
             const data = {
                 name: nameCategory
             }
-           
-            if(data.name.length ===  0){
-                return  setShowErrorValidateFrom(true)
+
+            if (data.name.length === 0) {
+                return setShowErrorValidateFrom(true)
             }
             await AddCategory(data);
             setNameCategory("")
-            setSuccessCategory([...successCategory, nameCategory]);           
+            setSuccessCategory([...successCategory, nameCategory]);
             getCategory()
             setShowSuccessAdd(true)
-            setTimeout(() => {setShowSuccessAdd(false) , handleHideDisplayAddCategory() }, 500)
+            setTimeout(() => { setShowSuccessAdd(false), handleHideDisplayAddCategory() }, 500)
         } catch (error) {
             console.log(error);
         }
     }
-    
+
     const handleUpdateCategory = async (categoryId) => {
         try {
             const data = {
@@ -142,7 +142,7 @@ const Category = () => {
                             editingCategoryId === categoryItem._id && (
                                 <>
                                     <EditForm
-                                       placeholder="Nhập Tên Danh Mục Cần Sữa"
+                                        placeholder="Nhập Tên Danh Mục Cần Sữa"
                                         key={categoryItem._id}
                                         value={nameCategory}
                                         onChange={(e) => setNameCategory(e.target.value)}
@@ -161,44 +161,46 @@ const Category = () => {
             {showSuccessDelete && <Success message="Xóa Danh Mục Thành Công" />}
             {showSuccessUpdate && <Success message="Cập Nhật Danh Mục Thành Công" />}
             {showSuccessAdd && <Success message="Thêm Danh Mục Thành Công" />}
-            <table className="w-full">
-                <thead className="bg-gray-100 h-16">
-                    <tr>
-                        <th className="text-left px-4">Tên Danh Mục</th>
-                        <th className="text-left px-4">Sách</th>
-                        <th className="px-4 py-2" colSpan="4">
-                            <AddButton
-                                nameButton="Thêm Danh Mục"
-                                click={handleDisplayAddCategory}
-                            />
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {category && category.map((category) => (
-                        <tr className="border-b border-gray-200" key={category._id}>
-                            <td className="text-left px-4 py-2">{category.name ? category.name : (<span>Đang tải....</span>)}</td>
-                            <td className="text-left px-4 py-2">
-                                {booksInCategories[category._id]?.map((bookName, index) => (
-                                    <div key={index}>Tên - {bookName ? bookName : (<span>Đang tải danh mục....</span>)}</div>
-                                ))}
-                            </td>
-
-                            <td className="px-4 py-2">
-                                <div className="flex items-center justify-center">
-                                    <UpdateButton
-                                        clickUpdate={() => {
-                                            setEditingCategoryId(category._id);
-                                            handleDisplayUpdateCategory()
-                                        }}
-                                    />
-                                    <DeleteButton_square titleDelete="Xóa danh mục" clickDelete={() => handleDeleteCategory(category._id)} />
-                                </div>
-                            </td>
+            <div className="overflow-y-auto h-[640px] scrollbar-thin">
+                <table className="w-full">
+                    <thead className="bg-gray-100 h-16">
+                        <tr>
+                            <th className="text-left px-4">Tên Danh Mục</th>
+                            <th className="text-left px-4">Sách</th>
+                            <th className="px-4 py-2" colSpan="4">
+                                <AddButton
+                                    nameButton="Thêm Danh Mục"
+                                    click={handleDisplayAddCategory}
+                                />
+                            </th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {category && category.map((category) => (
+                            <tr className="border-b border-gray-200" key={category._id}>
+                                <td className="text-left px-4 py-2">{category.name ? category.name : (<span>Đang tải....</span>)}</td>
+                                <td className="text-left px-4 py-2">
+                                    {booksInCategories[category._id]?.map((bookName, index) => (
+                                        <div key={index}>Tên - {bookName ? bookName : (<span>Đang tải danh mục....</span>)}</div>
+                                    ))}
+                                </td>
+
+                                <td className="px-4 py-2">
+                                    <div className="flex items-center justify-center">
+                                        <UpdateButton
+                                            clickUpdate={() => {
+                                                setEditingCategoryId(category._id);
+                                                handleDisplayUpdateCategory()
+                                            }}
+                                        />
+                                        <DeleteButton_square titleDelete="Xóa danh mục" clickDelete={() => handleDeleteCategory(category._id)} />
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </>
     );
 };
