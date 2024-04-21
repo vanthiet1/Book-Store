@@ -1,4 +1,4 @@
-import Warning from "../../../public/img/icon-warning.png";
+import Warning from "../../public/img/icon-warning.png";
 const PolicyDelete = () => {
     return (
         <>

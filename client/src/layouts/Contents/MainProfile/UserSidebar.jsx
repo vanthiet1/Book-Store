@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
 import AvatarDefault from '../../../components/image/avatar.png' 
-import IconSoi from '../../../../public/img/icon-soi.png';
-import IconLa from '../../../../public/img/icon-la.png';
+import IconSoi from '../../../public/img/icon-soi.png';
+import IconLa from '../../../public/img/icon-la.png';
 
 const UserSidebar = () => {
     const { userEmail, isAdmin } = useContext(DataUser);
