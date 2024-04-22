@@ -4,6 +4,7 @@ const pathUser = {
     BookNewPage:'/book/new',
     BookFreePage:'/book/free',
     BookSuggestPage:'/book/suggest',
+    BookRetailPage:'/book/retail',
     BookCheckoutPage:'/book/checkout',
     ProfilePage:'/account/profile',
 

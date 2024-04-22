@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext , useMemo  } from "react";
 import { Routes, Route } from 'react-router-dom'
 import { Uicontext } from "~/contexts/UiContext";
 import { DisplayPopup } from "~/pages/AdminPage/contexts/UiContextAdmin";
@@ -13,9 +13,21 @@ const App = () => {
   const { displayRegister, displayLogin, filter, displayVertify, displayCart } = useContext(Uicontext);
   const { filterAdmin } = useContext(DisplayPopup);
   const privateRouterAdmin = PublicRouterAdmin();
+    console.log('CCCCCCCC');
+    const loginComponent = useMemo(() => {
+      return displayLogin ? <Login /> : null;
+    }, [displayLogin]);
   
+    const registerComponent = useMemo(() => {
+      return displayRegister ? <Register /> : null;
+    }, [displayRegister]);
+  
+    const vertifyComponent = useMemo(() => {
+      return displayVertify ? <VetifyAccount /> : null;
+    }, [displayVertify]);
   return (
     <>
+         
         <ToastContainer />
       <div className=" w-full h-dvh ">
         <Routes>
@@ -40,9 +52,9 @@ const App = () => {
           ))}
         </Routes>
         <div>
-          {displayLogin && (<Login />)}
-          {displayRegister && (<Register />)}
-          {displayVertify && (<VetifyAccount />)}
+          {loginComponent}
+          {registerComponent}
+          {vertifyComponent}
         </div>
         <div className={`${filter} ${filterAdmin}`} />
       </div>

@@ -1,4 +1,4 @@
-import { createContext, useState ,useContext} from "react"; 
+import { createContext, useState ,useContext } from "react"; 
 import { DataUser } from "./authContext/DataUserLogin";
 export const Uicontext = createContext();
 const DisplayContext = ({ children }) => {
@@ -15,7 +15,7 @@ const DisplayContext = ({ children }) => {
 
     const [filter, setFilter] = useState(null);
     // Ui login 
-    const handleDisplayLogin = () => {
+    const handleDisplayLogin =  () => {
         setTimeout(() => {
             setDisplayLogin((prevLogin) => !prevLogin);
         }, 200)

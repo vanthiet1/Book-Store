@@ -31,8 +31,6 @@ const SettingProfile = () => {
             console.log(error);
         }
     };
-
-
     useEffect(() => {
         handleGetDataCheckout();
     }, [])

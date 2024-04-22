@@ -54,8 +54,6 @@ const Header = () => {
          window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
-
     return (
         <>
             <div className={` ${stateBgHeader}
@@ -67,7 +65,6 @@ const Header = () => {
                             <h1 className="text-green-200 text-[35px] font-bold">Sách</h1>
                         </Link>
                     </div>
-
                     <ul className="flex gap-2">
                         <li className="text-white font-bold px-2 cursor-pointer" >
                             <Link to={`/book/free`}>Sách miễn phí</Link>
@@ -82,7 +79,7 @@ const Header = () => {
                             <Link to={`/book/`}>Sách hay</Link>
                         </li>
                         <li className="text-white font-bold px-2 cursor-pointer" >
-                            <Link to={`/book/`}>Mua lẻ</Link>
+                            <Link to={`/book/retail`}>Mua lẻ</Link>
                         </li>
                     </ul>
                 </div>
@@ -112,7 +109,7 @@ const Header = () => {
                         )}
                     </div>
                     <div className="relative">
-                        <FaShoppingCart onClick={() => handleDisplayCart()} className="text-[20px] text-[#fff] cursor-pointer" />
+                        <FaShoppingCart onClick={handleDisplayCart} className="text-[20px] text-[#fff] cursor-pointer" />
                         <div className={`absolute top-[-15px] right-[-10px] ${cart.length === 0 ? "hidden" : "bg-red-500"}  w-[20px] h-[20px]
                         flex justify-center items-center rounded-[50%]`}>
                             <span className="text-[#fff]">{cart.length}</span>

@@ -4,6 +4,7 @@ import BookDetail from "../pages/UserPage/BookDetail";
 import BookFreePage from "../pages/UserPage/BookFreePage";
 import BookNewPage from "../pages/UserPage/BookNewPage";
 import BookSuggestPage from "~/pages/UserPage/BookSuggestPage";
+import BookRetailPage from "~/pages/UserPage/BookRetailPage";
 import ProfilePage from "../pages/UserPage/ProfilePage";
 import Checkout from "../pages/UserPage/Checkout";
 
@@ -32,6 +33,11 @@ const publicRouterUser = [
         path: PathUser.BookFreePage,
         component: BookFreePage,
         title: 'BookFree',
+    },
+    {
+        path: PathUser.BookRetailPage,
+        component: BookRetailPage,
+        title: 'BookRetail',
     },
     {
         path: PathUser.BookCheckoutPage,

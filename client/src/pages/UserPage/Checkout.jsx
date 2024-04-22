@@ -29,7 +29,6 @@ const Checkout = () => {
     const [errorLogin, setErrorLogin] = useState(false);
     const [errorCartEmpety, setErrorCartEmpety] = useState(false);
 
-
     const { cart } = UseCart();
     const navigate = useNavigate();
 
