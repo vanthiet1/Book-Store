@@ -42,6 +42,7 @@ const BookSuggestUi = () => {
                             />
                             <div className="absolute ease-in duration-300 top-[-1px] left-[-6px] opacity-0 z-[-1] group-hover:opacity-100 group-hover:z-[10]">
                                 <InforBookUi
+                                     aria-hidden="true" 
                                      onClick={handleScrollToTop}
                                     bookId={bookFree._id}
                                     imgBook={bookFree.imgBook}
