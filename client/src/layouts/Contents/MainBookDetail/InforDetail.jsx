@@ -1,4 +1,3 @@
-import { Suspense, lazy } from 'react';
 import { useParams } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState } from "react";
@@ -7,6 +6,7 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { TiChevronRight } from "react-icons/ti";
 import { useContext } from "react";
 import { GetDetailBookFree } from "../../../services/books/BookDetailService";
+import BookUi from "@components/Ui-Books/BookUi";
 import ReadBookUi from "@components/button-ui/ReadBookUi";
 
 import ButtonHeart from "@components/button-ui/ButtonHeart";
@@ -20,19 +20,20 @@ import Success from "@components/notification/Success";
 import DescriptionBook from "./DescriptionBook";
 import { Uicontext } from "../../../contexts/UiContext";
 import CommnentUser from "./CommnentUser";
+// import Error from "../../../components/notification/Error";
 import { UseCart } from "../../../contexts/CartContext";
 
-const LazyBookUi = lazy(() => import('@components/Ui-Books/BookUi'));
-const LazyBookSuggestUi = lazy(() => import('../BookSuggestUi'));
-const LazyBookNewUi = lazy(() => import('../BookNewUi'));
-const LazyBookFreeUi = lazy(() => import('../BookFreeUi'));
+import BookSuggestUi from "../BookSuggestUi";
+import BookFreeUi from "../BookFreeUi";
+import BookNewUi from "../BookNewUi";
 
 const InforDetail = () => {
     const { id } = useParams();
-    const { handleDisplayComment, scrollTop } = useContext(Uicontext);
+    const { handleDisplayComment , scrollTop} = useContext(Uicontext);
     const { addToCart } = UseCart();
     const [showSuccess, setSuccess] = useState(false);
-
+    // const [showError, setError] = useState(false);
+    
 
     const dataBookDetailFree = GetDetailBookFree(id);
     const [skeletonImage, setSkeletonImage] = useState(true);
@@ -66,8 +67,8 @@ const InforDetail = () => {
     };
     useEffect(() => {
         window.scrollTo({ top: scrollTop, behavior: 'smooth' });
-    }, [scrollTop]);
-
+      }, [scrollTop]);
+    
     return (
         <>
             {showSuccess && (<Success message="Đã thêm vào giỏ hàng" />)}
@@ -89,14 +90,12 @@ const InforDetail = () => {
                     ) : (
                         <>
                             {dataBookDetailFree && (
-                                <Suspense fallback={<div>Loading...</div>}>
-                                    <LazyBookUi
-                                        bgLabel={dataBookDetailFree.isFree === true ? "bg-[#26D99A]" : 'bg-[#f645B3]'}
-                                        imgBook={dataBookDetailFree.imgBook}
-                                        labelBook={dataBookDetailFree.isFree ? dataBookDetailFree.labelBook : dataBookDetailFree.price.toLocaleString() + " VND"}
-                                        width="w-[100%]"
-                                    />
-                                </Suspense>
+                                <BookUi                                         
+                                    bgLabel={dataBookDetailFree.isFree === true ? "bg-[#26D99A]" : 'bg-[#f645B3]'}
+                                    imgBook={dataBookDetailFree.imgBook}
+                                    labelBook={dataBookDetailFree.isFree ? dataBookDetailFree.labelBook : dataBookDetailFree.price.toLocaleString() + " VND"}
+                                    width="w-[100%]"
+                                />
                             )}
                         </>
                     )}
@@ -190,13 +189,13 @@ const InforDetail = () => {
                 <h1 className="p-5 text-[#fff] text-[30px]">Những sách liên quan</h1>
                 {dataBookDetailFree && dataBookDetailFree.isFree ? (
                     <>
-                        <LazyBookFreeUi />
-                        <LazyBookSuggestUi />
+                        <BookFreeUi />
+                        <BookSuggestUi />
                     </>
                 ) : (
                     <>
-                        <LazyBookNewUi />
-                        <LazyBookSuggestUi />
+                        <BookNewUi />
+                        <BookSuggestUi />
                     </>
                 )}
             </div>

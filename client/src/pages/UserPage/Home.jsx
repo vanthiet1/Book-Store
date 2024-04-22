@@ -1,27 +1,30 @@
+import { Suspense, lazy } from 'react';
 import Header from "~/layouts/Header";
-import Section from "~/layouts/Section";
-import ListBookFree from "~/layouts/Contents/MainHome/ListBookFree";
-import ListBookNew from "~/layouts/Contents/MainHome/ListBookNew";
-import ListBookSuggest from "~/layouts/Contents/MainHome/ListBookSuggest";
-import ListBookRetail from "~/layouts/Contents/MainHome/ListBookRetail";
-import Footer from "~/layouts/Footer";
 import TitleSetter from "~/components/titlePage/TitleSetter";
 
-const Home = () => {
+const LazySection = lazy(() => import("~/layouts/Section"));
+const LazyListBookFree = lazy(() => import("~/layouts/Contents/MainHome/ListBookFree"));
+const LazyListBookNew = lazy(() => import("~/layouts/Contents/MainHome/ListBookNew"));
+const LazyListBookSuggest = lazy(() => import("~/layouts/Contents/MainHome/ListBookSuggest"));
+const LazyListBookRetail = lazy(() => import("~/layouts/Contents/MainHome/ListBookRetail"));
+const LazyFooter = lazy(() => import("~/layouts/Footer"));
 
+const Home = () => {
     return (
         <>
-      <TitleSetter title="Tri thức cuộc sống" />
+            <TitleSetter title="Tri thức cuộc sống" />
             <div>
                 <div className="relative">
                     <Header />
                 </div>
-                <Section />
-                <ListBookFree />
-                <ListBookNew />
-                <ListBookSuggest/>
-                <ListBookRetail/>
-                <Footer/>
+                <Suspense>
+                    <LazySection />
+                    <LazyListBookFree />
+                    <LazyListBookNew />
+                    <LazyListBookSuggest />
+                    <LazyListBookRetail />
+                    <LazyFooter />
+                </Suspense>
             </div>
         </>
     );
