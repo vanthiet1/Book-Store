@@ -1,11 +1,12 @@
+import { Suspense, lazy } from "react";
 import { useEffect, useState } from "react";
 import Header from "~/layouts/Header";
-import BookFreeUi from "~/layouts/Contents/BookFreeUi";
 import Footer from "~/layouts/Footer";
 
 import TitleSetter from "~/components/titlePage/TitleSetter";
 import Card from "~/components/cardBook/card";
 import { GetInforBook, BookFreeApi } from "../../services/books/BookService";
+const LazyBookFreeUi = lazy(() => import('~/layouts/Contents/BookFreeUi'))
 const BookFreePage = () => {
   const [cards, setCards] = useState([]);
   useEffect(() => {
@@ -35,7 +36,9 @@ const BookFreePage = () => {
         </div>
         <div className="pt-[500px] px-5">
           <h1 className="font-bold text-[#fff] text-[25px] p-5">Kho sách miễn phí</h1>
-          <BookFreeUi />
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyBookFreeUi />
+          </Suspense>
         </div>
         <Footer />
       </div>

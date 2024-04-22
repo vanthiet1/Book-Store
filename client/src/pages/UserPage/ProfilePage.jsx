@@ -1,15 +1,19 @@
+import { lazy, Suspense } from 'react';
 import Header from "~/layouts/Header";
 import Footer from "~/layouts/Footer";
-import UserSidebar from "~/layouts/Contents/MainProfile/UserSidebar";
-import SettingProfile from "~/layouts/Contents/MainProfile/SettingProfile";
+const LazyUserSidebar = lazy(() => import("~/layouts/Contents/MainProfile/UserSidebar"));
+const LazySettingProfile = lazy(() => import("~/layouts/Contents/MainProfile/SettingProfile"));
+
 const ProfilePage = () => {
   return (
     <>
       <div>
         <Header />
         <div className="flex h-auto pt-[100px] bg-black p-5">
-        <UserSidebar/>
-         <SettingProfile/>
+          <Suspense fallback={<div>Loading.....</div>}>
+            <LazyUserSidebar />
+            <LazySettingProfile />
+          </Suspense>
         </div>
         <Footer />
       </div>

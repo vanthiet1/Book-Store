@@ -4,7 +4,7 @@ const Footer = () => {
         <>
             <div className="grid grid-cols-6 bg-black p-[25px] items-center">
                 <div className="px-5">
-                    <img src="https://waka.vn/images/logo.png" alt="" />
+                    <img src="https://waka.vn/images/logo.png" alt="Logo" />
                     <span className="text-[#999999]">
                         Công ty cổ phần sách điện tử</span>
                     <div className="">
@@ -48,8 +48,8 @@ const Footer = () => {
             
                     </div>
                     <div>
-                        <img src="https://waka.vn/images/app-store.png" alt="" />
-                        <img src="https://waka.vn/images/google-play.png" alt="" />
+                        <img src="https://waka.vn/images/app-store.png" alt="App Store" />
+                        <img src="https://waka.vn/images/google-play.png" alt="Google play" />
                     </div>
                 </div>
             </div>

@@ -3,7 +3,6 @@ import { format } from 'date-fns';
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
 import { GetDataUserCheckout } from "../../../services/checkout/checkoutUserService";
 import DeleteButton_square from "../../../pages/AdminPage/components/button/DeleteButton_square";
-// import { CancelOrder } from "../../../services/checkout/cancelOrderService";
 const MyOrder = () => {
     const { inforUser } = useContext(DataUser);
     const [allProducts, setAllProducts] = useState([]);
@@ -26,14 +25,7 @@ const MyOrder = () => {
     useEffect(() => {
         handleGetDataCheckout();
     }, []);
-    // const handleCancelOrder = async (id) => { 
-    //     try {
-    //          console.log(id);
-    //         await CancelOrder(id);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+
 
     return (
         <>

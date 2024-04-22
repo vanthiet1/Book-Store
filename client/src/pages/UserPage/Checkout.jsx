@@ -188,11 +188,8 @@ xSPc9gaQwSK8x6Equqjaksf60B9pywAfV9IblnwysZMdiUFs0Ww&usqp=CAU" alt="" />
                             </div>
                         </div>
                     )}
-
-
                 </div>
                 <Footer />
-
             </div>
 
         </>
