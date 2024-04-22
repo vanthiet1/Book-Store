@@ -99,14 +99,14 @@ const Cart = () => {
                                     </div>
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <button className="text-[#fff] w-[50px] font-bold  bg-transparent" onClick={() => handleDecreaseQuantity(index)}>-</button>
+                                            <button  aria-label="Giảm"  className="text-[#fff] w-[50px] font-bold  bg-transparent" onClick={() => handleDecreaseQuantity(index)}>-</button>
                                             <input
                                                 type="number"
                                                 className="w-[70px] pl-4  bg-transparent text-[#fff] text-[20px]"
                                                 value={productCart.quantity}
                                                 onChange={(e) => handleQuantityChange(index, parseInt(e.target.value))}
                                             />
-                                            <button className="text-[#fff] w-[50px] font-bold bg-transparent" onClick={() => handleIncreaseQuantity(index)}>+</button>
+                                            <button aria-label="Tăng" className="text-[#fff] w-[50px] font-bold bg-transparent" onClick={() => handleIncreaseQuantity(index)}>+</button>
                                         </div>
                                         <div>
                                             <MdOutlineRemoveShoppingCart onClick={() => handleRemoveItem(productCart.productId)} className="text-red-600 text-[20px] cursor-pointer" />
@@ -129,7 +129,7 @@ const Cart = () => {
                 </div>
 
                 <div className="absolute bottom-[-5px] w-full p-2">
-                    <button onClick={handleCheckout} className="text-[#fff] w-[95%] bg-[#f94d17] rounded-lg p-3">
+                    <button  aria-label="Thanh toán" onClick={handleCheckout} className="text-[#fff] w-[95%] bg-[#f94d17] rounded-lg p-3">
                         Đến Thanh Toán
                     </button>
                 </div>
