@@ -5,7 +5,7 @@ const BookUi = (props) => {
     return (
         <div>
             <div className={`${containerBookUi}`}>
-                <img loading="lazy"  className="rounded-[10px] group-hover:blur-[10px] w-[300px] " src={imgBook} alt="....." />
+                <img loading="lazy"  className="rounded-[10px] group-hover:blur-[10px] w-[350px] " src={imgBook} alt="....." />
                 <div >
                     <div className="absolute right-[26px] top-0 flex group-hover:blur-[10px]">
                         <span className={`text-white ${bgLabel} font-bold uppercase p-[0.5px] px-3 rounded-bl-[10px] rounded-br-[5px]`}>{labelBook}</span>
