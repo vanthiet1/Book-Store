@@ -21,7 +21,7 @@ const Infor = (props) => {
                                     </div>
                                     <div className="flex gap-2 items-center">
                                         <ReadBookUi bgStatus={"bg-[#1f6f5b]"} content={"Đọc sách"} />
-                                        <button className="bg-[#272729] opacity-[0.8]  flex items-center justify-center rounded-full w-[50px] h-[50px] text-white hover:bg-[#373739] ">
+                                        <button aria-label="Like" className="bg-[#272729] opacity-[0.8]  flex items-center justify-center rounded-full w-[50px] h-[50px] text-white hover:bg-[#373739] ">
                                             <CiHeart className="text-[40px]" />
                                         </button>
                                     </div>

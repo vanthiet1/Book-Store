@@ -122,8 +122,8 @@ const Header = () => {
                             </>
                         ) : (
                             <>
-                                <button className="text-white font-bold bg-[#C7C7C8] p-[6px] rounded-full border-[1px] border-gray-300 bg-transparent bg-opacity-50 w-[100px]" onClick={handleDisplayRegister}>Đăng ký</button>
-                                <button className="text-white font-bold bg-[#139F7B] p-[5px] rounded-full w-[110px]" onClick={handleDisplayLogin}>Đăng nhập</button>
+                                <button aria-label="Đăng ký"  className="text-white font-bold bg-[#C7C7C8] p-[6px] rounded-full border-[1px] border-gray-300 bg-transparent bg-opacity-50 w-[100px]" onClick={handleDisplayRegister}>Đăng ký</button>
+                                <button  aria-label="Đăng nhập" className="text-white font-bold bg-[#139F7B] p-[5px] rounded-full w-[110px]" onClick={handleDisplayLogin}>Đăng nhập</button>
                             </>
                         )}
                     </div>
