@@ -35,7 +35,7 @@ const BookSuggestUi = () => {
                         <div className="relative group" key={bookFree._id}>
                             <BookUi    
                                  bookId={bookFree._id} 
-                                bgLabel={bookFree.isFree === true ? "    bg-[#26D99A]" : 'bg-[#f645B3]'}
+                                bgLabel={bookFree.isFree === true ? " bg-[#27ad7c]" : 'bg-[#dd42a2]'}
                                 imgBook={bookFree.imgBook}
                                 labelBook={FormatCurrency(bookFree.isFree === false ? (bookFree.labelBook) + " VND" : (bookFree.labelBook)) }
                                 nameBook={bookFree.nameBook}

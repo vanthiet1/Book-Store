@@ -76,9 +76,6 @@ const Header = () => {
                             <Link to={`/book/suggest`}>Waka đề xuất</Link>
                         </li>
                         <li className="text-white font-bold px-2 cursor-pointer" >
-                            <Link to={`/book/`}>Sách hay</Link>
-                        </li>
-                        <li className="text-white font-bold px-2 cursor-pointer" >
                             <Link to={`/book/retail`}>Mua lẻ</Link>
                         </li>
                     </ul>

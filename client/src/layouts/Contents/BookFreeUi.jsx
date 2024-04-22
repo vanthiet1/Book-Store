@@ -41,7 +41,7 @@ const BookFreeUi = () => {
                             <div className="relative group flex " key={bookFree._id}>
                                 <BookUi   
                                     bookId={bookFree._id}
-                                    bgLabel={bookFree.isFree === true ? "    bg-[#26D99A]" : 'bg-[#f645B3]'}
+                                    bgLabel={bookFree.isFree === true ? "bg-[#27ad7c]" : 'bg-[#dd42a2]'}
                                     imgBook={bookFree.imgBook ? bookFree.imgBook : <h1 className='text-white'>Đang tải...</h1>}
                                     labelBook={bookFree.labelBook}
                                     nameBook={bookFree.nameBook}
