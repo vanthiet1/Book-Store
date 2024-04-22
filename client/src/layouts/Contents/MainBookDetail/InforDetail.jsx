@@ -107,7 +107,7 @@ const InforDetail = () => {
                     <div className="flex items-center gap-3">
                         <div className="flex gap-2">
                             <span className="text-white">5.0</span>
-                            <img loading="lazy" src="https://waka.vn/svgs/icon-star.svg " alt="" />
+                            <img loading="lazy" src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713802129/Book-Store/Icon/icon-star.svg" alt="Star" />
                         </div>
                         <span className="text-white">5 đánh giá</span>
                     </div>
