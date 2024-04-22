@@ -1,5 +1,4 @@
 
-import { Link } from 'react-router-dom'
 const Footer = () => {
     return (
         <>
@@ -44,9 +43,9 @@ const Footer = () => {
                 </div>
                 <div className="flex gap-2">
                     <div>
-                        <Link to={'https://www.facebook.com/profile.php?id=100045168130398'}>
-                            <img className='w-[100px]' src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.facebook.com/profile.php?id=100045168130398" alt="" />
-                        </Link>
+                    
+                            <img className='w-[100px]' src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.facebook.com/profile.php?id=100045168130398" alt="Qr Code Information" />
+            
                     </div>
                     <div>
                         <img src="https://waka.vn/images/app-store.png" alt="" />
