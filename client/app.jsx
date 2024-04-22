@@ -14,6 +14,7 @@ const App = () => {
   const { filterAdmin } = useContext(DisplayPopup);
   const privateRouterAdmin = PublicRouterAdmin();
     console.log('CCCCCCCC');
+    
     const loginComponent = useMemo(() => {
       return displayLogin ? <Login /> : null;
     }, [displayLogin]);
