@@ -4,9 +4,9 @@ import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
-import AvatarDefault from '../../../components/image/avatar.png' 
-import IconSoi from '../../../public/img/icon-soi.png';
-import IconLa from '../../../public/img/icon-la.png';
+import { AvatarUser } from "~/components/image/AvatarDefault";
+import { IconSoi, IconLa } from "~/public/icon-page/icon";
+
 
 const UserSidebar = () => {
     const { userEmail, isAdmin } = useContext(DataUser);
@@ -15,7 +15,7 @@ const UserSidebar = () => {
             <div className="w-[25%] border-r border-[#1E1E20] pr-5 ">
                 <div className="flex items-center justify-between gap-5">
                     <span className="text-white">{userEmail ? userEmail : "Đang tải..."}</span>
-                    <img className="w-[50px] rounded-full cursor-pointer" src={AvatarDefault} alt="" />
+                    <img className="w-[50px] rounded-full cursor-pointer" src={AvatarUser} alt="" />
                 </div>
                 <div className="flex gap-3 items-center">
                     <div className="flex items-center gap-1">
@@ -40,7 +40,7 @@ const UserSidebar = () => {
                 </div>
 
                 <div className="mt-2 px-2 flex gap-2 p-2 items-center cursor-pointer hover:bg-[#383635] rounded-md bg-[#2A2A2C]">
-                <FaRegUser className="text-[#16ab84] text-[20px]" />
+                    <FaRegUser className="text-[#16ab84] text-[20px]" />
                     <Link className=" text-[#16ab84] w-full  rounded-[50px]" to={'/account/profile'}>Quản lí tài khoản</Link>
                 </div>
 
