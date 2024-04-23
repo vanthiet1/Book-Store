@@ -11,7 +11,7 @@ const BookUi = (props) => {
                         <span className={`text-white ${bgLabel} font-bold uppercase p-[0.5px] px-3 rounded-bl-[10px] rounded-br-[5px]`}>{labelBook}</span>
 
                         <div className="absolute right-[-25px]">
-                            <img src="https://waka.vn/svgs/icon-free.svg" alt="" />
+                            <img className='w-[37px]' src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713860821/Book-Store/Icon/brand.svg" alt="brand" />
                         </div>
                     </div>
                     <div className="py-3"> 

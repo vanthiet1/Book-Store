@@ -4,7 +4,7 @@ const Footer = () => {
         <>
             <div className="grid grid-cols-6 bg-black p-[25px] items-center">
                 <div className="px-5">
-                    <img src="https://waka.vn/images/logo.png" alt="Logo" />
+                    <img className="w-[300px]" src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713860650/Book-Store/logo/wjmbwk6ugkhy4qvajszm.png" alt="Logo" />
                     <span className="text-[#999999]">
                         Công ty cổ phần sách điện tử</span>
                     <div className="">
@@ -44,12 +44,12 @@ const Footer = () => {
                 <div className="flex gap-2">
                     <div>
                     
-                            <img className='w-[100px]' src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.facebook.com/profile.php?id=100045168130398" alt="Qr Code Information" />
+                            <img className='w-[150px]' src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.facebook.com/profile.php?id=100045168130398" alt="Qr Code Information" />
             
                     </div>
                     <div>
-                        <img src="https://waka.vn/images/app-store.png" alt="App Store" />
-                        <img src="https://waka.vn/images/google-play.png" alt="Google play" />
+                        <img className="w-[200px] pb-2" src="https://waka.vn/images/app-store.png" alt="App Store" />
+                        <img className="w-[200px] " src="https://waka.vn/images/google-play.png" alt="Google play" />
                     </div>
                 </div>
             </div>

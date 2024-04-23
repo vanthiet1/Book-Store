@@ -71,7 +71,7 @@ const Cart = () => {
         <>
             {errorStatus && <Error message='Vui lòng xác thực tài khoản' />}
             {errorNotLogin && <Error message='Vui lòng đăng nhập' />}
-            <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0">
+            <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0 z-40">
                 <div className="flex cursor-pointer">
                     <CiCircleRemove onClick={() => handleHideCart()} className="text-[30px] text-[#fff]" />
                 </div>
