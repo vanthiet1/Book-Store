@@ -57,7 +57,7 @@ const Header = () => {
     return (
         <>
             <div className={` ${stateBgHeader}
-             items-center justify-between p-3  flex fixed w-full z-[2] 
+             items-center justify-between p-3 flex fixed w-full z-20
             `}>
                 <div className="flex items-center gap-4 ">
                     <div className="px-5" onClick={handleScrollToTop}>
