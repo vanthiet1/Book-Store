@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useContext, useState, useEffect } from "react";
 import Search from "@components/search/Search";
@@ -16,7 +16,7 @@ const Header = () => {
     const [stateBgHeader, setStateBgHeader] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
     const { cart } = UseCart();
-  
+   const navigate = useNavigate();
     useEffect(()=>{
         const getToken =  localStorage.getItem('token');   
          setIsUserLogin(getToken)
@@ -36,7 +36,10 @@ const Header = () => {
         }
         localStorage.removeItem('cart');
         localStorage.removeItem('token');
-        window.location.assign('/')
+        
+        // window.location.assign('/');
+        navigate('/')
+        setIsUserLogin(false);
     };
 
     useEffect(() => {

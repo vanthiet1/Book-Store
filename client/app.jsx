@@ -57,7 +57,7 @@ const App = () => {
         </div>
         <div className={`${filter} ${filterAdmin}`} />
       </div>
-      <div className={`fixed z-10 top-0 right-0 ${displayCart} ease-in duration-300 `}>
+      <div className={`fixed z-40 top-0 right-0 ${displayCart} ease-in duration-300 `}>
         <Cart />
       </div>
     </>

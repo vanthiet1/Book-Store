@@ -63,22 +63,15 @@ const Cart = () => {
         updateCartAndLocalStorage(updatedCart)
     };
 
-    const handleRemoveItem = (productId) => {
-        removeFromCart(productId);
-    };
-
     const updateCartAndLocalStorage = (updatedCart) => {
         localStorage.setItem('cart', JSON.stringify(updatedCart));
     };
-
-
-
 
     return (
         <>
             {errorStatus && <Error message='Vui lòng xác thực tài khoản' />}
             {errorNotLogin && <Error message='Vui lòng đăng nhập' />}
-            <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0  ">
+            <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0">
                 <div className="flex cursor-pointer">
                     <CiCircleRemove onClick={() => handleHideCart()} className="text-[30px] text-[#fff]" />
                 </div>
@@ -109,7 +102,7 @@ const Cart = () => {
                                             <button aria-label="Tăng" className="text-[#fff] w-[50px] font-bold bg-transparent" onClick={() => handleIncreaseQuantity(index)}>+</button>
                                         </div>
                                         <div>
-                                            <MdOutlineRemoveShoppingCart onClick={() => handleRemoveItem(productCart.productId)} className="text-red-600 text-[20px] cursor-pointer" />
+                                            <MdOutlineRemoveShoppingCart onClick={() => removeFromCart(productCart.productId)} className="text-red-600 text-[20px] cursor-pointer" />
                                         </div>
                                     </div>
                                 </div>
