@@ -110,7 +110,9 @@ const Cart = () => {
                         ))
                     ) : (
                         <>
-                            <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-4816550-4004141.png" alt="" />
+                             <div>
+                             <img className="w-[100%]"  src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713867628/Book-Store/Icon/sdppmb00q7fcyi6ftom0.webp" alt="empety-cart" />
+                             </div>
                         </>
                     )}
 
