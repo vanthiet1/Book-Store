@@ -10,8 +10,8 @@ const BookUi = (props) => {
                     <div className="absolute right-[26px] top-0 flex group-hover:blur-[10px]">
                         <span className={`text-white ${bgLabel} font-bold uppercase p-[0.5px] px-3 rounded-bl-[10px] rounded-br-[5px]`}>{labelBook}</span>
 
-                        <div className="absolute right-[-25px]">
-                            <img className='w-[37px]' src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713860821/Book-Store/Icon/brand.svg" alt="brand" />
+                        <div className="absolute right-[-26px] top-[-1px]">
+                            <img className='max-w-[40px]' src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713860821/Book-Store/Icon/brand.svg" alt="brand" />
                         </div>
                     </div>
                     <div className="py-3"> 

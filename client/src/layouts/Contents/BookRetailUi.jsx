@@ -26,7 +26,7 @@ const BookRetailUi = () => {
     }, []);
     return (
         <>
-            <div className="relative w-[100%] h-[auto] cursor-pointer px-3 flex" >
+            <div className="relative max-w-[1500px] h-[auto] cursor-pointer px-3 flex" >
                 <Sliders
                     slidesToShow={5}
                     autoplaySpeed={5000}
