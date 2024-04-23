@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { getCommentUser } from "../../../services/books/CommentBookService";
 import { useEffect, useState } from "react";
 import { getInforUserComment } from "../../../services/books/CommentBookService";
-import avatar from '../../../components/image/avatar.png';
+import { AvatarUser } from "~/components/image/AvatarDefault";
 
 const CommnentUser = () => {
     const [comments, setComments] = useState([]);
@@ -35,7 +35,7 @@ const CommnentUser = () => {
     <div className="bg-[#303030] w-[500px] p-3 rounded-[10px] my-2" key={index}>
         <div className="flex justify-between">
             <div className="flex gap-2">
-                <img className="w-[30px] rounded-full" src={dataComment.user && dataComment.user.avatar ? dataComment.user.avatar : avatar} alt="" />
+                <img className="w-[30px] rounded-full" src={dataComment.user && dataComment.user.avatar ? dataComment.user.avatar : AvatarUser} alt="" />
                 <span className="text-[#fff]">{dataComment.user && dataComment.user.email} {dataComment.user && dataComment.user.admin && '( Admin )'}</span>
             </div>
             <div>
