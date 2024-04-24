@@ -1,5 +1,13 @@
-const User = require('../../models/auth/user');
 const jwt = require('jsonwebtoken');
+const User = require('../../models/auth/user');
+const sendForgotPasswordMail = require('../../helpers/forgotPasswordMail');
+const crypto = require('crypto');
+
+const generateRandomString = (length) => {
+    return crypto.randomBytes(Math.ceil(length / 2))
+      .toString('hex')
+      .slice(0, length);
+  };
 const userController = {
     getUserInfo: async (req, res) => {
         try {
@@ -31,5 +39,30 @@ const userController = {
          }
     },
 
+    forgotPassword: async (req, res) => {
+        try {
+            const { email } = req.body;
+            const user = await User.findOne({ email });
+            if (!user) {
+                return res.status(400).json({ message: "Email chưa đăng ký không thể thực hiện chức năng" });
+            }
+
+            const randomString = generateRandomString(10);
+            user.randomString = randomString;
+            user.resetTokenExpires = new Date();
+            await user.save();
+
+            await sendForgotPasswordMail({ email, token: randomString });
+            res.status(200).json({ message: "Thành công vui lòng check mail" });
+        } catch (error) {
+            console.error("Error sending email:", error);
+            res.status(500).json({ message: "Internal server error" });
+        }
+    }
+    
+
 }
+
+
+
 module.exports = userController;

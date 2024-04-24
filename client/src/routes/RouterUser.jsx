@@ -7,6 +7,7 @@ import BookSuggestPage from "~/pages/UserPage/BookSuggestPage";
 import BookRetailPage from "~/pages/UserPage/BookRetailPage";
 import ProfilePage from "../pages/UserPage/ProfilePage";
 import Checkout from "../pages/UserPage/Checkout";
+import ResetPasswordPage from "~/pages/UserPage/ResetPasswordPage";
 
 const publicRouterUser = [
     {
@@ -48,6 +49,11 @@ const publicRouterUser = [
         path: PathUser.ProfilePage,
         component: ProfilePage,
         title: 'Profile',
+    },
+    {
+        path: PathUser.ResetPasswordPage,
+        component: ResetPasswordPage,
+        title: 'ResetPasswordPage',
     },
    
 ]

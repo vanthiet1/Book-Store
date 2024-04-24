@@ -35,7 +35,7 @@ const authorRouter = require('./routes/author/authorRouter')
 const authRouter = require('./routes/user/authRouter');
 const userRouter = require('./routes/user/userRouter');
 const detailUserRouter = require('./routes/user/deltailUserRouter');
-
+const forgotPasswordRouter = require('./routes/user/forgotPasswordRouter');
 // CHECKOUT
 const checkoutRouter = require('./routes/checkout/checkoutRouter');
 
@@ -66,6 +66,7 @@ app.use('/api/v1/banner/book', bannerRouter);
 app.use('/api/v1/author/book', authorRouter)
 // AUTH
 app.use('/api/v1/user', userRouter);
+app.use('/api/v1/forgotPassword',forgotPasswordRouter)
 // CHECKOUT
 app.use('/api/v1/user/book/checkout', checkoutRouter);
 app.use('/api/v1/user/detail/user', detailUserRouter);

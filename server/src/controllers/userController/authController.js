@@ -37,7 +37,7 @@ const authControllers = {
             await sendMail({
                 email: newUser.email,
                 subject: "Xác nhận tài khoản",
-                html: `Vui lòng nhập mã xác nhận sau vào ứng dụng của bạn: <strong>${randomCode}</strong>`
+                html: ` Vui lòng nhập mã xác nhận sau vào ứng dụng của bạn: <strong>${randomCode}</strong>`
             })
 
             res.status(200).json(user);
@@ -164,8 +164,42 @@ const authControllers = {
         } catch (error) {
             throw error;
         }
+    },
+    
+    resetPassword: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { newPassword, randomString } = req.body;
+            const user = await User.findById(id);
+            if (!user) {
+                return res.status(404).json({ message: 'Người dùng Không Tồn Tại' });
+            }
+    
+            if (randomString !== user.randomString) {
+                return res.status(400).json({ message: 'Token không hợp lệ' });
+            }
+    
+            const currentTime = new Date();
+            const tokenExpires = new Date(currentTime.getTime() +  3 * 60 * 1000); 
+    
+            if (!user.resetTokenExpires || user.resetTokenExpires > currentTime) {
+                return res.status(400).json({ message: "Token không hợp lệ hoặc đã hết hạn" });
+            }
+            
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(newPassword, salt);
+    
+            user.password = hashedPassword;
+            user.resetTokenExpires = tokenExpires;
+            await user.save();
+    
+            return res.status(200).json({ message: 'Thay đổi mật khẩu thành công' });
+        } catch (error) {
+            console.error('Error resetting password:', error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
     }
-       
+    
 
 };
 

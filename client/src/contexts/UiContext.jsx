@@ -4,28 +4,28 @@ export const Uicontext = createContext();
 const DisplayContext = ({ children }) => {
     const {inforUser} = useContext(DataUser)
     const [displayLogin, setDisplayLogin] = useState(false);
+    const [displayForgotPassword, setDisplayForgotPassword] = useState(false);
     const [displayRegister, setDisplayRegister] = useState(false);
     const [displayComment, setDisplayComment] = useState(false);
     const [displayVertify, setDisplayVertify] = useState(false);
     const [displayCart, setDisplayCart] = useState("translate-x-[500px]");
 
  
-
-   
-
     const [filter, setFilter] = useState(null);
     // Ui login 
     const handleDisplayLogin =  () => {
         setTimeout(() => {
             setDisplayLogin((prevLogin) => !prevLogin);
+            setDisplayForgotPassword(false)
         }, 200)
-        setDisplayRegister(false)
+        setDisplayRegister(false);
         setFilter('filter')
     }
     const handleHideLogin = () => {
         setDisplayLogin(!displayLogin)
         setFilter('')
     }
+
     // Ui register
     const handleDisplayRegister = () => {
         setTimeout(() => {
@@ -85,6 +85,18 @@ const DisplayContext = ({ children }) => {
         setDisplayVertify(true);
         setDisplayLogin(false)
     }
+
+    const handleDisplayForgot =  () => {
+        setTimeout(() => {
+            setDisplayForgotPassword((prevLogin) => !prevLogin);
+        }, 200)
+        setDisplayLogin(false);
+        setFilter('filter')
+    }
+    const handleHideForgot = () => {
+        setDisplayForgotPassword(!displayForgotPassword);
+        setFilter('')
+    }
  
     const dataDisplay = {
         displayCart,
@@ -92,6 +104,7 @@ const DisplayContext = ({ children }) => {
         displayLogin,
         displayComment,
         displayVertify,
+        displayForgotPassword,
         scroll,
         filter,
         setFilter,
@@ -112,6 +125,8 @@ const DisplayContext = ({ children }) => {
         handleDisplayVertify,
         handleDisplayVertifyInlogin,
 
+        handleDisplayForgot,
+        handleHideForgot
     }
     return (
         <div>

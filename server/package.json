@@ -13,6 +13,7 @@
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
@@ -24,6 +25,7 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.12",
     "nodemon": "^3.1.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "validator": "^13.11.0"
   }
 }

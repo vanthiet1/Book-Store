@@ -16,7 +16,6 @@ const useSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
- 
     verificationCode: Number,
     status: {
         type: Boolean,
@@ -26,7 +25,14 @@ const useSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    verificationCount: { type: Number, default: 0 }
+    verificationCount: { type: Number, default: 0 },
+    randomString: {
+        type: String
+    },
+    resetTokenExpires: {
+        type: Date,
+        default: Date.now() 
+    }
 },
     { timestamps: true }
 );

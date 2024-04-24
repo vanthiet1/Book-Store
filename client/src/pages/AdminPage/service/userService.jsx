@@ -9,6 +9,7 @@ const GetAllUser = async () => {
         console.log(error);
     }
 }
+
 const DeleteUser = async (idUser) => {
     try {
         const response = await axios.delete(`${URL_API}/${URL_ALL_USER}/${idUser}`);

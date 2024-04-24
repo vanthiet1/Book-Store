@@ -9,14 +9,20 @@ import ToastContainer from "~/components/notification/ToastContainers";
 import publicRouterUser from "~/routes/RouterUser";
 import PublicRouterAdmin from "~/routes/RouterAdmin";
 import Cart from "~/layouts/Contents/MainCart/Cart";
+import ForgotPassword from "~/layouts/Contents/Form/ForgotPassword";
 const App = () => {
-  const { displayRegister, displayLogin, filter, displayVertify, displayCart } = useContext(Uicontext);
+  const { displayRegister, displayLogin, filter, displayVertify, displayCart ,displayForgotPassword } = useContext(Uicontext);
   const { filterAdmin } = useContext(DisplayPopup);
   const privateRouterAdmin = PublicRouterAdmin();
 
   const loginComponent = useMemo(() => {
     return displayLogin ? <Login /> : null;
   }, [displayLogin]);
+
+  const forgotPasswordComponent = useMemo(() => {
+    return displayForgotPassword ? <ForgotPassword /> : null;
+  }, [displayForgotPassword]);
+
 
   const registerComponent = useMemo(() => {
     return displayRegister ? <Register /> : null;
@@ -54,6 +60,7 @@ const App = () => {
           {loginComponent}
           {registerComponent}
           {vertifyComponent}
+          {forgotPasswordComponent}
         </div>
         <div className={`${filter} ${filterAdmin}`} />
       </div>

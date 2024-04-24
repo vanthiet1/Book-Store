@@ -5,8 +5,8 @@ import { useContext, useState, useEffect } from "react";
 import Success from "@components/notification/Success";
 import Error from "@components/notification/Error";
 import Close from "@components/icons/Close";
+import { validateFormRegister } from "@components/validateForm/Form";
 import { Uicontext } from "../../../contexts/UiContext";
-import { validateFormRegister } from "../../../components/validateForm/Form";
 import { RegisterAuth } from '../../../services/auth/RegisterAuth';
 import { UserRegisterAcc } from "../../../contexts/authContext/DataUserRegister";
 const Register = () => {
@@ -66,7 +66,7 @@ const Register = () => {
         <>
             {showSuccess && <Success message="Đăng ký thành công" />}
             {errorMessage && <Error message={errorMessage} />}
-            <div className="flex w-[30%] flex-col justify-center px-6 py-8 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-10 top-[5%] left-[35%]">
+            <div className="flex w-[30%] flex-col justify-center px-6 py-8 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-40 top-[0%] left-[35%]">
                 <Close onClick={() => handleHideRegister()} />
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm pb-3">
                     <h2 className=" text-center text-2xl font-bold leading-9 tracking-tight text-white">

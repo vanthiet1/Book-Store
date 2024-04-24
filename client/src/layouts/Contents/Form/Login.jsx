@@ -9,7 +9,7 @@ import { UserRegisterAcc } from "../../../contexts/authContext/DataUserRegister"
 import { GetUserData } from "../../../services/auth/GetUserData";
 const Login = () => {
   const { userData } = useContext(UserRegisterAcc);
-  const { handleDisplayRegister, handleHideLogin, handleDisplayVertifyInlogin } = useContext(Uicontext);
+  const { handleDisplayRegister, handleHideLogin, handleDisplayVertifyInlogin ,handleDisplayForgot } = useContext(Uicontext);
   const [errorMessage, setErrorMessage] = useState("");
   const formik = useFormik({
     initialValues: {
@@ -21,7 +21,10 @@ const Login = () => {
       try {
         const token = await LoginAuth.login(values, setErrorMessage);
         localStorage.setItem('token', JSON.stringify(token))
-        await GetUserData(token);
+        const user =  await GetUserData(token);
+        const userId = user?user._id:null;
+        const hashedUserId = btoa(userId)
+        localStorage.setItem('userId',hashedUserId)
         window.location.assign('/')
       } catch (error) {
         console.log(error);
@@ -31,7 +34,7 @@ const Login = () => {
   return (
     <>
       {errorMessage && <Error message={errorMessage} />}
-      <div className="flex w-[30%] flex-col justify-center px-6 py-12 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-10 top-[5%] left-[35%]">
+      <div className="flex w-[30%] flex-col justify-center px-6 py-12 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-40 top-[0%] left-[35%]">
         <Close onClick={() => handleHideLogin()} />
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
@@ -89,8 +92,7 @@ const Login = () => {
             </div>
 
             <div>
-              <button
-                type="submit"
+              <button  type="submit"
                 className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 
               >
@@ -118,9 +120,9 @@ const Login = () => {
           </div>
 
           <div className="flex justify-center py-1">
-            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <span onClick={handleDisplayForgot}  className="font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer">
               Quên mật khẩu?
-            </a>
+            </span>
           </div>
           {userData !== null && (
             <div className="flex justify-center py-1">

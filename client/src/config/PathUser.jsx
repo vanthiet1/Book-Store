@@ -7,6 +7,8 @@ const pathUser = {
     BookRetailPage:'/book/retail',
     BookCheckoutPage:'/book/checkout',
     ProfilePage:'/account/profile',
+    ResetPasswordPage:'/resetPassword',
+
 
 }
 export default pathUser 

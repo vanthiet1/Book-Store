@@ -26,7 +26,7 @@ const VertifyAuth = {
         }
     },
 };
-export default VertifyAuth
+export default VertifyAuth;
 
 
 

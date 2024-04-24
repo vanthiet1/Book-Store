@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const sendMail = async ({ email, subject, html }) => {
 
     let transporter = nodemailer.createTransport({
-        host: "smtp.gnail.com",
+        host: "smtp.gmail.com",
         service: 'Gmail',
         auth: {
             user: process.env.EMAIL_USER,
