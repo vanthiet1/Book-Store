@@ -10,7 +10,7 @@ const sendForgotPasswordMail = async ({ email, token }) => {
         }
     });
     // http://localhost:1000
-    const resetLink = `https://book-store-woad-eight.vercel.app/resetPassword?token=${token}`;
+    const resetLink = `https://book-store-seven-flax.vercel.app/resetPassword?token=${token}`;
   
     const message = {
         from: '"Read-Book" <book@gmail.com>', 
