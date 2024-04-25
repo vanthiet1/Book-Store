@@ -27,4 +27,3 @@ const sendForgotPasswordMail = async ({ email, token }) => {
 
 module.exports = sendForgotPasswordMail;
 
-module.exports = sendForgotPasswordMail;
