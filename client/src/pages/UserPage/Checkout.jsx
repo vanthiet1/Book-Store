@@ -13,6 +13,7 @@ import { UseCart } from "../../contexts/CartContext";
 import { DataUser } from "../../contexts/authContext/DataUserLogin";
 import { GetDetailUser } from "../../services/checkout/detailUserService";
 import { PostCheckoutUser } from "../../services/checkout/checkoutUserService";
+import ProductCheckout from "~/layouts/Contents/MainCheckout/ProductCheckout";
 
 const Checkout = () => {
     const { inforUser } = useContext(DataUser);
@@ -80,15 +81,18 @@ const Checkout = () => {
                 setErrorOption(true)
                 return;
             }
+            if (nameMethodPayment === "Ví điện tử") {
+                window.location.href='https://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder'
+            }
             if (inforUser === null) {
                 setErrorLogin(true)
                 return;
             }
-            if(inforUser.status === false){
+            if (inforUser.status === false) {
                 setErrorStatusUser(true)
-                 setTimeout(()=>{
+                setTimeout(() => {
                     navigate('/account/profile')
-                 },1000)
+                }, 1000)
                 return;
             }
             if (detailUser === undefined) {
@@ -98,25 +102,26 @@ const Checkout = () => {
                 }, 500);
                 return;
             }
-            
+
             const data = {
                 userId: inforUser._id,
                 products: cart,
                 phoneNumber: detailUser.phoneNumber,
                 address: detailUser.address,
                 totalPrice: totalPriceCheckout,
-                methodPayment:nameMethodPayment, 
-                status:"chờ"
+                methodPayment: nameMethodPayment,
+                status: "chờ"
             };
             await PostCheckoutUser(data)
             setSuccsessCheckout(true);
-            setTimeout(()=>{
+            setTimeout(() => {
                 navigate('/')
-            },1000)
+            }, 1000)
         } catch (error) {
             console.log(error);
         }
     }
+
     return (
         <>
             {errorEmpetyInfor && <Error message={"Vui lòng cập nhật thông tin để thanh toán"} />}
@@ -124,7 +129,7 @@ const Checkout = () => {
             {errorLogin && <Error message={"Đăng nhập để thanh toán"} />}
             {errorCartEmpety && <Error message={"Vui lòng thêm sản phẩm rồi thanh toán"} />}
             {succsessCheckout && <Success message="Thanh toán thành công" />}
-            {errorStatusUser && <Error message={"Chưa xác thực tài khoản"}/>}
+            {errorStatusUser && <Error message={"Chưa xác thực tài khoản"} />}
             <TitleSetter title="Thanh  toán  " />
             <div className="w-full h-full">
                 <Header />
@@ -141,49 +146,13 @@ const Checkout = () => {
                                 <MethodPayment ClickoptionQrCode={handleAtiveOptionPayment} borderActive={activeOption} />
                             </div>
                             <div className="border p-5 rounded-md border-gray-500">
-                                <h1 className="text-[#fff] font-medium text-[20px]">Thông tin thanh toán</h1>
-                                {productCheckout ? (
-                                    productCheckout.map((product, index) => (
-                                        <div key={index}>
-                                            <div className="flex gap-2 py-2 ">
-                                                <span className="text-[#B3B3B3] w-[200px]">Sản phẩm {index + 1}</span>
-                                                <h1 className="text-[#fff]">{product.name ? product.name : "Sớm có tên"}</h1>
-                                            </div>
-                                            <div className="flex py-2 items-center gap-2 ">
-                                                <span className="text-[#B3B3B3] w-[200px]">Số lượng sản phẩm {index + 1}</span>
-                                                <span className="text-[#fff]">{product.quantity ? product.quantity : "Số lượng đang cập nhật"}</span>
-                                            </div>
-                                            <div className="flex py-2 gap-2">
-                                                <span className="text-[#B3B3B3] w-[200px]">Tạm tính</span>
-                                                <span className="text-[#fff]">{(product.price * product.quantity).toLocaleString() + " VND"}</span>
-                                            </div>
-                                        </div>
-                                    ))
-
-                                ) : (
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ51tXSU5w1aYlxTuaY
-xSPc9gaQwSK8x6Equqjaksf60B9pywAfV9IblnwysZMdiUFs0Ww&usqp=CAU" alt="" />
-                                )}
-                                <div className="flex py-2 gap-2">
-                                    <span className="text-[#B3B3B3] w-[200px]">Hình thức thanh toán</span>
-                                    <span className="text-[#fff]">{nameMethodPayment}</span>
-                                </div>
-                                <div className="flex py-2 gap-2">
-                                    <span className="text-[#B3B3B3] w-[200px]">Giảm giá</span>
-                                    <span className="text-[#fff]">0%</span>
-                                </div>
-                                <div className="flex py-2 gap-2 ">
-                                    <span className="text-[#fff] w-[200px]">TỔNG</span>
-                                    <span className="text-green-600">{totalPriceCheckout && totalPriceCheckout.toLocaleString() + " VND"}</span>
-                                </div>
-                                <div className="mt-2">
-
-                                    <button onClick={handleCheckUserCheckout} className={`  ${activeCheckout ? activeCheckout : ""} text-white p-1 rounded-full w-full py-3 text-[15px] 
-                                ease-in duration-200 flex gap-2 items-center justify-center " `}>
-                                        <span>Thanh toán</span>
-                                    </button>
-
-                                </div>
+                                <ProductCheckout
+                                    productCheckout={productCheckout}
+                                    nameMethodPayment={nameMethodPayment}
+                                    totalPriceCheckout={totalPriceCheckout}
+                                    handleCheckUserCheckout={handleCheckUserCheckout}
+                                    activeCheckout={activeCheckout}
+                                />
                             </div>
                         </div>
                     )}
