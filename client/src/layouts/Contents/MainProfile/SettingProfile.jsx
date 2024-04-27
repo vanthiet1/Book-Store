@@ -4,12 +4,15 @@ import SettingUser from "./SettingUser";
 import MyOrder from "./myOrder";
 import { GetDataUserCheckout } from "../../../services/checkout/checkoutUserService";
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
+import { FiAlignLeft } from "react-icons/fi";
+import { Uicontext } from "~/contexts/UiContext";
 
 const SettingProfile = () => {
     const [tabContent, setTabContent] = useState(1);
     const [activeTab, setActiveTab] = useState(1);
     const [dataUserCheckout, setDataUserCheckout] = useState(null);
     const { inforUser } = useContext(DataUser);
+    const {handleDisplayUserSidebar} = useContext(Uicontext)
     
     const handleTabContent = (index) => {
         setTabContent(index);
@@ -37,17 +40,25 @@ const SettingProfile = () => {
 
     return (
         <>
-            <div className="p-5 w-[85%]">
+            <div className="p-5 w-[85%] max-lg:w-full max-lg:p-0">
+               <div>
+               <FiAlignLeft 
+               className="text-[#fff] text-[30px] cursor-pointer hidden max-lg:block"
+                onClick={()=>handleDisplayUserSidebar()}
+               />
+               </div>
                 <h1 className="text-[#fff] text-[25px] font-semibold">Quản lí thông tin</h1>
                 <div className="flex py-3 items-center gap-5 border-b border-[#3e3e3e] ">
                     <h2 className={`text-[#fff] cursor-pointer ${activeTab === 1 ? 'text-[#13A988] text-[19px] font-semibold' : ''}`} onClick={() => handleTabContent(1)}>Thông tin cá nhân</h2>
 
                     <h2 className={`text-[#fff] cursor-pointer ${activeTab === 2 ? 'text-[#13A988] text-[19px] font-semibold' : ''}`}  onClick={() => handleTabContent(2)}>Tài khoản bảo mật</h2>
 
-                    <h2 className={`text-[#fff]  cursor-pointer relative" ${activeTab === 3 ? 'text-[#13A988] text-[19px] font-semibold' : ''}`}   onClick={() => handleTabContent(3)}>
+                    <h2 className={`text-[#fff] cursor-pointer relative ${activeTab === 3 ? 'text-[#13A988] text-[19px] font-semibold' : ''}`}   onClick={() => handleTabContent(3)}>
                         Đơn hàng của bạn
                         {dataUserCheckout !== null && (
-                            <span className="absolute text-[13px] top-[-15px] text-[#fff] bg-red-500 w-[20px] flex justify-center items-center right-[-20px] rounded-full ">  {dataUserCheckout !== null && dataUserCheckout.length}</span>
+                           <div className="absolute right-[0px] top-[-15px]">
+                           <span className=" text-[13px] text-[#fff] bg-red-500 w-[20px] flex justify-center items-center rounded-full ">  {dataUserCheckout !== null && dataUserCheckout.length}</span>
+                           </div>
                         )}
                     </h2>
                 </div>

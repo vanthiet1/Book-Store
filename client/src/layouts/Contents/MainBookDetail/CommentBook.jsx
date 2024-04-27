@@ -12,9 +12,6 @@ const CommentBook = () => {
     const [showError, setShowError] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
 
-
-
-
     const userId = inforUser ? inforUser._id : null;
     const getBookId = GetDetailBookFree();
     const bookId = getBookId ? getBookId._id : null;
@@ -44,7 +41,7 @@ const CommentBook = () => {
         <>
             {showError && <Error message="Vui lòng đăng nhập để bình luận" />}
             {showSuccess && <Success message="Đăng bình luận thành công" />}
-            <div className="w-[450px] h-auto fixed z-10 top-[20%] left-[35%] bg-[#161618] p-5 rounded-[20px] border border-gray-700 opacity-[0.98] ">
+            <div className="w-[450px] h-auto fixed z-10 top-[20%] left-[35%] bg-[#161618] p-5 rounded-[20px] border border-gray-700 opacity-[0.98] max-lg:left-[20%]">
                 <div className="flex justify-end" onClick={handleHideComment}>
                     <img className="cursor-pointer" src="https://waka.vn/svgs/icon-close-white.svg" alt="" />
                 </div>

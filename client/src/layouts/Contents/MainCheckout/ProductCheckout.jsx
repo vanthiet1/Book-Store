@@ -3,9 +3,7 @@ const ProductCheckout = (props) => {
     const { productCheckout, nameMethodPayment, totalPriceCheckout, handleCheckUserCheckout, activeCheckout } = props;
     return (
         <>
-
             <h1 className="text-[#fff] font-medium text-[20px]">Thông tin thanh toán</h1>
-
             {productCheckout ? (
                 productCheckout.map((product, index) => (
                     <div key={index}>
@@ -23,7 +21,6 @@ const ProductCheckout = (props) => {
                         </div>
                     </div>
                 ))
-
             ) : (
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ51tXSU5w1aYlxTuaY
 xSPc9gaQwSK8x6Equqjaksf60B9pywAfV9IblnwysZMdiUFs0Ww&usqp=CAU" alt="" />

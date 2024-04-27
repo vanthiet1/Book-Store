@@ -133,16 +133,16 @@ const Checkout = () => {
             <TitleSetter title="Thanh  toán  " />
             <div className="w-full h-full">
                 <Header />
-                <div className="pt-[150px] bg-[#191821] p-5 w-full h-auto">
-                    <h1 className="text-[#fff] text-[50px] font-bold">Chọn hình thức thanh toán</h1>
-                    <span className="text-[#fff] font-semibold text-[20px]">An toàn - Nhanh chóng - Bảo mật</span>
+                <div className="pt-[150px] bg-[#191821] p-5 w-full h-auto max-lg:pt-[100px]">
+                    <h1 className="text-[#fff] text-[50px] font-bold max-lg:text-[30px]">Chọn hình thức thanh toán</h1>
+                    <span className="text-[#fff] font-semibold text-[20px] max-lg:text-[16px]">An toàn - Nhanh chóng - Bảo mật</span>
                     {inforUser && inforUser === null ? (
                         <div className="pt-2">
                             <NotFoundPage />
                         </div>
                     ) : (
-                        <div className="flex justify-between mt-4">
-                            <div className="w-1/2">
+                        <div className="flex justify-between mt-4 max-lg:flex-col max-lg:gap-3">
+                            <div className="w-1/2 max-lg:w-full">
                                 <MethodPayment ClickoptionQrCode={handleAtiveOptionPayment} borderActive={activeOption} />
                             </div>
                             <div className="border p-5 rounded-md border-gray-500">

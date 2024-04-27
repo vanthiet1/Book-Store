@@ -9,9 +9,12 @@ const DisplayContext = ({ children }) => {
     const [displayComment, setDisplayComment] = useState(false);
     const [displayVertify, setDisplayVertify] = useState(false);
     const [displayCart, setDisplayCart] = useState("translate-x-[500px]");
+    const [displayUserSidebar, setDisplayUserSidebar] = useState("translate-x-[-500px]");
+
 
  
     const [filter, setFilter] = useState(null);
+  
     // Ui login 
     const handleDisplayLogin =  () => {
         setTimeout(() => {
@@ -55,7 +58,7 @@ const DisplayContext = ({ children }) => {
     }
     // Ui cart
     const handleDisplayCart = () => {
-        setDisplayCart("translate-x-[0px]");
+        setDisplayCart("translate-x-[415px]");
     }
     const handleHideCart = () => {
         setDisplayCart("translate-x-[500px] duration-300 ease");
@@ -98,6 +101,12 @@ const DisplayContext = ({ children }) => {
         setFilter('')
     }
  
+    const handleDisplayUserSidebar = ()=>{
+        setDisplayUserSidebar("translate-x-[0px]")
+    }
+    const handleHideUserSidebar = ()=> {
+        setDisplayUserSidebar("translate-x-[-500px]")
+    }
     const dataDisplay = {
         displayCart,
         displayRegister,
@@ -126,7 +135,11 @@ const DisplayContext = ({ children }) => {
         handleDisplayVertifyInlogin,
 
         handleDisplayForgot,
-        handleHideForgot
+        handleHideForgot,
+
+        handleDisplayUserSidebar,
+        handleHideUserSidebar,
+        displayUserSidebar
     }
     return (
         <div>

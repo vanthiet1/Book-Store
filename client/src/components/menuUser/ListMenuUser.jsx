@@ -15,7 +15,7 @@ const ListMenuUser = (props) => {
                     <img src="https://waka.vn/svgs/icon-notification.svg" alt="" />
                     <img className="w-[50px] rounded-full cursor-pointer " src={AvatarUser } alt="" />
                 </div>
-                <div className=" bg-[#1a1a1c] w-[300px] h-[0]  rounded-[10px]  blur-[0.5px]  backdrop-filter backdrop-blur-xl backdrop-saturate-150 backdrop-grayscale-50 absolute left-[-200px] top-[50px]  group-hover:h-[500px] overflow-hidden px-3 ease-in duration-300  ">
+                <div className=" bg-[#1a1a1c] w-[300px] h-[0]  rounded-[10px]  blur-[0.5px]  backdrop-filter backdrop-blur-xl backdrop-saturate-150 backdrop-grayscale-50 absolute left-[-200px] top-[50px]  group-hover:h-[500px] overflow-hidden px-3 ease-in duration-300  max-lg:left-[-190px]">
                     <div className="flex items-center justify-between">
                         <img className="w-[50px] rounded-full cursor-pointer" src={ AvatarUser} alt="" />
                         <span className="text-white">{userEmail ? userEmail : "Đang tải"}</span>

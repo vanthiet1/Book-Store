@@ -72,11 +72,14 @@ const Cart = () => {
             {errorStatus && <Error message='Vui lòng xác thực tài khoản' />}
             {errorNotLogin && <Error message='Vui lòng đăng nhập' />}
             <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0 z-40">
-                <div className="flex cursor-pointer">
+                <div className="flex cursor-pointer py-2">
                     <CiCircleRemove onClick={() => handleHideCart()} className="text-[30px] text-[#fff]" />
+                   <div className="w-[500px] ">
+                   <h1 className="text-center text-[20px] text-[#fff]">Giỏ hàng</h1>
+                   </div>
                 </div>
 
-                <div className="h-[600px] overflow-auto scrollbar-thin" >
+                <div className="h-[550px] overflow-auto scrollbar-thin" >
                     {cart.length > 0 ? (
                         cart.map((productCart, index) => (
                             <div className="flex gap-2 pt-4" key={index} >
@@ -123,7 +126,7 @@ const Cart = () => {
                     <span className="text-[#f91717] font-semibold text-[20px]">{totalPrice ? totalPrice.toLocaleString() + " VND" : <BeatLoader color="#36d7b7" />}</span>
                 </div>
 
-                <div className="absolute bottom-[-5px] w-full p-2">
+                <div className="w-full p-2">
                     <button  aria-label="Thanh toán" onClick={handleCheckout} className="text-[#fff] w-[95%] bg-[#f94d17] rounded-lg p-3">
                         Đến Thanh Toán
                     </button>

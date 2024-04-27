@@ -50,7 +50,7 @@ const SettingSecurity = () => {
                 </>
             ) : (
                 <>
-                    <div className="w-1/2">
+                    <div className="w-1/2 max-lg:w-full">
                         <div className="bg-[#2A2A2C] rounded-[15px] border border-[#515151] pl-3 py-2 mb-1 mt-3">
                             <span className="text-[#B3B3B3] block">Email</span>
                             <span className="text-[#fff] block">{inforUser ? inforUser.email : "Chưa đăng nhập"}</span>

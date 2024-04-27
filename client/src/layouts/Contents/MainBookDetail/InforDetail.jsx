@@ -1,3 +1,4 @@
+
 import { useParams } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState } from "react";
@@ -112,7 +113,7 @@ const InforDetail = () => {
                         <span className="text-white">5 đánh giá</span>
                     </div>
 
-                    <div className="flex justify-between w-[40%]">
+                    <div className="flex justify-between w-[40%] max-lg:w-[400px]">
                         <div >
                             <span className="block text-[#959695] font-semibold">Tác giả</span>
                             <span className="text-white block">
@@ -129,7 +130,7 @@ const InforDetail = () => {
 
                     </div>
 
-                    <div className="flex justify-between w-[30%]  pt-2">
+                    <div className="flex justify-between w-[30%] pt-2 max-lg:w-[330px]">
                         <div>
                             <span className="block text-[#959695] font-semibold">Nhà xuất bản</span>
                             <span className="text-white block">

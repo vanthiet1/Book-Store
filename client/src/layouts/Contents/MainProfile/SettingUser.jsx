@@ -151,7 +151,7 @@ const SettingUser = () => {
             {successPost && <Success message="Thêm thông tin thành công" />}
             {successUpdate && <Success message="Cập nhật thông tin thành công" />}
             <div className="pt-4">
-                <div className="w-1/2">
+                <div className="w-1/2 max-lg:w-full">
                     <div className="bg-[#2A2A2C] rounded-[15px] border border-[#515151] pl-3 py-2 mb-5">
                         <span className="text-[#B3B3B3] block">Tên đăng nhập</span>
                         <span className="text-[#fff] block">{inforUser ? inforUser.email : "Chưa đăng nhập"}</span>
