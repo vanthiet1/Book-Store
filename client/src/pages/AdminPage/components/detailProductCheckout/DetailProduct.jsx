@@ -1,6 +1,6 @@
 
 const DetailProduct = (props) => {
-    const { nameProduct, quantityProduct, priceProduct, imgProduct, dateCheckoutProduct } = props
+    const { nameProduct, quantityProduct, priceProduct, imgProduct, dateCheckoutProduct } = props;
     return (
         <>
             <div className="overflow-y-auto h-auto bg-white w-full">
@@ -15,7 +15,6 @@ const DetailProduct = (props) => {
                                 <img src={imgProduct} alt="Product Image" className="w-[100px]" />
                             </td>
                             <td className="text-left px-4 py-2">{dateCheckoutProduct}</td>
-                            <td className="text-left px-4 py-2"></td>
                         </tr>
 
                     </tbody>

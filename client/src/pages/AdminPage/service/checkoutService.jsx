@@ -17,7 +17,16 @@ const GetAnDataUserCheckout = async (userId) => {
         console.log(error);
     }
 }
+const DeleteOrderCheckout = async (orderId)=>{
+    try {
+        const response = await axios.delete(`${URL_API}/${URL_API_CHECKOUT}/${orderId}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    } 
+}
 export {
     GetDataUserCheckout,
-    GetAnDataUserCheckout
+    GetAnDataUserCheckout,
+    DeleteOrderCheckout
 }
