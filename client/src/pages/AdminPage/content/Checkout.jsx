@@ -8,7 +8,7 @@ import { DisplayPopup } from "../contexts/UiContextAdmin";
 import Error from "~/components/notification/Error";
 import Close from "~/components/icons/Close";
 import Success from "~/components/notification/Success";
-import ConfirmButton from "../components/button/confirmButton";
+import ConfirmButton from "../components/button/ConfirmButton";
 
 const Checkout = () => {
     const { showDetailProductCheckout, handleDisplayProductCheckout,
