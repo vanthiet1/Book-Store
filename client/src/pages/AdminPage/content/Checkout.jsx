@@ -8,6 +8,7 @@ import { DisplayPopup } from "../contexts/UiContextAdmin";
 import Error from "~/components/notification/Error";
 import Close from "~/components/icons/Close";
 import Success from "~/components/notification/Success";
+import ConfirmButton from "../components/button/confirmButton";
 
 const Checkout = () => {
     const { showDetailProductCheckout, handleDisplayProductCheckout,
@@ -61,6 +62,7 @@ const Checkout = () => {
             console.log(error);
         }
     }
+
     const DeleteOrder = async (orderId) => {
         try {
             if (!orderId || orderId === undefined) {
@@ -74,15 +76,12 @@ const Checkout = () => {
         }
     }
 
-
-
     return (
         <>
             {errorOrderProduct && (<Error message={'Không tìm thấy sản phẩm để xóa'} />)}
             {deleteSuccess && (<Success message={"Xóa thành công đơn hàng"} />)}
-
             {showDetailProductCheckout && (
-                <div className="h-[600px] overflow-hidden">
+                <>
                     <thead className="bg-gray-200 h-16 ">
                         <tr>
                             <th className="text-left px-20">Tên</th>
@@ -111,10 +110,9 @@ const Checkout = () => {
                             ))}
                         </div>
                     ))}
-
-                </div>
+                </>
             )}
-            {!showDetailProductCheckout && (
+           
                 <div className="overflow-y-auto h-[640px] ">
                     <table className="w-full"  >
                         <thead className="bg-gray-100 h-16">
@@ -147,6 +145,7 @@ const Checkout = () => {
                                                 DataCheckout(checkout.userId)
                                             }} />
                                             <DeleteButton_square titleDelete="Xóa Đơn Hàng" clickDelete={() => { DeleteOrder(checkout._id) }} />
+                                            <ConfirmButton/>
                                         </div>
                                     </td>
                                 </tr>
@@ -154,7 +153,7 @@ const Checkout = () => {
                         </tbody>
                     </table>
                 </div>
-            )}
+        
         </>
     );
 };

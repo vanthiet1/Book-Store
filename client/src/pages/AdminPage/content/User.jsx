@@ -12,6 +12,8 @@ const User = () => {
     const [allUser, setAllUser] = useState([])
     const [showSuccessDelete, setShowSuccessDelete] = useState(false);
     const [dataInforUser, setDataInforUser] = useState(false);
+    const [showDetailUser, setShowDetailUser] = useState(false);
+
 
     const getAllUser = async () => {
         try {
@@ -41,32 +43,36 @@ const User = () => {
             console.log(error);
         }
     }
-  useEffect(()=>{
-    getDetailUser()
-  },[])
+    useEffect(() => {
+        getDetailUser()
+    }, [])
     return (
         <>
             {showSuccessDelete && <Success message="Xóa Sản Phẩm Thành Công" />}
-            <div className="fixed z-10">
-                <thead className="bg-gray-200 h-16 ">
-                    <tr>
-                        <th className="text-left px-[100px]">Số điện thoại </th>
-                        <th className="text-left px-0">Địa chỉ</th>
-                        <th className="text-left px-[80px] cursor-pointer" >
-                            <Close
-                            // onClick={}
-                            />
-                        </th>
-                    </tr>
-                </thead>
-                {dataInforUser && (
-                    <InformationUser
-                        key={dataInforUser._id}
-                        phoneNumberUser={dataInforUser.phoneNumber}
-                        adressUser={dataInforUser.address}
-                    />
-                )}
-            </div>
+
+            {showDetailUser && (
+                <div className="fixed z-10 left-[40%]">
+                    <thead className="bg-gray-200 h-16">
+                        <tr>
+                            <th className="text-left px-[20px]">Số điện thoại </th>
+                            <th className="text-left pl-[180px]">Địa chỉ</th>
+                            <th className="text-left px-[80px] cursor-pointer" >
+                                <Close
+                                onClick={()=>setShowDetailUser(false)}
+                                />
+                            </th>
+                        </tr>
+                    </thead>
+                    {dataInforUser && (
+                        <InformationUser
+                            key={dataInforUser._id}
+                            phoneNumberUser={dataInforUser.phoneNumber}
+                            adressUser={dataInforUser.address}
+                        />
+                    )}
+                </div>
+            )}
+
             <div className="flex-1  undefine ">
                 <table className=" w-full ">
                     <thead className="bg-[#FFFFFF] h-[50px]">
@@ -104,6 +110,7 @@ const User = () => {
                                         <CheckButton clickCheck={
                                             () => {
                                                 getDetailUser(user._id)
+                                                setShowDetailUser(true)
                                             }} />
                                         <DeleteButton_square clickDelete={() => { handleDelete(user._id) }} />
                                     </div>
