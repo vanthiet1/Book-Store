@@ -4,7 +4,7 @@ import Success from "@components/notification/Success";
 import CheckButton from "../components/button/CheckButton";
 import DeleteButton_square from "../components/button/DeleteButton_square";
 import { GetAllUser, DeleteUser } from "../service/userService";
-import InformationUser from "../components/detailUser/informationUser";
+import InformationUser from "../components/detailUser/InformationUser";
 import Close from "~/components/icons/Close";
 import { GetAllDetailUser } from "../service/detailUserService";
 
