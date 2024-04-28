@@ -58,7 +58,7 @@ const DisplayContext = ({ children }) => {
     }
     // Ui cart
     const handleDisplayCart = () => {
-        setDisplayCart("translate-x-[415px]");
+        setDisplayCart("translate-x-[0px]");
     }
     const handleHideCart = () => {
         setDisplayCart("translate-x-[500px] duration-300 ease");
