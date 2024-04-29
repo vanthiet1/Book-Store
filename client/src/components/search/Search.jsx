@@ -43,7 +43,7 @@ const Search = ({ updateResults }) => {
                 <div className="relative">
                     <input
                         type="text"
-                        className=" rounded-xl p-2 w-[300px]"
+                        className=" rounded-xl p-2 w-[300px] max-md:w-[170px]"
                         placeholder="Tìm kiếm sách"
                         value={keywords}
                         onChange={handleChange}

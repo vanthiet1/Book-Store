@@ -4,9 +4,11 @@ import InforBookUi from '../../components/Ui-Books/InforBookUi';
 import Sliders from "../../components/slider-books/Slider";
 import BookUi from "../../components/Ui-Books/BookUi";
 import { GetInforBook, BookFreeApi } from "../../services/books/BookService";
-import { animateScroll as scroll } from "react-scroll";
+import { SizeBoxSlider } from "~/components/responsive/SizeBoxSlider";
+import { handleScrollToTop } from '~/components/animations/scroll/ScrollTop';
 const BookFreeUi = () => {
     const [dataBookFree, setDataBookFree] = useState([]);
+    const slidesToShow = SizeBoxSlider();
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -23,17 +25,13 @@ const BookFreeUi = () => {
 
         fetchData();
     }, []);
-    const handleScrollToTop = () => {
-        scroll.scrollToTop({
-          duration: 700,  
-          smooth: "ease-in-out"  
-        });
-      };
+ 
+
     return (
         <>
             <div className="relative max-w-[1500px] h-[auto] cursor-pointer px-3 flex " >
                 <Sliders
-                    slidesToShow={5}
+                    slidesToShow={slidesToShow}
                     autoplaySpeed={5000}
                 >
                     {dataBookFree.length > 0 ? (

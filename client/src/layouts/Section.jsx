@@ -26,7 +26,7 @@ const Section = () => {
                     </div>
                 ))}
             </Slider>
-            <div className="w-full absolute h-[50px] bottom-0 gradient"></div>
+            <div className="w-full absolute h-[50px] bottom-0 gradient max-md:h-[20px]"></div>
         </div>
     );
 };

@@ -12,7 +12,7 @@ const DataUserLogin = ({ children }) => {
             try {
                 const storeToken = localStorage.getItem('token');
                 if (!storeToken) {
-                 return;
+                    return;
                 }
                 const token = JSON.parse(storeToken);
                 const userData = await GetUserData(token);

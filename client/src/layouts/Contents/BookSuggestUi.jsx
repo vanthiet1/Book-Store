@@ -6,7 +6,9 @@ import BookUi from "@components/Ui-Books/BookUi";
 import { GetInforBook, BookSuggestApi } from '../../services/books/BookService';
 import { FormatCurrency } from '../../pages/AdminPage/Utils/formatCurrency';
 import { handleScrollToTop } from '~/components/animations/scroll/ScrollTop';
+import { SizeBoxSlider } from '~/components/responsive/SizeBoxSlider';
 const BookSuggestUi = () => {
+    const slidesToShow = SizeBoxSlider();
     const [dataBookFree, setDataBookFree] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
@@ -28,7 +30,7 @@ const BookSuggestUi = () => {
         <>
             <div className="relative max-w-[1500px] h-[auto] cursor-pointer px-3 flex" >
                 <Sliders
-                    slidesToShow={5}
+                    slidesToShow={slidesToShow}
                     autoplaySpeed={5000}
                 >
                     {dataBookFree.length > 0 ? (dataBookFree.map((bookFree) => (

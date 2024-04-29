@@ -102,7 +102,7 @@ const DisplayContext = ({ children }) => {
     }
  
     const handleDisplayUserSidebar = ()=>{
-        setDisplayUserSidebar("translate-x-[0px]")
+        setDisplayUserSidebar("left-[20px]")
     }
     const handleHideUserSidebar = ()=> {
         setDisplayUserSidebar("translate-x-[-500px]")

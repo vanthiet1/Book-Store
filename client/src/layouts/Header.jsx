@@ -59,11 +59,11 @@ const Header = () => {
         <>
             <div className={` ${stateBgHeader}
              items-center justify-between p-3 flex fixed w-full z-20
-            left-0 top-[-5px]`}>
+            left-0 top-[-5px] max-md:pt-3 max-md:p-2 max-md:gap-2`}>
                 <div className="flex items-center gap-4 ">
-                    <div className="px-5" onClick={handleScrollToTop}>
+                    <div className="px-5 max-md:px-1"  onClick={handleScrollToTop}>
                         <Link to={'/'}>
-                            <h1 className="text-green-200 text-[35px] font-bold">Sách</h1>
+                            <h1 className="text-green-200 text-[35px] font-bold max-md:text-[20px] ">Sách</h1>
                         </Link>
                     </div>
                     <ul className="flex gap-2 max-lg:fixed max-lg:left-0 max-lg:bottom-[-5px] max-lg:bg-[#1f1f1f] max-lg:p-5 max-lg:w-[100%] max-lg:justify-between ">

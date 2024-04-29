@@ -16,7 +16,7 @@ const Sliders = (props) => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: autoplaySpeed,
-        prevArrow: <ButtonLeftArrow onClick={() => setCurrentSlide(currentSlide - 1)} />,
+        prevArrow: <ButtonLeftArrow  onClick={() => setCurrentSlide(currentSlide - 1)} />,
         nextArrow: <ButtonRightArrow onClick={() => setCurrentSlide(currentSlide + 1)} />,
         beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex)
     };
