@@ -17,7 +17,7 @@ const Header = () => {
     const [stateBgHeader, setStateBgHeader] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
     const [useHiddenButton, setUseHiddenButton] = useState('hidden');
-    const [useHiddenClose, setUseHiddenClose] = useState('block');
+    const [useHiddenClose, setUseHiddenClose] = useState('hidden');
     const [useDisplayButton, setUseDisplayButton,] = useState('block');
 
 
@@ -123,7 +123,7 @@ const Header = () => {
                                             setUseDisplayButton('block')
                                         }}
                                         className={`text-[#fff] cursor-pointer  text-[30px] hidden max-md:${useHiddenClose}`}/>
-
+                                        
                                     </div>
                                     <div className={`flex gap-2 max-md:${useHiddenButton} max-md:absolute max-md:w-[200px] max-md:left-[-170px] top-[40px] max-md:flex`}>
                                         <button aria-label="Đăng ký" className="text-white max-md:bg-white max-md:text-[#139f7b] font-bold bg-[#C7C7C8] p-[6px] rounded-full border-[1px] border-gray-300 bg-transparent bg-opacity-50 w-[100px] 
