@@ -73,16 +73,16 @@ const Header = () => {
                         </Link>
                     </div>
                     <ul className="flex gap-2 max-lg:fixed max-lg:left-0 max-lg:bottom-[-5px] max-lg:bg-[#1f1f1f] max-lg:p-5 max-lg:w-[100%] max-lg:justify-between max-md:p-2 items-center">
-                        <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px] max-md:py-3" >
+                        <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px] max-md:py-3 max-md:px-0" >
                             <Link to={`/book/free`} className=" max-md:w-max">Sách miễn phí</Link>
                         </li>
-                        <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px]" >
+                        <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px] max-md:px-0" >
                             <Link to={`/book/new`}>Sách mới nhất</Link>
                         </li>
-                        <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px]" >
+                        <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px] max-md:px-0" >
                             <Link to={`/book/suggest`}>Waka đề xuất</Link>
                         </li>
-                        <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px]" >
+                        <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px] max-md:px-0" >
                             <Link to={`/book/retail`}>Mua lẻ</Link>
                         </li>
                     </ul>

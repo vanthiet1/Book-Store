@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
         <>
-            <div className="grid grid-cols-6 bg-black p-[25px] items-center max-lg:grid-cols-3 max-lg:pb-[100px] max-lg:gap-4">
+            <div className="grid grid-cols-6 bg-black p-[25px] items-center max-lg:grid-cols-3 max-lg:pb-[100px] max-lg:gap-4 max-md:grid-cols-2">
                 <div className="px-5 max-lg:p-0">
                     <img className="w-[300px]" src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713860650/Book-Store/logo/wjmbwk6ugkhy4qvajszm.png" alt="Logo" />
                     <span className="text-[#999999]">
@@ -10,9 +10,6 @@ const Footer = () => {
                     <div className="">
                         <div className="flex gap-1">
                             <span className="text-[#999999] block">0349850070</span>
-                        </div>
-                        <div className="flex gap-1">
-                            <span className="text-[#999999] block">vanthietfrontend@gmail.com</span>
                         </div>
                     </div>
                 </div>
