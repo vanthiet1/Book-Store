@@ -45,7 +45,7 @@ const ForgotPassword = () => {
     {errorForgotPass && <Error  message={'Chưa đăng ký không thể thực hiện thao tác'}  />}
     {successForgotPass && <Success  message={'Vui lòng kiểm tra gmail'}  />}
 
-      <div className="flex w-[30%] flex-col justify-center px-6 py-12 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-40 top-[0%] left-[35%]">
+      <div className="flex w-[30%] flex-col justify-center px-6 py-12 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-40 top-[0%] left-[35%] max-md:w-[100%] max-md:left-0 max-md:opacity-[1]">
         <Close onClick={handleHideForgot} />
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">

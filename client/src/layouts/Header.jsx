@@ -8,6 +8,7 @@ import { DataUser } from "../contexts/authContext/DataUserLogin";
 import { handleScrollToTop } from "~/components/animations/scroll/ScrollTop";
 import ResultSearch from "~/components/search/ResultSearch";
 import CartItems from "~/components/cart/CartItems";
+import { IoCloseSharp } from "react-icons/io5";
 const Header = () => {
     const { handleDisplayLogin, handleDisplayRegister } = useContext(Uicontext);
     const { isAdmin } = useContext(DataUser);
@@ -16,6 +17,10 @@ const Header = () => {
     const [stateBgHeader, setStateBgHeader] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
     const [useHiddenButton, setUseHiddenButton] = useState('hidden');
+    const [useHiddenClose, setUseHiddenClose] = useState('hidden');
+    const [useDisplayButton, setUseDisplayButton,] = useState('block');
+
+
     const navigate = useNavigate();
     useEffect(() => {
         const getToken = localStorage.getItem('token');
@@ -60,6 +65,8 @@ const Header = () => {
 
     const HiddenButton = ()=>{
         setUseHiddenButton('block')
+        setUseHiddenClose('block');
+        setUseDisplayButton('hidden');
     }
     return (
         <>
@@ -104,9 +111,18 @@ const Header = () => {
                         ) : (
                             <>
                                 <div className="relative ">
+                                    <div className="flex items-center">
                                     <PiUserCircleGearBold
                                         onClick={()=>HiddenButton()}
-                                        className="text-[#fff] text-[30px] hidden max-md:block" />
+                                        className={`text-[#fff] text-[30px] cursor-pointer hidden max-md:${useDisplayButton}`} />
+                                        <IoCloseSharp 
+                                        onClick={()=>{
+                                            setUseHiddenButton('hidden')
+                                            setUseHiddenClose('hidden')
+                                            setUseDisplayButton('block')
+                                        }}
+                                        className={`text-[#fff] cursor-pointer  text-[30px] hidden max-md:${useHiddenClose}`}/>
+                                    </div>
                                     <div className={`flex gap-2 max-md:${useHiddenButton} max-md:absolute max-md:w-[200px] max-md:left-[-170px] top-[40px] max-md:flex`}>
                                         <button aria-label="Đăng ký" className="text-white max-md:bg-white max-md:text-[#139f7b] font-bold bg-[#C7C7C8] p-[6px] rounded-full border-[1px] border-gray-300 bg-transparent bg-opacity-50 w-[100px] 
                                         " onClick={handleDisplayRegister}>Đăng ký</button>

@@ -34,7 +34,7 @@ const Login = () => {
   return (
     <>
       {errorMessage && <Error message={errorMessage} />}
-      <div className="flex w-[30%] flex-col justify-center px-6 py-12 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-40 top-[0%] left-[35%]">
+      <div className="flex w-[30%] flex-col justify-center px-6 py-12 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-40 top-[0%] left-[35%] max-md:w-[100%] max-md:left-0 max-md:opacity-[1] max-md:top-[-10px] max-md:h-dvh mã:w-[50%]">
         <Close onClick={() => handleHideLogin()} />
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
