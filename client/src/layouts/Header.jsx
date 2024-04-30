@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { PiUserCircleGearBold } from "react-icons/pi";
+import { IoCloseSharp } from "react-icons/io5";
 import Search from "@components/search/Search";
 import ListMenuUser from "@components/menuUser/ListMenuUser";
 import { Uicontext } from "../contexts/UiContext";
@@ -8,7 +9,6 @@ import { DataUser } from "../contexts/authContext/DataUserLogin";
 import { handleScrollToTop } from "~/components/animations/scroll/ScrollTop";
 import ResultSearch from "~/components/search/ResultSearch";
 import CartItems from "~/components/cart/CartItems";
-import { IoCloseSharp } from "react-icons/io5";
 const Header = () => {
     const { handleDisplayLogin, handleDisplayRegister } = useContext(Uicontext);
     const { isAdmin } = useContext(DataUser);
