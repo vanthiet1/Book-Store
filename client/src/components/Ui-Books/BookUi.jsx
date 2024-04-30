@@ -13,7 +13,7 @@ const BookUi = (props) => {
                             <img className='max-w-[40px] max-lg:max-w-[30px] max-md:max-w-[30px]' src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713860821/Book-Store/Icon/brand.svg" alt="brand" />
                         </div>
                     </div>
-                    <div className="py-3"> 
+                    <div className="py-3 max-md:py-0"> 
                     <Link to={`/ebook/${bookId}`}>
                      <h1 className="text-white font-bold cursor-pointer hover:text-[#15B088] max-lg:text-[13px]">{nameBook}</h1>
                      </Link>

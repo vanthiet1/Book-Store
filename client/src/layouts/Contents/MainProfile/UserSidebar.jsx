@@ -14,7 +14,7 @@ const UserSidebar = () => {
     const { userEmail, isAdmin } = useContext(DataUser);
     return (
         <>
-            <div className={`w-[25%] border-r border-[#1E1E20] pr-5 max-lg:fixed max-lg:bg-[#000000] max-lg:h-dvh max-lg:top-[70px] max-lg:w-[400px] max-lg:z-20 max-lg:left-0  pl-5 max-lg:ease-in max-lg:duration-300 max-lg:pt-[50px] max-lg:${displayUserSidebar} `}>
+            <div className={`w-[25%] border-r border-[#1E1E20] pr-5 max-lg:fixed max-lg:bg-[#000000] max-lg:h-dvh max-lg:top-[70px] max-lg:w-[400px] max-lg:z-20 max-lg:left-0  pl-5 max-lg:ease-in max-lg:duration-300 max-lg:pt-[50px] max-lg:${displayUserSidebar}  `}>
             <div className="pb-4 text-[25px] hidden max-lg:block ]">
             <FiArrowLeft className="text-[#fff] cursor-pointer" onClick={()=>handleHideUserSidebar()}/>
             </div>

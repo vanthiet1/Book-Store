@@ -134,8 +134,8 @@ const Checkout = () => {
             <div className="w-full h-full">
                 <Header />
                 <div className="pt-[150px] bg-[#191821] p-5 w-full h-auto max-lg:pt-[100px]">
-                    <h1 className="text-[#fff] text-[50px] font-bold max-lg:text-[30px]">Chọn hình thức thanh toán</h1>
-                    <span className="text-[#fff] font-semibold text-[20px] max-lg:text-[16px]">An toàn - Nhanh chóng - Bảo mật</span>
+                    <h1 className="text-[#fff] text-[50px] font-bold max-lg:text-[30px] max-md:text-[20px]">Chọn hình thức thanh toán</h1>
+                    <span className="text-[#fff] font-semibold text-[20px] max-lg:text-[16px] max-md:text-[14px]">An toàn - Nhanh chóng - Bảo mật</span>
                     {inforUser && inforUser === null ? (
                         <div className="pt-2">
                             <NotFoundPage />

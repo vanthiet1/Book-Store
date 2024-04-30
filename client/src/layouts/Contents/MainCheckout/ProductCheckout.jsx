@@ -7,15 +7,15 @@ const ProductCheckout = (props) => {
             {productCheckout ? (
                 productCheckout.map((product, index) => (
                     <div key={index}>
-                        <div className="flex gap-2 py-2 ">
+                        <div className="flex gap-2 py-2 max-md:flex-col">
                             <span className="text-[#B3B3B3] w-[200px]">Sản phẩm {index + 1}</span>
                             <h1 className="text-[#fff]">{product.name ? product.name : "Sớm có tên"}</h1>
                         </div>
                         <div className="flex py-2 items-center gap-2 ">
-                            <span className="text-[#B3B3B3] w-[200px]">Số lượng sản phẩm {index + 1}</span>
+                            <span className="text-[#B3B3B3] w-[200px] max-md:w-[95%]">Số lượng sản phẩm {index + 1}</span>
                             <span className="text-[#fff]">{product.quantity ? product.quantity : "Số lượng đang cập nhật"}</span>
                         </div>
-                        <div className="flex py-2 gap-2">
+                        <div className="flex py-2 gap-2 max-md:flex-col">
                             <span className="text-[#B3B3B3] w-[200px]">Tạm tính</span>
                             <span className="text-[#fff]">{(product.price * product.quantity).toLocaleString() + " VND"}</span>
                         </div>
@@ -27,14 +27,14 @@ xSPc9gaQwSK8x6Equqjaksf60B9pywAfV9IblnwysZMdiUFs0Ww&usqp=CAU" alt="" />
             )}
 
             <div className="flex py-2 gap-2">
-                <span className="text-[#B3B3B3] w-[200px]">Hình thức thanh toán</span>
-                <span className="text-[#fff]">{nameMethodPayment}</span>
+                <span className="text-[#B3B3B3] w-[200px] max-md:w-[85%]">Hình thức thanh toán</span>
+                <span className="text-[#fff] max-md:w-[100px]">{nameMethodPayment}</span>
             </div>
             <div className="flex py-2 gap-2">
                 <span className="text-[#B3B3B3] w-[200px]">Giảm giá</span>
                 <span className="text-[#fff]">0%</span>
             </div>
-            <div className="flex py-2 gap-2 ">
+            <div className="flex py-2 gap-2 max-md:flex-col">
                 <span className="text-[#fff] w-[200px]">TỔNG</span>
                 <span className="text-green-600">{totalPriceCheckout && totalPriceCheckout.toLocaleString() + " VND"}</span>
             </div>

@@ -72,7 +72,7 @@ const Header = () => {
         <>
             <div className={` ${stateBgHeader}
              items-center justify-between p-3 flex fixed w-full z-20
-            left-0 top-[-5px] max-md:pt-3 max-md:p-2 max-md:gap-2`}>
+            left-0 top-[-6px] max-md:pt-5 max-md:pb-4 max-md:p-2  max-md:gap-2 max-md:opacity-[0.97]`}>
                 <div className="flex items-center gap-4 ">
                     <div className="px-5 max-md:px-1" onClick={handleScrollToTop}>
                         <Link to={'/'}>

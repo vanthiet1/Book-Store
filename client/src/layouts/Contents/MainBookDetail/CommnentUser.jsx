@@ -32,7 +32,7 @@ const CommnentUser = () => {
     return (
         <>
          {comments.length > 0 ? comments.map((dataComment, index) => (
-    <div className="bg-[#303030] w-[500px] p-3 rounded-[10px] my-2" key={index}>
+    <div className="bg-[#303030] w-[500px] p-3 rounded-[10px] my-2 " key={index}>
         <div className="flex justify-between">
             <div className="flex gap-2">
                 <img className="w-[30px] rounded-full" src={dataComment.user && dataComment.user.avatar ? dataComment.user.avatar : AvatarUser} alt="" />
@@ -47,7 +47,7 @@ const CommnentUser = () => {
         </div>
     </div>
 )) : (
-    <div className="w-[50%]">
+    <div className="w-[50%] max-md:w-full">
         <img className="w-full h-full" src="https://waka.vn/images/comment-empty.png" alt="" />
         <h1 className="text-center text-[#fff]">Chưa có bình luận nào</h1>
     </div>

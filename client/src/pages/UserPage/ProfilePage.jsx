@@ -10,7 +10,7 @@ const ProfilePage = () => {
       <div>
         <Header />
         <div className="flex h-auto pt-[100px] bg-black p-5">
-          <Suspense fallback={<div>Loading.....</div>}>
+          <Suspense>
             <LazyUserSidebar />
             <LazySettingProfile />
           </Suspense>

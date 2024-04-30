@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { CiCircleRemove } from "react-icons/ci";
+import { IoCloseCircleSharp } from "react-icons/io5";
 import { BeatLoader } from 'react-spinners';
 import { useNavigate } from 'react-router-dom'
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
@@ -22,7 +22,7 @@ const Cart = () => {
             handleHideCart()
             handleDisplayLogin()
             return false
-        } else if (inforUser && inforUser.status === true ) {
+        } else if (inforUser && inforUser.status === true) {
             handleHideCart()
             navigate('/book/checkout');
         } else {
@@ -71,12 +71,12 @@ const Cart = () => {
         <>
             {errorStatus && <Error message='Vui lòng xác thực tài khoản' />}
             {errorNotLogin && <Error message='Vui lòng đăng nhập' />}
-            <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0 z-40">
+            <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0 z-40 max-md:w-[350px] max-md:top-[-3px]">
                 <div className="flex cursor-pointer py-2">
-                    <CiCircleRemove onClick={() => handleHideCart()} className="text-[30px] text-[#fff]" />
-                   <div className="w-[500px] ">
-                   <h1 className="text-center text-[20px] text-[#fff]">Giỏ hàng</h1>
-                   </div>
+                    <IoCloseCircleSharp className="text-[30px] text-[#fff] max-md:text-[30px]"  onClick={() => handleHideCart()}  />
+                    <div className="w-[500px] ">
+                        <h1 className="text-center text-[20px] text-[#fff]">Giỏ hàng</h1>
+                    </div>
                 </div>
 
                 <div className="h-[550px] overflow-auto scrollbar-thin" >
@@ -95,7 +95,7 @@ const Cart = () => {
                                     </div>
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <button  aria-label="Giảm"  className="text-[#fff] w-[50px] font-bold  bg-transparent" onClick={() => handleDecreaseQuantity(index)}>-</button>
+                                            <button aria-label="Giảm" className="text-[#fff] w-[50px] font-bold  bg-transparent" onClick={() => handleDecreaseQuantity(index)}>-</button>
                                             <input
                                                 type="number"
                                                 className="w-[70px] pl-4 bg-transparent text-[#fff] text-[20px]"
@@ -113,9 +113,9 @@ const Cart = () => {
                         ))
                     ) : (
                         <>
-                             <div>
-                             <img className="w-[100%]"  src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713867628/Book-Store/Icon/sdppmb00q7fcyi6ftom0.webp" alt="empety-cart" />
-                             </div>
+                            <div>
+                                <img className="w-[100%]" src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713867628/Book-Store/Icon/sdppmb00q7fcyi6ftom0.webp" alt="empety-cart" />
+                            </div>
                         </>
                     )}
 
@@ -127,7 +127,7 @@ const Cart = () => {
                 </div>
 
                 <div className="w-full p-2">
-                    <button  aria-label="Thanh toán" onClick={handleCheckout} className="text-[#fff] w-[95%] bg-[#f94d17] rounded-lg p-3 max-lg:w-full">
+                    <button aria-label="Thanh toán" onClick={handleCheckout} className="text-[#fff] w-[95%] bg-[#f94d17] rounded-lg p-3 max-lg:w-full">
                         Đến Thanh Toán
                     </button>
                 </div>

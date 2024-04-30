@@ -73,7 +73,7 @@ const InforDetail = () => {
     return (
         <>
             {showSuccess && (<Success message="Đã thêm vào giỏ hàng" />)}
-            <div className="flex items-center pb-3 pl-2 gap-2">
+            <div className="flex items-center pb-3 pl-2 gap-2 max-md:p-0">
                 <Link to={'/'}>
                     <span className="text-white font-semibold text-[13px]">Trang chủ</span>
                 </Link>
@@ -84,7 +84,7 @@ const InforDetail = () => {
                     {dataBookDetailFree ? dataBookDetailFree.nameBook : <TextSkeletion height="h-5" width="w-[250px]" />}
                 </span>
             </div>
-            <div className="flex gap-5 justify-start">
+            <div className="flex gap-5 justify-start max-md:flex-col">
                 <div className="w-[27%] p-2">
                     {skeletonImage ? (
                         <ImageSkeletion />
@@ -101,11 +101,11 @@ const InforDetail = () => {
                         </>
                     )}
                 </div>
-                <div className="w-[80%] p-1 pl-[20px] relative overflow-scroll h-[600px] scroll-content-detail">
-                    <h1 className="text-[35px] text-white font-bold w-[700px]">
+                <div className="w-[80%] p-1 pl-[20px] relative overflow-scroll h-[600px] scroll-content-detail max-md:w-full max-md:px-5">
+                    <h1 className="text-[35px] text-white font-bold w-[700px] max-md:text-[16px] max-md:w-[250px]">
                         {dataBookDetailFree ? dataBookDetailFree.nameBook : <TextSkeletion height="h-6" width="w-[650px]" />}
                     </h1>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 max-md:py-3">
                         <div className="flex gap-2">
                             <span className="text-white">5.0</span>
                             <img loading="lazy" src="https://res.cloudinary.com/dz93cdipw/image/upload/v1713802129/Book-Store/Icon/icon-star.svg" alt="Star" />
@@ -113,8 +113,8 @@ const InforDetail = () => {
                         <span className="text-white">5 đánh giá</span>
                     </div>
 
-                    <div className="flex justify-between w-[40%] max-lg:w-[400px]">
-                        <div >
+                    <div className="flex justify-between w-[40%] max-lg:w-[400px]max-md:flex-col max-md:w-full">
+                        <div>
                             <span className="block text-[#959695] font-semibold">Tác giả</span>
                             <span className="text-white block">
                                 {dataBookDetailFree && dataBookDetailFree.author ? dataBookDetailFree.author[0].name : <TextSkeletion height="h-5" width="w-[100px]" />}
@@ -130,7 +130,7 @@ const InforDetail = () => {
 
                     </div>
 
-                    <div className="flex justify-between w-[30%] pt-2 max-lg:w-[330px]">
+                    <div className="flex justify-between w-[30%] pt-2 max-lg:w-[330px]  max-md:w-full">
                         <div>
                             <span className="block text-[#959695] font-semibold">Nhà xuất bản</span>
                             <span className="text-white block">
@@ -168,11 +168,11 @@ const InforDetail = () => {
                         <DescriptionBook />
                     </div>
                     <div className="pt-[40px]">
-                        <h1 className="text-white text-[25px]">
+                        <h1 className="text-white text-[25px] max-md:text-[20px]">
                             Độc giả nói gì về  {dataBookDetailFree ? `" ${dataBookDetailFree.nameBook} "` : <TextSkeletion height="h-6" width="w-[650px]" />}
                         </h1>
                     </div>
-                    <div className="flex items-center gap-3 border-b-1 w-[60%] border-b-1 pb-4">
+                    <div className="flex items-center gap-3 border-b-1 w-[60%] border-b-1 pb-4 max-md:w-full max-md:gap-5 max-md:pt-4">
                         <span className={`text-white text-[17px] font-semibold cursor-pointer`}>Bình luận</span>
                         <ButtonComment
                             showComment={handleDisplayComment}
@@ -183,7 +183,6 @@ const InforDetail = () => {
                     <div className="pt-2">
                         <CommnentUser />
                     </div>
-
                 </div>
             </div>
             <div>

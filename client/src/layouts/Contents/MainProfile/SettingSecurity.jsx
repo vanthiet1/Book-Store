@@ -68,7 +68,7 @@ const SettingSecurity = () => {
                                 onClick={accountAuthentication}
                                 bgBtn={"bg-[#139F7B]"} content="Xác Thực" />
                         </div>
-                        <div className="flex gap-1 mt-3">
+                        <div className="flex gap-1 mt-3 max-md:flex-col">
                             <h3 className="text-[#fff]">Bạn không có nhu cầu sử dụng tài khoản này nữa ?</h3>
                             <span className="text-[#14B088] cursor-pointer" onClick={() => { setDeleteAccount(true) }}>Xóa tài khoản</span>
                         </div>
