@@ -18,7 +18,7 @@ const Header = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [useHiddenButton, setUseHiddenButton] = useState('hidden');
     const [useHiddenClose, setUseHiddenClose] = useState('hidden');
-    const [useDisplayButton, setUseDisplayButton,] = useState('block');
+    const [useDisplayButton, setUseDisplayButton] = useState('block');
 
 
     const navigate = useNavigate();
@@ -114,7 +114,7 @@ const Header = () => {
                                     <div className="flex items-center">
                                     <PiUserCircleGearBold
                                         onClick={()=>HiddenButton()}
-                                        className={`text-[#fff] text-[30px] cursor-pointer hidden max-md:${useDisplayButton}`} />
+                                        className={`text-[#fff] text-[30px] cursor-pointer hidden max-md:${useDisplayButton} max-md:block`} />
 
                                         <IoCloseSharp 
                                         onClick={()=>{
