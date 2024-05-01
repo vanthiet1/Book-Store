@@ -9,7 +9,7 @@ const DisplayContext = ({ children }) => {
     const [displayComment, setDisplayComment] = useState(false);
     const [displayVertify, setDisplayVertify] = useState(false);
     const [displayCart, setDisplayCart] = useState("translate-x-[500px]");
-    const [displayUserSidebar, setDisplayUserSidebar] = useState("translate-x-[-500px]");
+    const [displayUserSidebar, setDisplayUserSidebar] = useState("left-[-400px] ");
 
 
  
@@ -102,10 +102,10 @@ const DisplayContext = ({ children }) => {
     }
  
     const handleDisplayUserSidebar = ()=>{
-        setDisplayUserSidebar("left-[20px]")
+        setDisplayUserSidebar("")
     }
     const handleHideUserSidebar = ()=> {
-        setDisplayUserSidebar("translate-x-[-500px]")
+        setDisplayUserSidebar("left-[-400px]")
     }
     const dataDisplay = {
         displayCart,

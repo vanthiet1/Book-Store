@@ -28,13 +28,13 @@ const MyOrder = () => {
 
 
     return (
-        <>
-            <div className="overflow-y-auto h-[640px] ">
-                <table className="w-full">
-                    <thead className="bg-gray-100 h-16">
+        <> 
+            <div className="overflow-x-auto ">
+                <table className="w-[1200px] ">
+                    <thead className="bg-gray-100 h-16 ">
                         <tr>
-                            <th className="text-left px-4">Tên </th>
-                            <th className="text-left px-4">Số lượng</th>
+                            <th className="text-left px-4 ">Tên </th>
+                            <th className="text-left px-4 max-md:w-[30px]">Số lượng</th>
                             <th className="text-left px-4">Sách</th>
                             <th className="text-left px-4">Giá</th>
                             <th className="text-left px-4">Tổng Tiền</th>

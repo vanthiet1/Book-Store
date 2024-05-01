@@ -1,16 +1,23 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
 import { GetDetailUser } from "~/services/checkout/detailUserService";
 import ButtonDefault from "~/components/button-ui/ButtonDefault";
 import { Uicontext } from "~/contexts/UiContext";
 import Success from "~/components/notification/Success";
+import Error from "~/components/notification/Error";
 import PolicyDelete from "~/components/deleteAccount/PolicyDelete";
+import ButtonConfirmDeleteAccount from "~/components/button-ui/ButtonDeleteAccount";
+import { DeleteUser } from "~/pages/AdminPage/service/userService";
 const SettingSecurity = () => {
     const [detailUser, setDetailUser] = useState({});
     const { handleDisplayVertifyInlogin } = useContext(Uicontext);
     const { inforUser } = useContext(DataUser);
     const [vertifySuccess, setVertifySuccess] = useState(false);
     const [deleteAccount, setDeleteAccount] = useState(false);
+    const [deleteAccountSuccess,setDeleteAccountSuccess] = useState(false);
+    const [deleteAccountFaile,setDeleteAccountFaile] = useState(false);
+    const Navigate = useNavigate()
     const DetailUser = async () => {
         try {
             if (!inforUser || !inforUser._id) {
@@ -28,7 +35,23 @@ const SettingSecurity = () => {
             DetailUser();
         }
     }, [inforUser]);
-
+    const confirmDeleteAccount = async () => {
+        try {
+            if (!inforUser || inforUser._id == null) {
+                setDeleteAccountFaile(true);
+                return;
+            }
+            await DeleteUser(inforUser._id);
+            setDeleteAccountSuccess(true)
+             localStorage.removeItem('#');
+             localStorage.removeItem('cart')
+             localStorage.removeItem('userId')
+             localStorage.removeItem('token')
+             Navigate('/');
+        } catch (error) {
+            console.log(error);
+        }
+    }
     const accountAuthentication = () => {
         if (inforUser.status === true) {
             return setVertifySuccess(true)
@@ -39,13 +62,21 @@ const SettingSecurity = () => {
     return (
         <>
             {vertifySuccess && <Success message={"Tài khoản của bạn đã được xác nhận rồi"} />}
+            {deleteAccountSuccess && <Success message={"Tài khoản của bạn đã xóa"}/>}
+           {deleteAccountFaile && <Error message={"Bạn có chắc là có tài khoản chưa"}/>} 
 
             {deleteAccount ? (
                 <>
                     <PolicyDelete />
-                    <div className="pt-3 flex gap-2">
-                    <ButtonDefault bgBtn={"bg-[#414143]"} content={"Hủy bỏ"} onClick={()=>{setDeleteAccount(false)}}/>
-                    <ButtonDefault bgBtn={"bg-[#15B088]"} content={"Xác nhận xóa"} />
+                    <div className="pt-3 flex">
+                        <ButtonDefault bgBtn={"bg-[#414143]"} content={"Hủy bỏ"} onClick={() => { setDeleteAccount(false) }} />
+                        <ButtonDefault
+                        />
+                        <ButtonConfirmDeleteAccount
+                            clickDelete={() => confirmDeleteAccount()}
+                            bgBtn={"bg-[#15B088]"}
+                            content={"Xác nhận xóa"}
+                        />
                     </div>
                 </>
             ) : (

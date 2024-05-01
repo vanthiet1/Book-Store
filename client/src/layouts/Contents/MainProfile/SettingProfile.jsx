@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
+import { FiAlignLeft } from "react-icons/fi";
 import SettingSecurity from "./SettingSecurity";
 import SettingUser from "./SettingUser";
 import MyOrder from "./myOrder";
 import { GetDataUserCheckout } from "../../../services/checkout/checkoutUserService";
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
-import { FiAlignLeft } from "react-icons/fi";
 import { Uicontext } from "~/contexts/UiContext";
 
 const SettingProfile = () => {

@@ -89,7 +89,7 @@ const VerifyAccount = () => {
     return (
         <>
 
-            <div className="flex w-[30%] flex-col justify-center px-6 py-8 lg:px-8 bg-[#1A1918] opacity-[0.9.5] rounded-lg fixed z-10 top-[15%] left-[35%]">
+            <div className="flex w-[30%] flex-col justify-center px-6 py-8 lg:px-8 bg-[#1A1918] opacity-[0.9.5] rounded-lg fixed z-10 top-[15%] left-[35%] max-lg:w-[50%] max-lg:left-[25%] max-md:w-full max-md:left-0">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm pb-3">
                     <h2 className=" text-center text-2xl font-bold leading-9 tracking-tight text-white">
                         Xác Thực Tài Khoản

@@ -18,6 +18,7 @@ const DeleteUser = async (idUser) => {
         console.log(error);
     }
 }
+
 const GetNameUser = async (userId) => {
     try {
         const response = await axios.get(`${URL_API}/user/${userId}`);
