@@ -10,9 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.1",
     "@react-spring/web": "^9.7.3",
     "axios": "^1.6.2",
     "date-fns": "^3.6.0",
