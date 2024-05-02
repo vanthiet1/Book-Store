@@ -3,29 +3,50 @@ import { format } from "date-fns";
 import CheckButton from "../components/button/CheckButton";
 import DeleteButton_square from "../components/button/DeleteButton_square";
 import { GetDataComment, GetNameBookInComment, GetNameUserInComment, DeleteComment } from "../service/commentService";
+import Success from "~/components/notification/Success";
+import Error from "~/components/notification/Error";
 
 const Comment = () => {
     const [dataComment, setDataComment] = useState([]);
     const [bookNames, setBookNames] = useState([]);
     const [userNames, setUserNames] = useState([]);
+    const [deleteSucess, setDeleteSucess] = useState(false);
+    const [deleteError, setDeleteError] = useState(false);
 
+
+    const fetchData = async () => {
+        try {
+            const comments = await GetDataComment();
+            setDataComment(comments);
+            const bookNames = await GetNameBookInComment(comments);
+            setBookNames(bookNames);
+            const userNames = await GetNameUserInComment(comments);
+             console.log(userNames);
+            setUserNames(userNames);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const comments = await GetDataComment();
-                setDataComment(comments);
-                const bookNames = await GetNameBookInComment(comments);
-                setBookNames(bookNames);
-                const userNames = await GetNameUserInComment(comments);
-                setUserNames(userNames);
-            } catch (error) {
-                console.log(error);
-            }
-        };
         fetchData();
     }, []);
+    const DeleteCommentUser =  async (id)=>{
+        try {
+             if(id === undefined || id === null){
+                return setDeleteError(true)
+             }
+           await DeleteComment(id);
+           setDeleteSucess(true)
+           fetchData()
+        } catch (error) {
+             console.log(error);
+        }
+    }
     return (
         <>
+         {deleteSucess && (<Success message={"Xóa thành công"}/>)}
+         {deleteError && (<Error message={"Xóa không thành công"}/>)}
+
             <div className="flex-1 undefine">
                 <table className="w-full">
                     <thead className="bg-[#FFFFFF] h-[50px]">
@@ -51,16 +72,14 @@ const Comment = () => {
                                 <td data-label="Book">{bookNames.length > 0 ? bookNames[index] : ""}</td>
                                 <td data-label="Coment">{comment.content}</td>
                                 <td data-label="Created" className="lg:w-1 whitespace-nowrap pl-[50px]">
-                                <small className="text-gray-500 dark:text-slate-400"> {comment.createdAt && format(new Date(comment.createdAt), 'yyyy-MM-dd HH:mm:ss')}</small>
+                                    <small className="text-gray-500 dark:text-slate-400"> {comment.createdAt && format(new Date(comment.createdAt), 'yyyy-MM-dd HH:mm:ss')}</small>
                                 </td>
                                 <td className="before:hidden lg:w-1 whitespace-nowrap">
                                     <div className="flex items-center justify-start lg:justify-end undefined -mb-3 flex-nowrap">
                                         <CheckButton />
                                         <DeleteButton_square
                                             clickDelete={
-                                                () => {
-                                                     DeleteComment(comment._id)                                                  
-                                                }
+                                                ()=>DeleteCommentUser(comment._id)
                                             } />
                                     </div>
                                 </td>

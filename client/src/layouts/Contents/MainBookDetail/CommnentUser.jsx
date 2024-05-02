@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { getCommentUser } from "../../../services/books/CommentBookService";
+import { format } from "date-fns";
 import { useEffect, useState } from "react";
+import { getCommentUser } from "../../../services/books/CommentBookService";
 import { getInforUserComment } from "../../../services/books/CommentBookService";
 import { AvatarUser } from "~/components/image/AvatarDefault";
 
@@ -32,15 +33,16 @@ const CommnentUser = () => {
     return (
         <>
          {comments.length > 0 ? comments.map((dataComment, index) => (
-    <div className="bg-[#303030] w-[500px] p-3 rounded-[10px] my-2 " key={index}>
+    <div className="bg-[#303030] w-[500px] p-3 rounded-[10px] my-2 max-lg:w-full" key={index}>
         <div className="flex justify-between">
             <div className="flex gap-2">
-                <img className="w-[30px] rounded-full" src={dataComment.user && dataComment.user.avatar ? dataComment.user.avatar : AvatarUser} alt="" />
-                <span className="text-[#fff]">{dataComment.user && dataComment.user.email} {dataComment.user && dataComment.user.admin && '( Admin )'}</span>
+                <img className="w-[50px] rounded-full" src={dataComment.user && dataComment.user.avatar ? dataComment.user.avatar : AvatarUser} alt="" />
+                 <div>
+                 <span className="text-[#fff] max-lg:block">{dataComment.user && dataComment.user.email} {dataComment.user && dataComment.user.admin && '( Admin )'}</span>
+                <small className="text-[#fff]">5{dataComment.createdAt && format(new Date(dataComment.createdAt), 'yyyy-MM-dd HH:mm:ss')}</small>
+                 </div>
             </div>
-            <div>
-                <span className="text-[#fff]">5{dataComment.createdAt}</span>
-            </div>
+
         </div>
         <div className="py-3">
             <p className="text-[#fff]">{dataComment.content}</p>

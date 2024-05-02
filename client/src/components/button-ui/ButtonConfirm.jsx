@@ -1,6 +1,6 @@
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-const ButtonConfirmDeleteAccount  = (props) => {
+const ButtonConfirm  = (props) => {
     const {clickDelete, titleDelete , bgBtn , content}= props
     const handleConfirmClick = () => {
         confirmAlert({
@@ -25,4 +25,4 @@ const ButtonConfirmDeleteAccount  = (props) => {
     );
 };
 
-export default ButtonConfirmDeleteAccount;
+export default ButtonConfirm;

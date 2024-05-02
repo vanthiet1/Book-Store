@@ -71,7 +71,7 @@ const Cart = () => {
         <>
             {errorStatus && <Error message='Vui lòng xác thực tài khoản' />}
             {errorNotLogin && <Error message='Vui lòng đăng nhập' />}
-            <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0 z-40 max-md:w-[350px] max-md:top-[-3px]">
+            <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0 z-40 max-md:w-[350px] max-md:top-[-1px]">
                 <div className="flex cursor-pointer py-2">
                     <IoCloseCircleSharp className="text-[30px] text-[#fff] max-md:text-[30px]"  onClick={() => handleHideCart()}  />
                     <div className="w-[500px] ">
@@ -79,7 +79,7 @@ const Cart = () => {
                     </div>
                 </div>
 
-                <div className="h-[550px] overflow-auto scrollbar-thin" >
+                <div className="h-[550px] max-md:h-[500px] overflow-auto scrollbar-thin" >
                     {cart.length > 0 ? (
                         cart.map((productCart, index) => (
                             <div className="flex gap-2 pt-4" key={index} >

@@ -2,21 +2,18 @@ import { useContext } from "react";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
 import { AvatarUser } from "~/components/image/AvatarDefault";
 import { IconSoi, IconLa } from "~/public/icon-page/icon";
-import { Uicontext } from "~/contexts/UiContext";
 
 const UserSidebar = () => {
-    const {displayUserSidebar,handleHideUserSidebar} = useContext(Uicontext)
     const { userEmail, isAdmin } = useContext(DataUser);
     return (
         <>
-            <div className={`w-[25%] border-r border-[#1E1E20] pr-5 max-lg:fixed max-lg:bg-[#000000] max-lg:h-dvh max-lg:top-[70px] max-lg:w-[400px] max-lg:z-20 max-lg:left-0  pl-5 max-lg:ease-in max-lg:duration-300 max-lg:pt-[50px] max-lg:${displayUserSidebar} `}>
-            <div className="pb-4 text-[25px] hidden max-lg:block ]">
-            <FiArrowLeft className="text-[#fff] cursor-pointer" onClick={()=>handleHideUserSidebar()}/>
+        <div className={`border-r border-[#1E1E20] pr-5  max-lg:bg-[#000000] max-lg:h-dvh max-md:h-auto w-[25%] max-lg:w-[40%] pl-5 max-lg:ease-in max-lg:duration-300 max-lg:pt-[50px] max-md:w-[100%] max-md:p-0 max-md:border-0`}> 
+
+            <div className="pb-4 text-[25px] hidden max-lg:block">
             </div>
                 <div className="flex items-center justify-between gap-5">
                     <span className="text-white">{userEmail ? userEmail : "Đang tải..."}</span>

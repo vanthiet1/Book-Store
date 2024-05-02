@@ -7,7 +7,7 @@ import { Uicontext } from "~/contexts/UiContext";
 import Success from "~/components/notification/Success";
 import Error from "~/components/notification/Error";
 import PolicyDelete from "~/components/deleteAccount/PolicyDelete";
-import ButtonConfirmDeleteAccount from "~/components/button-ui/ButtonDeleteAccount";
+import ButtonConfirm from "~/components/button-ui/ButtonConfirm";
 import { DeleteUser } from "~/pages/AdminPage/service/userService";
 const SettingSecurity = () => {
     const [detailUser, setDetailUser] = useState({});
@@ -72,7 +72,7 @@ const SettingSecurity = () => {
                         <ButtonDefault bgBtn={"bg-[#414143]"} content={"Hủy bỏ"} onClick={() => { setDeleteAccount(false) }} />
                         <ButtonDefault
                         />
-                        <ButtonConfirmDeleteAccount
+                        <ButtonConfirm
                             clickDelete={() => confirmDeleteAccount()}
                             bgBtn={"bg-[#15B088]"}
                             content={"Xác nhận xóa"}

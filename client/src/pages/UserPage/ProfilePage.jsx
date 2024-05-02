@@ -5,11 +5,13 @@ const LazyUserSidebar = lazy(() => import("~/layouts/Contents/MainProfile/UserSi
 const LazySettingProfile = lazy(() => import("~/layouts/Contents/MainProfile/SettingProfile"));
 
 const ProfilePage = () => {
+
+
   return (
     <>
       <div>
         <Header />
-        <div className="flex h-auto pt-[100px] bg-black p-5">
+        <div className="flex h-auto pt-[100px] bg-black p-5 max-md:flex-col">
           <Suspense>
             <LazyUserSidebar />
             <LazySettingProfile />

@@ -1,18 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { FiAlignLeft } from "react-icons/fi";
 import SettingSecurity from "./SettingSecurity";
 import SettingUser from "./SettingUser";
 import MyOrder from "./myOrder";
 import { GetDataUserCheckout } from "../../../services/checkout/checkoutUserService";
 import { DataUser } from "../../../contexts/authContext/DataUserLogin";
-import { Uicontext } from "~/contexts/UiContext";
 
 const SettingProfile = () => {
     const [tabContent, setTabContent] = useState(1);
     const [activeTab, setActiveTab] = useState(1);
     const [dataUserCheckout, setDataUserCheckout] = useState(null);
     const { inforUser } = useContext(DataUser);
-    const {handleDisplayUserSidebar} = useContext(Uicontext)
     
     const handleTabContent = (index) => {
         setTabContent(index);
@@ -40,12 +37,9 @@ const SettingProfile = () => {
 
     return (
         <>
-            <div className="p-5 w-[85%] max-lg:w-full max-lg:p-0">
+            <div className="p-5 w-[85%] max-lg:p-5 max-lg:w-[60%] max-md:w-[100%] max-md:mt-5 max-md:p-0">
                <div>
-               <FiAlignLeft 
-               className="text-[#fff] text-[30px] cursor-pointer hidden max-lg:block"
-                onClick={()=>handleDisplayUserSidebar()}
-               />
+         
                </div>
                 <h1 className="text-[#fff] text-[25px] font-semibold">Quản lí thông tin</h1>
                 <div className="flex py-3 items-center gap-5 border-b border-[#3e3e3e] ">

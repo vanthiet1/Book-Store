@@ -9,7 +9,6 @@ const DisplayContext = ({ children }) => {
     const [displayComment, setDisplayComment] = useState(false);
     const [displayVertify, setDisplayVertify] = useState(false);
     const [displayCart, setDisplayCart] = useState("translate-x-[500px]");
-    const [displayUserSidebar, setDisplayUserSidebar] = useState("left-[-400px] ");
 
 
  
@@ -101,12 +100,7 @@ const DisplayContext = ({ children }) => {
         setFilter('')
     }
  
-    const handleDisplayUserSidebar = ()=>{
-        setDisplayUserSidebar("")
-    }
-    const handleHideUserSidebar = ()=> {
-        setDisplayUserSidebar("left-[-400px]")
-    }
+  
     const dataDisplay = {
         displayCart,
         displayRegister,
@@ -135,11 +129,9 @@ const DisplayContext = ({ children }) => {
         handleDisplayVertifyInlogin,
 
         handleDisplayForgot,
-        handleHideForgot,
+        handleHideForgot
 
-        handleDisplayUserSidebar,
-        handleHideUserSidebar,
-        displayUserSidebar
+   
     }
     return (
         <div>
