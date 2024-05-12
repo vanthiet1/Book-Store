@@ -1,5 +1,6 @@
 const Checkout = require('../../models/checkout/checkoutModel');
 
+
 const checkoutController = {
     getAllCheckoutUser: async (req, res) => {
         try {
@@ -28,6 +29,37 @@ const checkoutController = {
             res.status(500).json({ message: 'Đã xảy ra lỗi khi lấy thông tin thanh toán.' });
         }
     },
+    
+    deleteCheckoutUser: async (req, res) => {
+        try {
+            const { id } = req.params;
+            await Checkout.findByIdAndDelete(id);
+            res.status(200).json({ message: "Xóa thành công" });
+        } catch (error) {
+            res.status(500).json({ message: "Lỗi server" });
+        }
+    },
+
+    updateOrderCheckout: async (req, res) => {
+        try {
+            const {id} = req.params;
+            if (!id) {
+                return res.status(404).json({ message: "id order not found" });
+            }
+            const updatedOrderCheckout = await Checkout.findByIdAndUpdate(
+                id,
+                { status:true },
+                { new: true }
+            );
+            if (!updatedOrderCheckout) {
+                return { success: false, message: 'Không tim thấy đơn hàng' };
+            }
+            res.status(200).json(updatedOrderCheckout)
+        } catch (error) {
+            res.status(500).json({ message: "lỗi server" })
+        }
+    },
+
     checkoutUser: async (req, res) => {
         try {
             const { userId, products, phoneNumber, address, totalPrice, methodPayment, status } = req.body;
@@ -39,7 +71,7 @@ const checkoutController = {
                 address,
                 totalPrice,
                 methodPayment,
-                status: "Chờ"
+                status: false
             });
             await newCheckout.save();
             res.status(200).json(newCheckout);
@@ -48,36 +80,8 @@ const checkoutController = {
             res.status(500).json({ message: 'Đã xảy ra lỗi khi thêm sản phẩm vào giỏ hàng.' });
         }
     },
-    deleteCheckoutUser: async (req, res) => {
-        try {
-            const { id } = req.params;
-            await Checkout.findByIdAndDelete(id);
-            res.status(200).json({ message: "Xóa thành công" });
-        } catch (error) {
-            res.status(500).json({ message: "Lỗi server" });
-        }
-    },
 
-    // cancelOrder: async (req, res) => {
-    //     try {
-    //         const { productId } = req.params; 
-    //         const order = await Checkout.findOne({ "products._id": productId });
-    //         if (!order) {
-    //             return res.status(404).json({ message: 'Không tìm thấy đơn hàng chứa sản phẩm này.' });
-    //         }
-    //         order.products.forEach(product => {
-    //             if (product._id.equals(productId)) {
-    //                 product.status = "Hủy";
-    //             }
-    //         });
-    //         await order.save();
-    //         res.status(200).json({ message: 'Đã hủy sản phẩm thành công.' });
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).json({ message: 'Đã xảy ra lỗi khi hủy sản phẩm.' });
-    //     }
-    // }
-
+   
 
 }
 

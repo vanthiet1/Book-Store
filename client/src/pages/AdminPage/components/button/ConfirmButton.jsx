@@ -1,14 +1,14 @@
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-const ConfirmButton  = ({ clickDelete, titleDelete }) => {
+const ConfirmButton  = ({ clickConfirm, titleConfirm}) => {
     const handleConfirmClick = () => {
         confirmAlert({
-            title: titleDelete,
-            message: 'Bạn có chắc muốn xác nhận',
+            title: titleConfirm,
+            message: 'Bạn có chắc muốn xác nhận đơn hàng',
             buttons: [
                 {
                     label: 'Có',
-                    onClick: () => clickDelete()
+                    onClick: () => clickConfirm()
                 },
                 {
                     label: 'Hủy',

@@ -10,8 +10,9 @@ import publicRouterUser from "~/routes/RouterUser";
 import PublicRouterAdmin from "~/routes/RouterAdmin";
 import Cart from "~/layouts/Contents/MainCart/Cart";
 import ForgotPassword from "~/layouts/Contents/Form/ForgotPassword";
+import { createPortal } from 'react-dom';
 const App = () => {
-  const { displayRegister, displayLogin, filter, displayVertify, displayCart ,displayForgotPassword } = useContext(Uicontext);
+  const { displayRegister, displayLogin, filter, displayVertify, displayCart, displayForgotPassword } = useContext(Uicontext);
   const { filterAdmin } = useContext(DisplayPopup);
   const privateRouterAdmin = PublicRouterAdmin();
 
@@ -57,10 +58,16 @@ const App = () => {
           ))}
         </Routes>
         <div>
-          {loginComponent}
-          {registerComponent}
-          {vertifyComponent}
-          {forgotPasswordComponent}
+          {createPortal(
+           <>
+           { loginComponent },
+            { registerComponent },
+            { vertifyComponent },
+            { forgotPasswordComponent },
+           </>,
+            document.body
+          )}
+
         </div>
         <div className={`${filter} ${filterAdmin}`} />
       </div>

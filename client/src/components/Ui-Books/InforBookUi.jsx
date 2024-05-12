@@ -13,7 +13,7 @@ const Infor = (props) => {
 
                         <div className="w-full">
                             <h1 className="text-white font-bold cursor-pointer text-[14px] w-[80%] py-4 max-lg:py-0">{nameBook} </h1>
-                            <span className="text-white">{author}</span>
+                            <span className="text-white">{author }</span>
                             <div className="flex w-full justify-between items-center gap-2 py-5 max-lg:py-1">
                                 <div className="flex w-full justify-between gap-3 items-center">
                                     <div>

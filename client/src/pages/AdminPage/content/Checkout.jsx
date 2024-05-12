@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import CheckButton from "../components/button/CheckButton";
 import DeleteButton_square from "../components/button/DeleteButton_square";
-import { GetDataUserCheckout, GetAnDataUserCheckout, DeleteOrderCheckout } from "../service/checkoutService";
+import { GetDataUserCheckout, GetAnDataUserCheckout, DeleteOrderCheckout,UpdateOrderCheckout } from "../service/checkoutService";
 import { GetNameUser } from "../service/userService";
 import DetailProduct from "../components/detailProductCheckout/DetailProduct";
 import { DisplayPopup } from "../contexts/UiContextAdmin";
@@ -9,6 +9,7 @@ import Error from "~/components/notification/Error";
 import Close from "~/components/icons/Close";
 import Success from "~/components/notification/Success";
 import ConfirmButton from "../components/button/ConfirmButton";
+
 
 const Checkout = () => {
     const { showDetailProductCheckout, handleDisplayProductCheckout,
@@ -18,6 +19,8 @@ const Checkout = () => {
     const [detailProductCheckout, setDetailProductCheckout] = useState([]);
     const [errorOrderProduct, setErrorOrderProduct] = useState(false);
     const [deleteSuccess, setDeleteSuccess] = useState(false);
+    const [confirmSuccess, setConfirmSuccess] = useState(false);
+
 
 
     const getDataCheckout = async () => {
@@ -75,11 +78,25 @@ const Checkout = () => {
             console.log(error);
         }
     }
-  console.log(dataCheckout);
+
+    const vertifyOrderCheckout = async (orderId)=>{
+           try {
+             if(!orderId || orderId === undefined) {
+                return console.log('lỗi');
+             }
+              await UpdateOrderCheckout(orderId);
+              getDataCheckout()
+              setConfirmSuccess(true)
+           } catch (error) {
+              console.log(error);
+           }
+    }
+
     return (
         <>
             {errorOrderProduct && (<Error message={'Không tìm thấy sản phẩm để xóa'} />)}
             {deleteSuccess && (<Success message={"Xóa thành công đơn hàng"} />)}
+            {confirmSuccess && (<Success message={"Đơn hàng đã xác nhận thành công"} />)}
             {showDetailProductCheckout && (
                 <>
                 <div className="fixed">
@@ -116,8 +133,6 @@ const Checkout = () => {
                         </table>
                     </div>
                 </div>
-                
-
                 </>
             )}
 
@@ -145,7 +160,7 @@ const Checkout = () => {
                                 <td className="text-left px-4 py-2 max-w-[250px] overflow-x-y"> {checkout.address} </td>
                                 <td className="text-left px-4 py-2">{checkout.methodPayment}</td>
                                 <td className="text-left px-4 py-2">{checkout.totalPrice.toLocaleString() + " VND"} </td>
-                                <td className="text-left px-4 py-2 text-yellow-500 font-semibold">{checkout.status}</td>
+                                <td className="text-left px-4 py-2 font-semibold">{checkout.status ?   <span className="text-green-600">Thành công</span> : <span className="text-yellow-500 ">Đang chờ</span>}</td>
                                 <td className="text-left px-4 py-2"></td>
                                 <td className="px-4 py-2">
                                     <div className="flex items-center justify-center">
@@ -153,7 +168,7 @@ const Checkout = () => {
                                             DataCheckout(checkout.userId)
                                         }} />
                                         <DeleteButton_square titleDelete="Xóa Đơn Hàng" clickDelete={() => { DeleteOrder(checkout._id) }} />
-                                        <ConfirmButton />
+                                        <ConfirmButton clickConfirm={()=>{vertifyOrderCheckout(checkout._id)}} />
                                     </div>
                                 </td>
 

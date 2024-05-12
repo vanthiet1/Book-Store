@@ -34,7 +34,7 @@ const BookFreeUi = () => {
                     slidesToShow={slidesToShow}
                     autoplaySpeed={5000}
                 >
-                    {dataBookFree.length > 0 ? (
+                    {dataBookFree && dataBookFree.length > 0 ? (
                         dataBookFree.map((bookFree) => (
                             <div className="relative group flex " key={bookFree._id}>
                                 <BookUi   
@@ -51,7 +51,8 @@ const BookFreeUi = () => {
                                         bookId={bookFree._id}
                                         imgBook={bookFree.imgBook}
                                         nameBook={bookFree.nameBook}
-                                        author={bookFree.author[0].name}
+                                        author={bookFree.author && bookFree.author.length > 0 ? bookFree.author[0].name : ''}
+
                                         labelBook={bookFree.labelBook}
                                         descriptionBook={bookFree.descriptionBook}
                                     />

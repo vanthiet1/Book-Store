@@ -5,6 +5,8 @@ router.post('/',checkoutController.checkoutUser);
 router.get('/:userId', checkoutController.getCheckoutByUserId);
 router.get('/', checkoutController.getAllCheckoutUser);
 router.delete('/:id', checkoutController.deleteCheckoutUser);
-// router.put('/:productId', checkoutController.cancelOrder);
+router.put('/:id', checkoutController.updateOrderCheckout);
+
+
 
 module.exports = router;

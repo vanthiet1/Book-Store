@@ -2,7 +2,7 @@ const Book = require('../../models/book/BookModel');
 const Author = require('../../models/book/AuthorModel')
 const BookGenre = require('../../models/book/GenresModel');
 const Category = require('../../models/book/CategoryBookModel')
-
+// const  generateSlug = require('../slug/slugController');
 const bookController = {
     addBookFree: async (req, res) => {
         try {
@@ -62,6 +62,7 @@ const bookController = {
     getAnBookFree: async (req, res) => {
         try {
             const id = req.params.id;
+
             const product = await Book.findById(id);
             if (!product) {
                 return res.status(404).json({ error: 'Product not found' });

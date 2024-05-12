@@ -54,9 +54,8 @@ const checkoutSchema = new mongoose.Schema({
         required: true,
     },
     status: {
-        type: String,
-        enum: ['Chờ', 'Trả Hàng', 'Hủy Bỏ' , 'Thành Công'], 
-        default: 'Chờ'
+        type: Boolean,
+        default: false
     },
    
 });

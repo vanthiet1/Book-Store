@@ -21,7 +21,6 @@ import Success from "@components/notification/Success";
 import DescriptionBook from "./DescriptionBook";
 import { Uicontext } from "../../../contexts/UiContext";
 import CommnentUser from "./CommnentUser";
-// import Error from "../../../components/notification/Error";
 import { UseCart } from "../../../contexts/CartContext";
 
 import BookSuggestUi from "../BookSuggestUi";
@@ -30,10 +29,12 @@ import BookNewUi from "../BookNewUi";
 
 const InforDetail = () => {
     const { id } = useParams();
+    const { slug } = useParams();
+    console.log(slug);
+
     const { handleDisplayComment , scrollTop} = useContext(Uicontext);
     const { addToCart } = UseCart();
     const [showSuccess, setSuccess] = useState(false);
-    // const [showError, setError] = useState(false);
     
 
     const dataBookDetailFree = GetDetailBookFree(id);

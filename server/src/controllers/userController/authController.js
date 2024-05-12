@@ -88,7 +88,6 @@ const authControllers = {
             }
             // tạo jwt
             const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET )
-            console.log(token);
             res.status(200).json({ token });
         } catch (error) {
             res.status(500).json(error)

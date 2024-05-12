@@ -38,6 +38,7 @@ const detailUserRouter = require('./routes/user/deltailUserRouter');
 const forgotPasswordRouter = require('./routes/user/forgotPasswordRouter');
 // CHECKOUT
 const checkoutRouter = require('./routes/checkout/checkoutRouter');
+const paymentRouter = require('./routes/payment/paymentRouter')
 
 //ADMIN
 const allUserRouter = require('./routes/admin/userManagerRouter')
@@ -70,8 +71,7 @@ app.use('/api/v1/forgotPassword',forgotPasswordRouter)
 // CHECKOUT
 app.use('/api/v1/user/book/checkout', checkoutRouter);
 app.use('/api/v1/user/detail/user', detailUserRouter);
-
-
+app.use('/api/v1/user/book/checkout/payment',paymentRouter)
 
 // ADMIN
 app.use('/api/v1/admin/users', allUserRouter);

@@ -14,8 +14,10 @@ import { DataUser } from "../../contexts/authContext/DataUserLogin";
 import { GetDetailUser } from "../../services/checkout/detailUserService";
 import { PostCheckoutUser } from "../../services/checkout/checkoutUserService";
 import ProductCheckout from "~/layouts/Contents/MainCheckout/ProductCheckout";
-
 const Checkout = () => {
+
+
+
     const { inforUser } = useContext(DataUser);
     const [productCheckout, setProductCheckout] = useState([]);
     const [detailUser, setDetailUser] = useState([]);
@@ -46,7 +48,6 @@ const Checkout = () => {
         }, 0);
         setTotalPriceCheckout(totalPriceProduct);
     }, [cart]);
-
     const handleAtiveOptionPayment = (option) => {
         setActiveOption(option);
         setNameMethodPayment(option === 1 ? "QR Code" : "Ví điện tử")
@@ -82,7 +83,11 @@ const Checkout = () => {
                 return;
             }
             if (nameMethodPayment === "Ví điện tử") {
-                window.location.href='https://sandbox.vnpayment.vn/tryitnow/Home/CreateOrder'
+                console.log('lo');
+            }
+            if (nameMethodPayment === "QR Code") {
+                window.location.href = `https://api.vietqr.io/image/970422-9213112004-46Pz0lW.jpg?accountName=NGUYEN%20VAN%20THIET&addInfo=${inforUser.email} ${totalPriceCheckout} VND`
+       
             }
             if (inforUser === null) {
                 setErrorLogin(true)
@@ -116,7 +121,7 @@ const Checkout = () => {
             setSuccsessCheckout(true);
             setTimeout(() => {
                 navigate('/')
-            }, 1000)
+            }, 40000)
         } catch (error) {
             console.log(error);
         }
