@@ -1,11 +1,10 @@
-import axios from "axios";
-import { URL_API, API_BOOK_GENRES } from "../../../utils/url-api";
+import { API_BOOK_GENRES } from "../../../utils/url-api";
 import { getNameBook } from "./getInforBook";
-
+import http from "~/utils/http";
 
 const AddGenres = async (nameGenre) => {
     try {
-        const response = await axios.post(`${URL_API}/${API_BOOK_GENRES}`, nameGenre);
+        const response = await http.post(`${API_BOOK_GENRES}`, nameGenre);
         return response.data
     } catch (error) {
         console.log(error);
@@ -13,7 +12,7 @@ const AddGenres = async (nameGenre) => {
 }
 const GetDataGenres = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_GENRES}`);
+        const response = await http.get(`${API_BOOK_GENRES}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -40,7 +39,7 @@ const GetNameBookInGenres = async () => {
 
 const DeleteGenres = async (idGenres) => {
     try {
-        const response = await axios.delete(`${URL_API}/${API_BOOK_GENRES}/${idGenres}`);
+        const response = await http.delete(`${API_BOOK_GENRES}/${idGenres}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -49,7 +48,7 @@ const DeleteGenres = async (idGenres) => {
 
 const UpdateGenres = async (id, newData) => {
     try {
-        const response = await axios.put(`${URL_API}/${API_BOOK_GENRES}/${id}`, newData);
+        const response = await http.put(`${API_BOOK_GENRES}/${id}`, newData);
         return response.data;
     } catch (error) {
         console.log(error);

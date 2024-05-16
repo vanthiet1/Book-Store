@@ -1,9 +1,9 @@
-import axios from "axios";
-import { URL_API, API_BOOK_CATEGORY, API_BOOK } from "../../../utils/url-api";
+import {  API_BOOK_CATEGORY, API_BOOK } from "../../../utils/url-api";
+import http from "~/utils/http";
 
 const GetDataBook = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK}`);
+        const response = await http.get(`${API_BOOK}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -12,7 +12,7 @@ const GetDataBook = async () => {
 
 const GetCategory = async (id) => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${id}`);
+        const response = await http.get(`${API_BOOK_CATEGORY}/${id}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -30,7 +30,7 @@ const GetNameCategory = async (categoryId) => {
 
 const DeleteAbook = async (bookId) => {
     try {
-        const response = await axios.delete(`${URL_API}/${API_BOOK}/${bookId}`);
+        const response = await http.delete(`${API_BOOK}/${bookId}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ const DeleteAbook = async (bookId) => {
 
 const GetDescription = async (bookId) => {
     try {
-        const response = await axios.get(` ${URL_API}/${API_BOOK}/${bookId}`);
+        const response = await http.get(`${API_BOOK}/${bookId}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -48,7 +48,7 @@ const GetDescription = async (bookId) => {
 
 const AddBook = async (data) => {
     try {
-        const response = await axios.post(`${URL_API}/${API_BOOK}`, data);
+        const response = await http.post(`${API_BOOK}`, data);
         return response.data;
     } catch (error) {
         console.error('Error adding book:', error);
@@ -56,7 +56,7 @@ const AddBook = async (data) => {
 }
 const UpdateBook = async (bookId, dataUpdated) => {
     try {
-        const response = await axios.put(` ${URL_API}/${API_BOOK}/${bookId}`, dataUpdated);
+        const response = await http.put(` ${API_BOOK}/${bookId}`, dataUpdated);
         return response.data;
     } catch (error) {
         console.log(error);

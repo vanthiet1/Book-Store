@@ -1,12 +1,12 @@
-import axios from "axios";
-import { URL_API, API_BOOK } from "../../../utils/url-api";
+
+import { API_BOOK } from "../../../utils/url-api";
 import { GetDataCategory } from "./categoryService";
 import { GetDataGenres } from "./genresService";
-
+import http from "~/utils/http";
 
 const getAllInforBook = async (bookId) => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK}/${bookId}`);
+        const response = await http.get(`${API_BOOK}/${bookId}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -15,7 +15,7 @@ const getAllInforBook = async (bookId) => {
 };
 const getNameBook = async (bookId) => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK}/${bookId}`);
+        const response = await http.get(`${API_BOOK}/${bookId}`);
         return response.data.nameBook;
     } catch (error) {
         console.log(error);
@@ -24,7 +24,7 @@ const getNameBook = async (bookId) => {
 };
 const getNameUser = async (userId) => {
     try {
-        const response = await axios.get(`${URL_API}/user/${userId}`);
+        const response = await http.get(`user/${userId}`);
         return response.data.email;
     } catch (error) {
         console.log(error);

@@ -1,9 +1,8 @@
-
-import { URL_API ,URL_USER} from "~/utils/url-api";
-import axios from "axios";
+import http from "~/utils/http";
+import { URL_USER} from "~/utils/url-api";
 const GetUserData = async (token) => {
     try {
-        const response = await axios.get(`${URL_API}/user`, {
+        const response = await http.get(`user`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -16,7 +15,7 @@ const GetUserData = async (token) => {
 }
 const GetUserById = async (userId)=>{
     try {
-        const response = await axios.get(`${URL_API}/${URL_USER}/${userId}`);
+        const response = await http.get(`${URL_USER}/${userId}`);
         return response.data;
     } catch (error) {
          console.log(error);  

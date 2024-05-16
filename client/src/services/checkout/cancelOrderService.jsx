@@ -1,8 +1,7 @@
-import axios from 'axios';
-import { URL_API, URL_API_CHECKOUT } from '../../utils/url-api';
-
+import { URL_API_CHECKOUT } from '../../utils/url-api';
+import http from '~/utils/http';
 const CancelOrder = async (orderId) => {
-    const response = await axios.put(`${URL_API}/${URL_API_CHECKOUT}/${orderId}`);
+    const response = await http.put(`${URL_API_CHECKOUT}/${orderId}`);
     return response.data;
 };
 

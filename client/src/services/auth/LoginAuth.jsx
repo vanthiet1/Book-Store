@@ -1,10 +1,9 @@
-import axios from "axios";
-import { URL_API } from "~/utils/url-api";
+import http from "~/utils/http";
 
 export const LoginAuth = {
     login: async (userDataLogin, notificationError) => {
         try {
-            const response = await axios.post(`${URL_API}/auth/login`, userDataLogin);
+            const response = await http.post(`auth/login`, userDataLogin);
             return response.data.token;
         } catch (error) {
             notificationError(error.response.data.message);

@@ -30,7 +30,7 @@ const MethodPayment = (props) => {
                 <FaWallet className={`text-[30px]  ${
                     borderActive === 2 ? 'text-[#15B088]' : 'text-[#fff]'
                 }`} />
-                <span className="text-[#fff]">Ngân hàng</span>
+                <span className="text-[#fff]">Ví điện tử</span>
             </div>
         </>
     );

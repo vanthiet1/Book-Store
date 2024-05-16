@@ -1,10 +1,9 @@
-import axios from 'axios';
-import { URL_API, API_BOOK, API_BOOK_CATEGORY } from "~/utils/url-api";
-
+import { API_BOOK, API_BOOK_CATEGORY } from "~/utils/url-api";
+import http from '~/utils/http';
 
 const GetInforBook = async (bookId) => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK}/${bookId}`);
+        const response = await http.get(`${API_BOOK}/${bookId}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -14,10 +13,10 @@ const GetInforBook = async (bookId) => {
 
 const BookFreeApi = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
+        const response = await http.get(`${API_BOOK_CATEGORY}`);
         const freeCategory = response.data.find(category => category.name === 'Sách miễn phí');
         if (freeCategory) {
-            const productsResponse = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${freeCategory._id}`);
+            const productsResponse = await http.get(`${API_BOOK_CATEGORY}/${freeCategory._id}`);
             return productsResponse.data.books;
         }
     } catch (error) {
@@ -28,10 +27,10 @@ const BookFreeApi = async () => {
 
 const BookNewApi = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
+        const response = await http.get(`${API_BOOK_CATEGORY}`);
         const buyCategory = response.data.find(category => category.name === 'Sách mới nhất');
         if (buyCategory) {
-            const productsResponse = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${buyCategory._id}`);
+            const productsResponse = await http.get(`${API_BOOK_CATEGORY}/${buyCategory._id}`);
             return productsResponse.data.books;
         }
     } catch (error) {
@@ -43,10 +42,10 @@ const BookNewApi = async () => {
 
 const BookSuggestApi = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
+        const response = await http.get(`${API_BOOK_CATEGORY}`);
         const freeCategory = response.data.find(category => category.name === 'Waka đề xuất');
         if (freeCategory) {
-            const productsResponse = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${freeCategory._id}`);
+            const productsResponse = await http.get(`${API_BOOK_CATEGORY}/${freeCategory._id}`);
             return productsResponse.data.books;
         }
     } catch (error) {
@@ -56,10 +55,10 @@ const BookSuggestApi = async () => {
 };
 const BookRetailApi = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
+        const response = await http.get(`${API_BOOK_CATEGORY}`);
         const freeCategory = response.data.find(category => category.name === 'Mua lẻ');
         if (freeCategory) {
-            const productsResponse = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}/${freeCategory._id}`);
+            const productsResponse = await http.get(`${API_BOOK_CATEGORY}/${freeCategory._id}`);
             return productsResponse.data.books;
         }
     } catch (error) {

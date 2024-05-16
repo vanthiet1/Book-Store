@@ -1,11 +1,10 @@
-import axios from "axios";
-import { URL_API, API_BOOK_CATEGORY } from "../../../utils/url-api";
+import { API_BOOK_CATEGORY } from "../../../utils/url-api";
 import { getNameBook } from "./getInforBook";
-
+import http from "~/utils/http";
 
 const AddCategory = async (nameCategory) => {
     try {
-        const response = await axios.post(`${URL_API}/${API_BOOK_CATEGORY}`, nameCategory);
+        const response = await http.post(`${API_BOOK_CATEGORY}`, nameCategory);
         return response.data
     } catch (error) {
         console.log(error);
@@ -14,7 +13,7 @@ const AddCategory = async (nameCategory) => {
 
 const GetDataCategory = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_CATEGORY}`);
+        const response = await http.get(`${API_BOOK_CATEGORY}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -41,7 +40,7 @@ const GetNameBookInCategory = async () => {
 
 const DeleteCategory = async (idCategory) => {
     try {
-        const response = await axios.delete(`${URL_API}/${API_BOOK_CATEGORY}/${idCategory}`);
+        const response = await http.delete(`${API_BOOK_CATEGORY}/${idCategory}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -50,7 +49,7 @@ const DeleteCategory = async (idCategory) => {
 
 const UpdateCategory = async (id, newData) => {
     try {
-        const response = await axios.put(`${URL_API}/${API_BOOK_CATEGORY}/${id}`, newData);
+        const response = await http.put(`${API_BOOK_CATEGORY}/${id}`, newData);
         return response.data;
     } catch (error) {
         console.log(error);

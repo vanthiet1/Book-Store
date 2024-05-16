@@ -82,13 +82,6 @@ const Checkout = () => {
                 setErrorOption(true)
                 return;
             }
-            if (nameMethodPayment === "Ví điện tử") {
-                console.log('lo');
-            }
-            if (nameMethodPayment === "QR Code") {
-                window.location.href = `https://api.vietqr.io/image/970422-9213112004-46Pz0lW.jpg?accountName=NGUYEN%20VAN%20THIET&addInfo=${inforUser.email} ${totalPriceCheckout} VND`
-       
-            }
             if (inforUser === null) {
                 setErrorLogin(true)
                 return;
@@ -107,7 +100,12 @@ const Checkout = () => {
                 }, 500);
                 return;
             }
-
+            if (nameMethodPayment === "QR Code") {
+                window.location.href = `https://api.vietqr.io/image/970422-9213112004-46Pz0lW.jpg?accountName=NGUYEN%20VAN%20THIET&addInfo=${inforUser.email} ${totalPriceCheckout} VND`
+            }
+            if (nameMethodPayment === "Ví điện tử") {
+                console.log('lo');
+            }
             const data = {
                 userId: inforUser._id,
                 products: cart,

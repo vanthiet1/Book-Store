@@ -1,12 +1,12 @@
 
-import axios from "axios";
-import { URL_API, API_BOOK_COMMENT } from "../../../utils/url-api";
-import { getNameBook, getNameUser } from "./getInforBook";
 
+import {  API_BOOK_COMMENT } from "../../../utils/url-api";
+import { getNameBook, getNameUser } from "./getInforBook";
+import http from "~/utils/http";
 
 const GetDataComment = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_COMMENT}`);
+        const response = await http.get(`${API_BOOK_COMMENT}`);
         return response.data;
     } catch (error) {
         console.log("Error fetching comments:", error);
@@ -48,7 +48,7 @@ const GetNameUserInComment = async () => {
 };
 const DeleteComment = async (idComment) => {
     try {
-        const response = await axios.delete(`${URL_API}/${API_BOOK_COMMENT}/${idComment}`);
+        const response = await http.delete(`${API_BOOK_COMMENT}/${idComment}`);
         return response.data;
     } catch (error) {
         console.log(error);

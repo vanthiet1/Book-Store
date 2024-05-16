@@ -1,9 +1,8 @@
-import axios from "axios";
-import { URL_API, API_BOOK_BANNER } from "../../../utils/url-api";
-
+import { API_BOOK_BANNER } from "../../../utils/url-api";
+import http from "~/utils/http";
 const AddBanner = async (imageBanner) => {
     try {
-        const response = await axios.post(`${URL_API}/${API_BOOK_BANNER}`, imageBanner);
+        const response = await http.post(`${API_BOOK_BANNER}`, imageBanner);
         return response.data
     } catch (error) {
         console.log(error);
@@ -11,7 +10,7 @@ const AddBanner = async (imageBanner) => {
 }
 const GetDataBanner = async () => {
     try {
-        const response = await axios.get(`${URL_API}/${API_BOOK_BANNER}`);
+        const response = await http.get(`${API_BOOK_BANNER}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -19,7 +18,7 @@ const GetDataBanner = async () => {
 }
 const DeleteBanner = async (idBanner) => {
     try {
-        const response = await axios.delete(`${URL_API}/${API_BOOK_BANNER}/${idBanner}`);
+        const response = await http.delete(`${API_BOOK_BANNER}/${idBanner}`);
         return response.data;
     } catch (error) {
         console.log(error);

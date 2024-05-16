@@ -1,6 +1,4 @@
 
-const URL_API = 'https://book-store-9po5.onrender.com/api/v1';
-
 
 // Api BOOK
 const API_BOOK = "book";
@@ -10,8 +8,6 @@ const API_BOOK_GENRES = 'genre/book';
 const API_BOOK_SEARCH = "search/book";
 const API_BOOK_AUTHOR = "author/book";
 const API_BOOK_BANNER = "banner/book";
-
-
 
 // VERTIFY
 const  URL_VERTIFY = "auth/verify";
@@ -27,7 +23,6 @@ const URL_API_RESET_PASSWORD= 'auth/resetpassword';
 // CHECKOUT
 const URL_API_CHECKOUT = 'user/book/checkout';
 export {
-    URL_API,
     API_BOOK,
     API_BOOK_CATEGORY,
     API_BOOK_COMMENT,
