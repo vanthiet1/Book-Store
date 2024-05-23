@@ -3,10 +3,10 @@ import { useState } from "react";
 import { validateFormResetPassword } from "@components/validateForm/Form";
 import { ressetPassword } from "~/services/auth/ResetPassword";
 import Success from "~/components/notification/Success";
-import Error from "~/components/notification/Error";
+// import Error from "~/components/notification/Error";
 const ResetPassword = () => {
     const [isResetSuccess, setIsResetSuccess] = useState(false);
-    const [isNotRegister, setIsNotRegister] = useState(false);
+    // const [isNotRegister, setIsNotRegister] = useState(false);
 
     const formik = useFormik({
       initialValues: {
@@ -18,9 +18,9 @@ const ResetPassword = () => {
       onSubmit: async ({newPassword,codeVertify}) => {
         try {
             const hashedUserId = localStorage.getItem('userId');
-             if(hashedUserId === null){
-                return setIsNotRegister(true)
-             }
+            //  if(hashedUserId === null){
+            //     return setIsNotRegister(true)
+            //  }
             const userId = atob(hashedUserId);
             const resetPass = {
                 newPassword: newPassword,
@@ -36,7 +36,7 @@ const ResetPassword = () => {
     return (
       <>
       {<Success message={isResetSuccess}/>}
-      { isNotRegister && <Error message={"Chưa đăng ký "}/>}
+      {/* { isNotRegister && <Error message={"Chưa đăng ký "}/>} */}
         <div className="flex w-[30%] flex-col justify-center px-6 py-12 lg:px-8 bg-[#1A1918] opacity-[0.9] rounded-lg fixed z-40 top-[0%] left-[35%]">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
