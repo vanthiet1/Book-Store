@@ -8,7 +8,7 @@ import { AvatarUser } from "~/components/image/AvatarDefault";
 import { IconSoi, IconLa } from "~/public/icon-page/icon";
 
 const UserSidebar = () => {
-    const { userEmail, isAdmin } = useContext(DataUser);
+    const { userEmail, isAdmin ,inforUserDataGoogle } = useContext(DataUser);
     return (
         <>
         <div className={`border-r border-[#1E1E20] pr-5  max-lg:bg-[#000000] max-lg:h-dvh max-md:h-auto w-[25%] max-lg:w-[40%] pl-5 max-lg:ease-in max-lg:duration-300 max-lg:pt-[50px] max-md:w-[100%] max-md:p-0 max-md:border-0`}> 
@@ -16,8 +16,8 @@ const UserSidebar = () => {
             <div className="pb-4 text-[25px] hidden max-lg:block">
             </div>
                 <div className="flex items-center justify-between gap-5">
-                    <span className="text-white">{userEmail ? userEmail : "Đang tải..."}</span>
-                    <img className="w-[50px] rounded-full cursor-pointer" src={AvatarUser} alt="" />
+                    <span className="text-white">{ userEmail ? userEmail :  inforUserDataGoogle.email}</span>
+                    <img className="w-[50px] rounded-full cursor-pointer" src={inforUserDataGoogle.picture  ? inforUserDataGoogle.picture : AvatarUser } alt="" />
                 </div>
                 <div className="flex gap-3 items-center">
                     <div className="flex items-center gap-1">

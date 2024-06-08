@@ -5,9 +5,9 @@ const crypto = require('crypto');
 
 const generateRandomString = (length) => {
     return crypto.randomBytes(Math.ceil(length / 2))
-      .toString('hex')
-      .slice(0, length);
-  };
+        .toString('hex')
+        .slice(0, length);
+};
 const userController = {
     getUserInfo: async (req, res) => {
         try {
@@ -28,15 +28,13 @@ const userController = {
         }
     },
     getUserByid: async (req, res) => {
-         try {
+        try {
             const { id } = req.params;
-        const getUser = await User.findById(id)
-      
-        res.status(200).json(getUser)
-         } catch (error) {
-        res.status(500).json({message:"lỗi server"})
-              
-         }
+            const getUser = await User.findById(id)
+            res.status(200).json(getUser)
+        } catch (error) {
+            res.status(500).json(error)
+        }
     },
 
     forgotPassword: async (req, res) => {
@@ -58,8 +56,34 @@ const userController = {
             console.error("Error sending email:", error);
             res.status(500).json({ message: "Internal server error" });
         }
+    },
+
+    getUserDetailsUserGoogle: async (req, res) => {
+        try {
+            const { googleId } = req.body;
+    
+            if (typeof googleId !== 'string') {
+                return res.status(400).json({ message: 'Định dạng googleId không hợp lệ.' });
+            }
+    
+            const userGoogleId = await User.findOne({ googleId: googleId });
+    
+            if (!userGoogleId) {
+                return res.status(404).json({ message: 'Không tìm thấy chi tiết người dùng.' });
+            }
+    
+            console.log(userGoogleId);
+            res.status(200).json(userGoogleId);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Lỗi máy chủ nội bộ', error });
+        }
     }
     
+    
+
+
+
 
 }
 

@@ -62,10 +62,8 @@ const userDetailContainer = {
             console.error(error);
             res.status(500).json({ message: "Lỗi server" });
         }
-    }
-    
-    
-  
+    },
+
 }
 module.exports = userDetailContainer;
 

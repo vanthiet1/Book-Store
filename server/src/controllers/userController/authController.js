@@ -54,7 +54,7 @@ const authControllers = {
             if (!user) {
                 return res.status(404).json({ message: "Người dùng không tồn tại" });
             }
-         
+
             if (user.verificationCode !== code) {
                 return res.status(400).json({ message: "Mã xác nhận không chính xác" });
             }
@@ -87,7 +87,7 @@ const authControllers = {
                 return res.status(401).json({ message: 'Mật khẩu không đúng' });
             }
             // tạo jwt
-            const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET )
+            const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET)
             res.status(200).json({ token });
         } catch (error) {
             res.status(500).json(error)
@@ -101,34 +101,34 @@ const authControllers = {
             if (!user) {
                 return res.status(404).json({ message: "Người dùng không tồn tại" });
             }
-   
+
             if (user.verificationCount >= 5) {
                 return res.status(400).json({ message: "Số lần gửi mã xác thực đã vượt quá giới hạn trong ngày" });
             }
-    
+
             const newVerificationCode = Math.floor(100000 + Math.random() * 900000);
-    
+
             user.verificationCode = newVerificationCode;
             user.expiresAt = moment().add(5, 'minutes');
             await user.save();
-    
+
             // Gửi email chứa mã xác thực mới
             await sendMail({
                 email: user.email,
                 subject: "Mã xác thực mới",
                 html: `Mã xác thực mới của bạn là: <strong>${newVerificationCode}</strong>`
             });
-    
+
             user.verificationCount += 1;
             await user.save();
-    
+
             res.status(200).json({ message: "Đã gửi lại mã xác thực", newVerificationCode });
         } catch (error) {
             console.error("Lỗi khi gửi lại mã xác thực:", error);
             res.status(500).json({ message: "Đã xảy ra lỗi khi gửi lại mã xác thực" });
         }
     },
-    
+
     updateVerificationCount: async (userId) => {
         try {
             const user = await User.findById(userId);
@@ -141,7 +141,7 @@ const authControllers = {
             throw error;
         }
     },
-    
+
     checkVerificationLimit: async (userId, maxLimitPerDay) => {
         try {
             const user = await User.findById(userId);
@@ -149,14 +149,14 @@ const authControllers = {
                 throw new Error('User not found');
             }
             if (user.verificationCount >= maxLimitPerDay) {
-                return false; 
+                return false;
             }
             return true; // Chưa vượt quá giới hạn
         } catch (error) {
             throw error;
         }
     },
-    
+
     resetVerificationCount: async () => {
         try {
             await User.updateMany({}, { $set: { verificationCount: 0 } });
@@ -164,7 +164,7 @@ const authControllers = {
             throw error;
         }
     },
-    
+
     resetPassword: async (req, res) => {
         try {
             const { id } = req.params;
@@ -173,32 +173,58 @@ const authControllers = {
             if (!user) {
                 return res.status(404).json({ message: 'Người dùng Không Tồn Tại' });
             }
-    
+
             if (randomString !== user.randomString) {
                 return res.status(400).json({ message: 'Token không hợp lệ' });
             }
-    
+
             const currentTime = new Date();
-            const tokenExpires = new Date(currentTime.getTime() +  3 * 60 * 1000); 
-    
+            const tokenExpires = new Date(currentTime.getTime() + 3 * 60 * 1000);
+
             if (!user.resetTokenExpires || user.resetTokenExpires > currentTime) {
                 return res.status(400).json({ message: "Token không hợp lệ hoặc đã hết hạn" });
             }
-            
+
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(newPassword, salt);
-    
+
             user.password = hashedPassword;
             user.resetTokenExpires = tokenExpires;
             await user.save();
-    
+
             return res.status(200).json({ message: 'Thay đổi mật khẩu thành công' });
         } catch (error) {
             console.error('Error resetting password:', error);
             res.status(500).json({ message: 'Internal server error' });
         }
+    },
+
+    loginGoogle: async (req, res) => {
+        const { email, sub, email_verified
+        } = req.body;
+        try {
+           
+            let user = await User.findOne({ email });
+            if (!user) {
+                const userLoginGoogle = new User({
+                    email,
+                    googleId: sub,
+                    expiresAt: new Date(Date.now() + 30 * 1000),
+                    status:email_verified
+                })
+                  await userLoginGoogle.save()
+            } else {
+                if (!user.googleId) {
+                    user.googleId = sub;
+                    await user.save();
+                }
+            }
+            res.status(200).json({ message: 'User logged in successfully'});
+        } catch (error) {
+            res.status(500).json({ message: 'Internal server error' })
+        }
     }
-    
+
 
 };
 

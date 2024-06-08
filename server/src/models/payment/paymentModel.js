@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const PaymentSchema = new mongoose.Schema({
     orderId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Number,
         ref: 'Checkout', 
         required: true
     },

@@ -9,8 +9,8 @@ const sendForgotPasswordMail = async ({ email, token }) => {
             pass: process.env.EMAIL_PASS
         }
     });
-    // http://localhost:1000
-    const resetLink = `https://book-store-mu-six.vercel.app/resetPassword?token=${token}`;
+
+    const resetLink = `http://localhost:1000/resetPassword?token=${token}`;
   
     const message = {
         from: '"Read-Book" <book@gmail.com>', 

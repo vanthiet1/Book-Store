@@ -87,13 +87,18 @@ const SettingSecurity = () => {
                             <span className="text-[#fff] block">{inforUser ? inforUser.email : "Chưa đăng nhập"}</span>
                         </div>
                         <div className="pl-1">
-                            {inforUser && inforUser.status === true ? (<span className="text-green-600 text-[14px] font-semibold">Đã xác thực</span>) : (<span className="text-[#FA573E] text-[14px] font-semibold">Chưa xác thực Email</span>)}
+                            {inforUser && inforUser.status === true ? (
+                                <span className="text-green-600 text-[14px] font-semibold">Đã xác thực</span>) : (<span className="text-[#FA573E] text-[14px] font-semibold">Chưa xác thực Email</span>)}
                         </div>
 
                         <div className="bg-[#2A2A2C] rounded-[15px] border border-[#515151] pl-3 py-2 mb-1 mt-3">
                             <span className="text-[#B3B3B3] block">Số điện thoại</span>
-                            <span className="text-[#fff] block">{detailUser && detailUser.phoneNumber ? detailUser.phoneNumber : "Chưa cật nhật số điện thoại"}</span>
+                            {/* {
+                                detailUser && detailUser.phoneNumber ? 
+                            } */}
+                            <span className="text-[#fff] block">{detailUser && detailUser.phoneNumber ? detailUser.phoneNumber : <span className="text-[#FA573E] text-[14px] font-semibold">Chưa cật nhật số điện thoại</span>}</span>
                         </div>
+                        <span className="text-[#fff] block">{detailUser && detailUser.phoneNumber ? (<span className="text-green-600 text-[14px] font-semibold">Đã xác thực số điện thoại</span>) : ""}</span>
                         <div className="mt-5">
                             <ButtonDefault
                                 onClick={accountAuthentication}

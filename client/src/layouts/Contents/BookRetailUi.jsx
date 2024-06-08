@@ -35,6 +35,7 @@ const BookRetailUi = () => {
                 >
                     {dataBookFree.length > 0 ? (dataBookFree.map((bookFree) => (
                         <div className="relative group" key={bookFree._id}>
+
                             <BookUi    
                                  bookId={bookFree._id} 
                                 bgLabel={bookFree.isFree === true ? " bg-[#27ad7c]" : 'bg-[#dd42a2]'}
@@ -42,6 +43,7 @@ const BookRetailUi = () => {
                                 labelBook={FormatCurrency(bookFree.isFree === false ? (bookFree.labelBook) + " VND" : (bookFree.labelBook)) }
                                 nameBook={bookFree.nameBook}
                             />
+                            
                             <div className="absolute ease-in duration-300 top-[-1px] left-[-6px] opacity-0 z-[-1] group-hover:opacity-100 group-hover:z-[10]">
                                 <InforBookUi
                                     aria-hidden="true" 

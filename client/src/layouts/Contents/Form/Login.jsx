@@ -7,10 +7,14 @@ import { Uicontext } from "../../../contexts/UiContext";
 import { LoginAuth } from "../../../services/auth/LoginAuth";
 import { UserRegisterAcc } from "../../../contexts/authContext/DataUserRegister";
 import { GetUserData } from "../../../services/auth/GetUserData";
+import LoginGoogle from "./LoginGoogle";
+
 const Login = () => {
   const { userData } = useContext(UserRegisterAcc);
   const { handleDisplayRegister, handleHideLogin, handleDisplayVertifyInlogin ,handleDisplayForgot } = useContext(Uicontext);
   const [errorMessage, setErrorMessage] = useState("");
+
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -109,10 +113,12 @@ const Login = () => {
               <div>
                 <button className="bg-blue-500 font-bold text-white p-2 rounded-full w-[150px]">Facebook</button>
               </div>
+
               <div>
-                <button className="w-[150px] text-white">Google</button>
+              <LoginGoogle LoginAuth={LoginAuth}/>
               </div>
             </div>
+
           </div>
           <div className="flex items-center pt-4 justify-center gap-2">
             <h2 className="text-white">Đăng ký tài khoản?</h2>

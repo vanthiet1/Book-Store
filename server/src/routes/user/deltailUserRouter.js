@@ -6,4 +6,6 @@ router.get('/',userDetailController.getAllUserDetails)
 router.put('/:id',userDetailController.updateUserDetails)
 
 
+
+
 module.exports = router;

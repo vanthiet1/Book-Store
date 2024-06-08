@@ -14,11 +14,13 @@ import { DataUser } from "../../contexts/authContext/DataUserLogin";
 import { GetDetailUser } from "../../services/checkout/detailUserService";
 import { PostCheckoutUser } from "../../services/checkout/checkoutUserService";
 import ProductCheckout from "~/layouts/Contents/MainCheckout/ProductCheckout";
+import { Uicontext } from "~/contexts/UiContext";
 const Checkout = () => {
 
 
 
     const { inforUser } = useContext(DataUser);
+    const  {handleDisplayVertify} = useContext(Uicontext)
     const [productCheckout, setProductCheckout] = useState([]);
     const [detailUser, setDetailUser] = useState([]);
     const [totalPriceCheckout, setTotalPriceCheckout] = useState(0);
@@ -90,6 +92,8 @@ const Checkout = () => {
                 setErrorStatusUser(true)
                 setTimeout(() => {
                     navigate('/account/profile')
+                    handleDisplayVertify()
+
                 }, 1000)
                 return;
             }
@@ -119,7 +123,7 @@ const Checkout = () => {
             setSuccsessCheckout(true);
             setTimeout(() => {
                 navigate('/')
-            }, 40000)
+            }, 40000);
         } catch (error) {
             console.log(error);
         }

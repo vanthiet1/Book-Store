@@ -59,6 +59,26 @@ const checkoutController = {
             res.status(500).json({ message: "lỗi server" })
         }
     },
+    
+    cancelOrderCheckout: async (req, res) => {
+        try {
+            const {id} = req.params;
+            if (!id) {
+                return res.status(404).json({ message: "id order not found" });
+            }
+            const updatedOrderCheckout = await Checkout.findByIdAndUpdate(
+                id,
+                { status:false },
+                { new: true }
+            );
+            if (!updatedOrderCheckout) {
+                return { success: false, message: 'Không tim thấy đơn hàng' };
+            }
+            res.status(200).json(updatedOrderCheckout)
+        } catch (error) {
+            res.status(500).json({ message: "lỗi server" })
+        }
+    },
 
     checkoutUser: async (req, res) => {
         try {

@@ -24,9 +24,8 @@ const Header = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const getToken = localStorage.getItem('token');
-        setIsUserLogin(getToken)
+        setIsUserLogin(getToken?getToken:null);
     }, [])
-
     const updateSearchResults = (results) => {
         if (!results) {
             setShowResultSearch(false)
@@ -34,13 +33,15 @@ const Header = () => {
         setSearchResults(results);
         setShowResultSearch(true)
     };
-
     const handleLogout = () => {
         if (isAdmin) {
             localStorage.removeItem('#');
         }
         localStorage.removeItem('cart');
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+
+        
 
         // window.location.assign('/');
         navigate('/')
@@ -78,7 +79,7 @@ const Header = () => {
                         <Link to={'/'}>
                             <h1 className="text-green-200 text-[35px] font-bold max-md:text-[20px] ">Sách</h1>
                         </Link>
-                    </div>
+                    </div>         
                     <ul className="flex gap-2 max-lg:fixed max-lg:left-0 max-lg:bottom-[-5px] max-lg:bg-[#1f1f1f] max-lg:p-5 max-lg:w-[100%] max-lg:justify-between max-md:p-2 items-center">
                         <li className="text-white font-bold px-2 cursor-pointer max-md:text-[13px] max-md:py-3 max-md:px-0" >
                             <Link to={`/book/free`} className=" max-md:w-max">Sách miễn phí</Link>

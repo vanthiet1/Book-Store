@@ -9,6 +9,7 @@ import { handleScrollToTop } from '~/components/animations/scroll/ScrollTop';
 const BookFreeUi = () => {
     const [dataBookFree, setDataBookFree] = useState([]);
     const slidesToShow = SizeBoxSlider();
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -52,7 +53,6 @@ const BookFreeUi = () => {
                                         imgBook={bookFree.imgBook}
                                         nameBook={bookFree.nameBook}
                                         author={bookFree.author && bookFree.author.length > 0 ? bookFree.author[0].name : ''}
-
                                         labelBook={bookFree.labelBook}
                                         descriptionBook={bookFree.descriptionBook}
                                     />

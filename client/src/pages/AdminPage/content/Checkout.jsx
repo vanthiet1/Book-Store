@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import CheckButton from "../components/button/CheckButton";
 import DeleteButton_square from "../components/button/DeleteButton_square";
-import { GetDataUserCheckout, GetAnDataUserCheckout, DeleteOrderCheckout,UpdateOrderCheckout } from "../service/checkoutService";
+import { GetDataUserCheckout, GetAnDataUserCheckout, DeleteOrderCheckout,UpdateOrderCheckout , CancelOrderCheckout } from "../service/checkoutService";
 import { GetNameUser } from "../service/userService";
 import DetailProduct from "../components/detailProductCheckout/DetailProduct";
 import { DisplayPopup } from "../contexts/UiContextAdmin";
@@ -19,6 +19,7 @@ const Checkout = () => {
     const [detailProductCheckout, setDetailProductCheckout] = useState([]);
     const [errorOrderProduct, setErrorOrderProduct] = useState(false);
     const [deleteSuccess, setDeleteSuccess] = useState(false);
+    const [cancelProduct, setCancelProduct] = useState(false);
     const [confirmSuccess, setConfirmSuccess] = useState(false);
 
 
@@ -91,12 +92,28 @@ const Checkout = () => {
               console.log(error);
            }
     }
+    const cancelOrderCheckout = async (orderId)=>{
+        try {
+          if(!orderId || orderId === undefined) {
+             return console.log('lỗi');
+          }
+           await CancelOrderCheckout(orderId);
+           getDataCheckout()
+           setCancelProduct(true)
+        } catch (error) {
+           console.log(error);
+        }
+ }
 
     return (
         <>
+
             {errorOrderProduct && (<Error message={'Không tìm thấy sản phẩm để xóa'} />)}
             {deleteSuccess && (<Success message={"Xóa thành công đơn hàng"} />)}
             {confirmSuccess && (<Success message={"Đơn hàng đã xác nhận thành công"} />)}
+            {cancelProduct && (<Success message={"Hủy đơn hàng thành công"} />)}
+
+
             {showDetailProductCheckout && (
                 <>
                 <div className="fixed">
@@ -169,6 +186,8 @@ const Checkout = () => {
                                         }} />
                                         <DeleteButton_square titleDelete="Xóa Đơn Hàng" clickDelete={() => { DeleteOrder(checkout._id) }} />
                                         <ConfirmButton clickConfirm={()=>{vertifyOrderCheckout(checkout._id)}} />
+                                         
+                                        <span className="cursor-pointer" onClick={()=>{cancelOrderCheckout(checkout._id)}} > Hủy </span>
                                     </div>
                                 </td>
 

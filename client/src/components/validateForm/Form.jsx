@@ -6,7 +6,7 @@ const validateFormRegister = Yup.object(
             .email("Email không hợp lệ")
             .required("Email không được để trống"),
         password: Yup.string()
-            .min(3, "Mật khẩu quá ngắn")
+            .min(8, "Mật khẩu quá ngắn")
             .required("Mật khẩu không được để trống"),
         confirmPassword: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Mật khẩu không khớp')

@@ -34,9 +34,20 @@ const UpdateOrderCheckout = async (orderId)=>{
          console.log(error);
      }
 }
+const CancelOrderCheckout = async (orderId)=>{
+    try {
+       const response = await http.put(`${URL_API_CHECKOUT}/cancel/${orderId}`);
+       return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 export {
     GetDataUserCheckout,
     GetAnDataUserCheckout,
     DeleteOrderCheckout,
-    UpdateOrderCheckout
+    UpdateOrderCheckout,
+    CancelOrderCheckout
 }

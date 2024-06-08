@@ -13,7 +13,7 @@ const RegisterAuth = {
             throw error;
         }
     },
-
 };
+// put post get 
 
 export { RegisterAuth };

@@ -53,6 +53,7 @@ const BookSuggestApi = async () => {
         throw error;
     }
 };
+
 const BookRetailApi = async () => {
     try {
         const response = await http.get(`${API_BOOK_CATEGORY}`);
@@ -66,6 +67,7 @@ const BookRetailApi = async () => {
         throw error;
     }
 };
+
 export {
     GetInforBook,
     BookNewApi,

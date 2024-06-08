@@ -7,7 +7,7 @@ import Error from "../../../components/notification/Error";
 import Success from "../../../components/notification/Success";
 const CommentBook = () => {
     const [comment, setComment] = useState('');
-    const { handleHideComment } = useContext(Uicontext);
+    const { handleHideComment ,handleDisplayLogin } = useContext(Uicontext);
     const { inforUser } = useContext(DataUser);
     const [showError, setShowError] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
@@ -15,11 +15,11 @@ const CommentBook = () => {
     const userId = inforUser ? inforUser._id : null;
     const getBookId = GetDetailBookFree();
     const bookId = getBookId ? getBookId._id : null;
-
     const submitComment = async () => {
         try {
-            if (!userId || !bookId) {
-                setShowError(true)
+            if (userId === null || !bookId) {
+                setShowError(true);
+                handleDisplayLogin()
                 return;
             }
             const data = {

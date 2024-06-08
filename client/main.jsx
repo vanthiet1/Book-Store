@@ -7,7 +7,10 @@ import DataUserLogin from '~/contexts/authContext/DataUserLogin';
 import UiContextAdmin from '~/pages/AdminPage/contexts/UiContextAdmin';
 import DataUserRegister from '~/contexts/authContext/DataUserRegister';
 import DataCart from '~/contexts/CartContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
+    <GoogleOAuthProvider clientId="975833058360-hdha90rrt77a6as6p4d30bqplja6ihpc.apps.googleusercontent.com">
     <DataCart>
         <DataUserLogin>
             <DataUserRegister>
@@ -21,5 +24,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             </DataUserRegister>
         </DataUserLogin>
     </DataCart>
-
+    </GoogleOAuthProvider>
 )

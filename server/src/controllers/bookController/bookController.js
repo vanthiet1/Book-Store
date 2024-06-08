@@ -61,8 +61,7 @@ const bookController = {
 
     getAnBookFree: async (req, res) => {
         try {
-            const id = req.params.id;
-
+            const {id} = req.params;
             const product = await Book.findById(id);
             if (!product) {
                 return res.status(404).json({ error: 'Product not found' });

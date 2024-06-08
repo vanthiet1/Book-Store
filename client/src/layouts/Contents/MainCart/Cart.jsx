@@ -98,9 +98,9 @@ const Cart = () => {
                                             <button aria-label="Giảm" className="text-[#fff] w-[50px] font-bold  bg-transparent" onClick={() => handleDecreaseQuantity(index)}>-</button>
                                             <input
                                                 type="number"
-                                                className="w-[70px] pl-4 bg-transparent text-[#fff] text-[20px]"
+                                                className="w-[70px] pl-6 bg-transparent text-[#fff] text-[20px]"
                                                 value={productCart.quantity}
-                                                onChange={(e) => handleQuantityChange(index, parseInt(e.target.value))}
+                                                onChange={(e) => handleQuantityChange(index, Math.max(1, parseInt(e.target.value)))}
                                             />
                                             <button aria-label="Tăng" className="text-[#fff] w-[50px] font-bold bg-transparent" onClick={() => handleIncreaseQuantity(index)}>+</button>
                                         </div>

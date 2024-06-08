@@ -1,13 +1,17 @@
 import { useFormik } from "formik";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { validateFormResetPassword } from "@components/validateForm/Form";
 import { ressetPassword } from "~/services/auth/ResetPassword";
 import Success from "~/components/notification/Success";
 import Error from "~/components/notification/Error";
+import { Uicontext } from "~/contexts/UiContext";
+import { useContext } from "react";
 const ResetPassword = () => {
+  const { handleDisplayLogin} = useContext(Uicontext)
     const [isResetSuccess, setIsResetSuccess] = useState(false);
     const [isNotRegister, setIsNotRegister] = useState(false);
-
+     const navigate = useNavigate();
     const formik = useFormik({
       initialValues: {
           newPassword: "",
@@ -28,6 +32,10 @@ const ResetPassword = () => {
             }
           const result = await ressetPassword(userId,resetPass);
           setIsResetSuccess(result.message)
+          setTimeout(() => {
+            navigate('/');
+            handleDisplayLogin()
+          }, 2000);
         } catch (error) {
           console.log(error);
         }

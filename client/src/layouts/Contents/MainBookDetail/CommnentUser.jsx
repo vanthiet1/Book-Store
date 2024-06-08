@@ -9,7 +9,6 @@ const CommnentUser = () => {
     const [comments, setComments] = useState([]);
     const bookId = useParams()
 
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -38,7 +37,11 @@ const CommnentUser = () => {
             <div className="flex gap-2">
                 <img className="w-[50px] rounded-full" src={dataComment.user && dataComment.user.avatar ? dataComment.user.avatar : AvatarUser} alt="" />
                  <div>
-                 <span className="text-[#fff] max-lg:block">{dataComment.user && dataComment.user.email} {dataComment.user && dataComment.user.admin && '( Admin )'}</span>
+   
+                 <span className="text-[#fff] max-lg:block">
+                 { dataComment.user?.email } {dataComment.user && dataComment.user.admin && '( Admin )'}
+                 </span>
+
                 <small className="text-[#fff]">5{dataComment.createdAt && format(new Date(dataComment.createdAt), 'yyyy-MM-dd HH:mm:ss')}</small>
                  </div>
             </div>

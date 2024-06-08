@@ -9,8 +9,12 @@ const useSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
-        minlength: 6,
+        minlength: 8,
+    },
+    googleId: {
+        type: String, 
+        unique: true,
+        sparse: true 
     },
     admin: {
         type: Boolean,
@@ -25,7 +29,10 @@ const useSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    verificationCount: { type: Number, default: 0 },
+    verificationCount: { 
+        type: Number,
+         default: 0 
+        },
     randomString: {
         type: String
     },

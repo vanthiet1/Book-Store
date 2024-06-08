@@ -6,6 +6,8 @@ router.post("/login", authControllers.loginUser);
 router.post("/verify", authControllers.verifyCode);
 router.post("/resendVerifi", authControllers.resendVerificationCode);
 router.put("/resetpassword/:id", authControllers.resetPassword);
+router.post("/login/google", authControllers.loginGoogle);
+
 
 
 

@@ -10,7 +10,10 @@ connectDB()
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(cors());
-
+app.use((req, res, next) => {
+    res.set('Cross-Origin-Opener-Policy', 'same-origin');
+    next();
+});
 
 // const upload = multer({ dest: 'uploads/' });
 

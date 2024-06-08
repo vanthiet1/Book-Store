@@ -29,9 +29,6 @@ import BookNewUi from "../BookNewUi";
 
 const InforDetail = () => {
     const { id } = useParams();
-    const { slug } = useParams();
-    console.log(slug);
-
     const { handleDisplayComment , scrollTop} = useContext(Uicontext);
     const { addToCart } = UseCart();
     const [showSuccess, setSuccess] = useState(false);

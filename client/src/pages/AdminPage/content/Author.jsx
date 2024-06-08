@@ -97,7 +97,7 @@ const Author = () => {
                     />
                 </div>
             )}
-          <div className="overflow-y-auto h-[640px] scrollbar-thin">
+          <div  className="overflow-y-auto h-[640px] scrollbar-thin">
           <table className="w-full">
                 <thead className="bg-gray-100 h-16">
                     <tr>

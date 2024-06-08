@@ -11,7 +11,7 @@ const MyOrder = () => {
     const [allProducts, setAllProducts] = useState([]);4
     const [deleteSuccess, setDeleteSuccess] = useState(false);
     const [errorOrderProduct, setErrorOrderProduct] = useState(false);
-  console.log(allProducts);
+//   console.log(allProducts);
 
     const handleGetDataCheckout = async () => {
         try {
@@ -77,7 +77,7 @@ const MyOrder = () => {
                                         {product.price.toLocaleString()} VND
                                     </td>
                                     <td className="text-left px-4 py-2 text-yellow-500 font-semibold">{(product.price * product.quantity).toLocaleString()} VND</td>
-                                    <td className="text-left px-4 py-2 text-yellow-500 font-semibold">{product.status}</td>
+                                    <td className="text-left px-4 py-2 text-yellow-500 font-semibold">{product.status ?  "Đã xác nhận" : "Đang chờ xác nhận"}</td>
                                     <td className="text-left px-2 py-2 text-yellow-500 font-semibold"> <small className="text-gray-500 dark:text-slate-400"> {product.dateCheckout && format(new Date(product.dateCheckout), 'yyyy-MM-dd HH:mm:ss')}</small></td>
 
                                     <td className="px-4 py-2">

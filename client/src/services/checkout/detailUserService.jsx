@@ -1,5 +1,6 @@
-import {  URL_API_DETAIL_USER } from '../../utils/url-api';
+import {  URL_API_DETAIL_USER , URL_USER} from '../../utils/url-api';
 import http from '~/utils/http';
+
 const GetDetailUser = async (id) => {
     try {
         const response = await http.get(`${URL_API_DETAIL_USER}/${id}`);
@@ -8,6 +9,17 @@ const GetDetailUser = async (id) => {
         console.log(error.response.data.message);
     }
 };
+
+const GetDetailUserLoginGoogle = async (googleId) => {
+    try {
+        const response = await http.post(`${URL_USER}/googleId`,{googleId});
+        return response.data;
+    } catch (error) {
+        console.log(error.response.data.message);
+    }
+};
+
+
 
 const PostDetailUser = async (dataDetailUser) => {
     try {
@@ -29,5 +41,6 @@ const UpdateDetailUser = async (userId, dataDetailUserUpdate) => {
 export {
     GetDetailUser,
     PostDetailUser,
-    UpdateDetailUser
+    UpdateDetailUser,
+    GetDetailUserLoginGoogle
 };

@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 const BookUi = (props) => {
-    const {imgBook, labelBook, nameBook , width ,bgLabel ,bookId} = props;
+    const {imgBook, labelBook, nameBook , width ,bgLabel , bookId} = props;
     const containerBookUi = `relative mx-2 ${width} `
     return (
         <div>
