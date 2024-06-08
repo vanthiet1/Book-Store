@@ -4,23 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { validateFormResetPassword } from "@components/validateForm/Form";
 import { ressetPassword } from "~/services/auth/ResetPassword";
 import Success from "~/components/notification/Success";
-<<<<<<< HEAD
 import Error from "~/components/notification/Error";
 import { Uicontext } from "~/contexts/UiContext";
 import { useContext } from "react";
-=======
 // import Error from "~/components/notification/Error";
->>>>>>> 7cfb221b0d1aee8a5085275b33def3c2fef5b8a1
 const ResetPassword = () => {
   const { handleDisplayLogin} = useContext(Uicontext)
     const [isResetSuccess, setIsResetSuccess] = useState(false);
-<<<<<<< HEAD
     const [isNotRegister, setIsNotRegister] = useState(false);
      const navigate = useNavigate();
-=======
     // const [isNotRegister, setIsNotRegister] = useState(false);
 
->>>>>>> 7cfb221b0d1aee8a5085275b33def3c2fef5b8a1
     const formik = useFormik({
       initialValues: {
           newPassword: "",
