@@ -6,7 +6,7 @@ class Http {
 // baseURL:'http://localhost:8080/api/v1/',
         
         this.instance = axios.create({ 
-            baseURL: 'book-store-production-b5d8.up.railway.app/api/v1/',
+            baseURL: 'https://book-store-production-b5d8.up.railway.app/api/v1/',
             timeout: 10000,
             headers: {
                 'Content-Type': 'application/json'
