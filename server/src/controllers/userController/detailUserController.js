@@ -63,6 +63,19 @@ const userDetailContainer = {
             res.status(500).json({ message: "Lỗi server" });
         }
     },
+       getUserDetailsByGoogle: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const userDetails = await User.findOne({ googleId:id });
+            if (!userDetails) {
+                return res.status(404).json({ message: 'Không tìm thấy chi tiết người dùng.' });
+            }
+            res.status(200).json(userDetails);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Đã xảy ra lỗi khi lấy chi tiết người dùng.' });
+        }
+    },
 
 }
 module.exports = userDetailContainer;
