@@ -29,6 +29,7 @@ const GetUserDataLoginGoogle = async (token) => {
         console.log(error);
     }
 }
+
 const GetUserById = async (userId) => {
     try {
         const response = await http.get(`${URL_USER}/${userId}`);
@@ -37,9 +38,17 @@ const GetUserById = async (userId) => {
         console.log(error);
     }
 }
-
+const GetUserGoogle = async (id) => {
+    try {
+        const response = await http.get(`${URL_USER}/detail/user/google/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
 export {
     GetUserData,
     GetUserById,
-    GetUserDataLoginGoogle
+    GetUserDataLoginGoogle,
+    GetUserGoogle
 }
