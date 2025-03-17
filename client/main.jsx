@@ -10,7 +10,7 @@ import DataCart from '~/contexts/CartContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <GoogleOAuthProvider clientId="975833058360-hdha90rrt77a6as6p4d30bqplja6ihpc.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId="715759153913-nr2accnelta7pkv0rbgu8g6299eprq6q.apps.googleusercontent.com">
     <DataCart>
         <DataUserLogin>
             <DataUserRegister>
