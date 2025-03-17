@@ -4,7 +4,7 @@ router.post("/", userDetailController.postUserDetails);
 router.get("/:userId",userDetailController.getUserDetailsByUserId);
 router.get('/',userDetailController.getAllUserDetails)
 router.put('/:id',userDetailController.updateUserDetails)
-
+router.get('/google/:id',userDetailController.getUserDetailsByGoogle)
 
 
 
