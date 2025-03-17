@@ -80,18 +80,17 @@ const checkoutController = {
         }
     },
 
-    checkoutUser: async (req, res) => {
+     checkoutUser: async (req, res) => {
         try {
-            const { userId, products, phoneNumber, address, totalPrice, methodPayment, status } = req.body;
-
+            const { userId, products, phoneNumber, address, totalPrice, methodPayment } = req.body;
+            const objectIdUserId = new mongoose.Types.ObjectId(userId);
             const newCheckout = new Checkout({
-                userId,
+                userId:objectIdUserId,
                 products,
                 phoneNumber,
                 address,
                 totalPrice,
                 methodPayment,
-                status: false
             });
             await newCheckout.save();
             res.status(200).json(newCheckout);
