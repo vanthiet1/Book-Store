@@ -1,5 +1,5 @@
 [project]
-name = "book-store"
+name = "Book-Store"
 
 [[services]]
 name = "server"
