@@ -15,11 +15,9 @@ import { GetDetailUser } from "../../services/checkout/detailUserService";
 import { PostCheckoutUser } from "../../services/checkout/checkoutUserService";
 import ProductCheckout from "~/layouts/Contents/MainCheckout/ProductCheckout";
 import { Uicontext } from "~/contexts/UiContext";
+import {  GetUserGoogle } from "~/services/auth/GetUserData";
 const Checkout = () => {
-
-
-
-    const { inforUser } = useContext(DataUser);
+    const { inforUser , inforUserDataGoogle } = useContext(DataUser);
     const  {handleDisplayVertify} = useContext(Uicontext)
     const [productCheckout, setProductCheckout] = useState([]);
     const [detailUser, setDetailUser] = useState([]);
@@ -52,7 +50,7 @@ const Checkout = () => {
     }, [cart]);
     const handleAtiveOptionPayment = (option) => {
         setActiveOption(option);
-        setNameMethodPayment(option === 1 ? "QR Code" : "Ví điện tử")
+        setNameMethodPayment(option === 1 ? "QR Code" : "Tiền mặt")
         setActiveCheckout('bg-[#15B088]')
     }
     useEffect(() => {
@@ -84,16 +82,15 @@ const Checkout = () => {
                 setErrorOption(true)
                 return;
             }
-            if (inforUser === null) {
+            if (inforUser && inforUserDataGoogle === null) {
                 setErrorLogin(true)
                 return;
             }
-            if (inforUser.status === false) {
+            if (inforUser?.status === false) {
                 setErrorStatusUser(true)
                 setTimeout(() => {
                     navigate('/account/profile')
                     handleDisplayVertify()
-
                 }, 1000)
                 return;
             }
@@ -105,25 +102,26 @@ const Checkout = () => {
                 return;
             }
             if (nameMethodPayment === "QR Code") {
-                window.location.href = `https://api.vietqr.io/image/970422-9213112004-46Pz0lW.jpg?accountName=NGUYEN%20VAN%20THIET&addInfo=${inforUser.email} ${totalPriceCheckout} VND`
+                window.location.href = `https://api.vietqr.io/image/970422-9213112004-46Pz0lW.jpg?accountName=NGUYEN%20VAN%20THIET&addInfo=${inforUser?.email || inforUserDataGoogle?.email} ${totalPriceCheckout} VND`
             }
-            if (nameMethodPayment === "Ví điện tử") {
+            if (nameMethodPayment === "Tiền mặt") {
                 console.log('lo');
             }
+               const id = inforUserDataGoogle?.sub
+                const dataUserGoole = await GetUserGoogle(id)
             const data = {
-                userId: inforUser._id,
+                userId: inforUser?._id || dataUserGoole?._id,
                 products: cart,
-                phoneNumber: detailUser.phoneNumber,
-                address: detailUser.address,
+                phoneNumber: detailUser.phoneNumber || "TK google",
+                address: detailUser.address || "Địa chỉ chưa được update",
                 totalPrice: totalPriceCheckout,
                 methodPayment: nameMethodPayment,
-                status: "chờ"
             };
             await PostCheckoutUser(data)
             setSuccsessCheckout(true);
             setTimeout(() => {
                 navigate('/')
-            }, 40000);
+            }, 3000);
         } catch (error) {
             console.log(error);
         }
