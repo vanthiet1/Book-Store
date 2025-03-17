@@ -1,6 +1,8 @@
 [project]
-name = "Book-Store"
+name = "book-store"
 
 [[services]]
 name = "server"
 root = "./server"
+start = "npm start" 
+
