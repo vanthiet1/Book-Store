@@ -12,17 +12,25 @@ const Cart = () => {
     const { handleHideCart, handleDisplayLogin } = useContext(Uicontext);
     const [totalPrice, setTotalPrice] = useState(0);
     const { cart, removeFromCart } = UseCart();
-    const { inforUser } = useContext(DataUser);
+    const { inforUser , inforUserDataGoogle } = useContext(DataUser);
     const [errorStatus, setErrorStatus] = useState(false);
     const [errorNotLogin, setErrorNotLogin] = useState(false);
+    const [errorCart, setErrorCart] = useState(false);
+
 
     const handleCheckout = () => {
-        if (inforUser === null) {
+        if(cart.length === 0){
+            handleHideCart()
+            setErrorCart(true)
+            return
+        }
+        if (inforUser && inforUserDataGoogle === null) {
             setErrorNotLogin(true)
             handleHideCart()
             handleDisplayLogin()
             return false
-        } else if (inforUser && inforUser.status === true) {
+        }
+         if (inforUser?.status === true || inforUserDataGoogle?.email_verified === true ) {
             handleHideCart()
             navigate('/book/checkout');
         } else {
@@ -71,6 +79,7 @@ const Cart = () => {
         <>
             {errorStatus && <Error message='Vui lòng xác thực tài khoản' />}
             {errorNotLogin && <Error message='Vui lòng đăng nhập' />}
+            {errorCart && <Error message='Vui lòng thêm sản phẩm' />}
             <div className="w-[500px] bg-[#0d3434] h-screen px-5 py-2 rounded-l-md fixed right-0 z-40 max-md:w-[350px] max-md:top-[-1px]">
                 <div className="flex cursor-pointer py-2">
                     <IoCloseCircleSharp className="text-[30px] text-[#fff] max-md:text-[30px]"  onClick={() => handleHideCart()}  />
